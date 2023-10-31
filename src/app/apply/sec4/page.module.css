@@ -1,0 +1,31 @@
+.inputField {
+  z-index: 0;
+  width: 80%;
+  padding: 1%;
+  border-radius: 12px 12px 0 12px;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: #f7f7f7;
+}
+
+.bgContainer {
+  background-position: center;
+  background-size: cover;
+  background-image: url("https://images.pexels.com/photos/6532373/pexels-photo-6532373.jpeg?cs=srgb&dl=pexels-nataliya-vaitkevich-6532373.jpg&fm=jpg&w=6240&h=4160");
+}
+
+.okButton {
+  margin-top: 5%;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.inputLabel {
+  margin-bottom: 1%;
+  color: #707070;
+}

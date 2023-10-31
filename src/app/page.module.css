@@ -1,0 +1,102 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.gridText {
+  font-weight: bolder;
+}
+
+.banner {
+  background-image: url("https://images.pexels.com/photos/6532373/pexels-photo-6532373.jpeg?cs=srgb&dl=pexels-nataliya-vaitkevich-6532373.jpg&fm=jpg&w=6240&h=4160");
+  height: 100vh;
+  background-attachment: fixed;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  background-size: cover;
+}
+
+.video {
+  height: 100vh;
+  width: 50%;
+  position: relative;
+}
+.aboutDiv {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3%;
+  background-color: #101627;
+}
+.prevWinners {
+  height: 40vh;
+  background-color: aqua;
+}
+
+.gridContainer {
+  margin: 2%;
+  margin-bottom: 0%;
+  background-color: #f6f7fd;
+  width: 100%;
+}
+
+.gridItem {
+  background-color: #2f3138;
+  color: white;
+  padding: 2%;
+  margin: 2%;
+  margin-left: 4%;
+  margin-bottom: 2%;
+}
+
+.gridHeader {
+  color: #f1bf60;
+}
+
+.gridList {
+  margin: 2%;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 2rem;
+  }
+  .video {
+    width: 100%;
+  }
+  .aboutDiv {
+    height: 100%;
+  }
+  .prevWinners {
+    height: 100%;
+  }
+  .gridContainer {
+    margin: 0%;
+    margin-bottom: 0%;
+    background-color: #f6f7fd;
+    width: 100%;
+  }
+  .gridItem {
+    background-color: #2f3138;
+    color: white;
+    padding: 2%;
+    margin: 2%;
+    margin-left: 4%;
+    margin-bottom: 2%;
+  }
+  .gridHeader {
+    color: #f1bf60;
+  }
+  .gridList {
+    margin: 2%;
+  }
+}

@@ -1,0 +1,45 @@
+.inputField {
+  margin-bottom: 3%;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  z-index: 0;
+}
+.inputLabel {
+  margin-bottom: 1%;
+  color: #707070;
+}
+
+.okButton {
+  margin-top: 5%;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bgContainer {
+  background-position: center;
+  background-size: cover;
+  background-image: url("https://images.pexels.com/photos/6532373/pexels-photo-6532373.jpeg?cs=srgb&dl=pexels-nataliya-vaitkevich-6532373.jpg&fm=jpg&w=6240&h=4160");
+}
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  margin-right: 5px;
+}
+
+.submitButton {
+  border-radius: 20px;
+}
+
+.phoneInput::-webkit-outer-spin-button,
+.phoneInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

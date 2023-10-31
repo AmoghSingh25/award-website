@@ -1,0 +1,47 @@
+.inputField {
+  margin-bottom: 3%;
+  z-index: 0;
+}
+.inputLabel {
+  margin-bottom: 1%;
+  color: black;
+}
+.inputButton {
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+.bgContainer {
+  background-position: center;
+  background-image: url("https://images.pexels.com/photos/6532373/pexels-photo-6532373.jpeg?cs=srgb&dl=pexels-nataliya-vaitkevich-6532373.jpg&fm=jpg&w=6240&h=4160");
+
+  background-size: cover;
+}
+
+.checkDiv {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2%;
+  background-color: #ffefb6;
+  border-radius: 20px;
+  padding: 2%;
+}
+.tickLabel {
+  color: black;
+}
+
+.okButton {
+  margin-top: 5%;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.errorMessage {
+  color: red;
+  margin-bottom: 1%;
+  margin-left: 1%;
+}
