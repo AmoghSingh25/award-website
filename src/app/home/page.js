@@ -1,4 +1,4 @@
-import ResponsiveAppBar from "./appBar";
+import ResponsiveAppBar from "../../components/appBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 

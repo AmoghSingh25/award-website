@@ -1,6 +1,6 @@
 "use client";
 
-import ResponsiveAppBar from "./home/appBar";
+import ResponsiveAppBar from "../components/appBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import styles from "./page.module.css";
@@ -595,7 +595,7 @@ function HomePage() {
                       sx={{ padding: "1rem" }}
                     >
                       The Jury holds the right to disqualify any application
-                      which does not meet the eligibility criteria. Jury&aposs
+                      which does not meet the eligibility criteria. Jury&apos;s
                       decisions are final and binding on all Participants and
                       cannot be challenged in any manner whatsoever.
                     </Typography>
