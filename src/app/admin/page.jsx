@@ -31,32 +31,30 @@ const schema = yup
   .required();
 
 export default function Page() {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm({
-  //   resolver: yupResolver(schema),
-  // });
-  // const onSubmit = async (data) => {
-  //   const res = await fetch("/api/login", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(data),
-  //   });
-  //   const resp = await res.json();
-  //   if (!resp.error) {
-  //     data.id = resp.id;
-  //     data.section = resp.last_saved;
-  //     router.push("/apply/sec" + resp.last_saved + "?id=" + resp.id);
-  //   }
-  //   if (resp.error && resp.status === "Already submitted") {
-  //     setError("Application already submitted");
-  //     return;
-  //     setError("Error logging in");
-  //     return;
-  //   }
-  // };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = async (data) => {
+    console.log("Data", data);
+    const res = await fetch("/api/loginJury", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const resp = await res.json();
+    if (!resp.error) {
+      console.log("Successful login");
+      router.push("/admin/juryHome");
+    }
+    if (resp.error) {
+      setError(resp.message);
+      return;
+    }
+  };
   const router = useRouter();
   const searchParams = new useSearchParams(router.query);
   const [errorMessage, setError] = React.useState("");
