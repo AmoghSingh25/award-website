@@ -89,7 +89,7 @@ export default function Page() {
     },
   ];
 
-  const [error, setError] = useState("");
+  const [errorMessage, setError] = useState("");
 
   const submitApplication = () => {
     fetch("/api/saveApplication", {

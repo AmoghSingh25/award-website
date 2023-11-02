@@ -134,6 +134,9 @@ export default function Page() {
       check2: check2 ? null : "Please check this box",
       idCard: idCard ? null : "Please upload ID Card",
     });
+    if (!check1 || !check2 || idCard === null) {
+      flag = true;
+    }
     if (idCard !== null) {
       if (idCard.size > 2000000) {
         setErrors(
@@ -203,14 +206,7 @@ export default function Page() {
     console.log("submit");
     setSubmitClicked(true);
     const flag = checkErrors();
-    if (
-      flag ||
-      !check1 ||
-      !check2 ||
-      idCard === null ||
-      awards === null ||
-      otherDocs === null
-    ) {
+    if (flag) {
       console.log("ERROR");
       console.log(flag, check1, check2, idCard, awards, otherDocs);
       return;
