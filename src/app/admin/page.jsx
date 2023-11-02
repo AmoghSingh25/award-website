@@ -39,7 +39,6 @@ export default function Page() {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    console.log("Data", data);
     const res = await fetch("/api/loginJury", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -47,7 +46,6 @@ export default function Page() {
     });
     const resp = await res.json();
     if (!resp.error) {
-      console.log("Successful login");
       router.push("/admin/juryHome");
     }
     if (resp.error) {

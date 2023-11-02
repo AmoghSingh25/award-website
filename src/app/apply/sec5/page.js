@@ -69,7 +69,6 @@ export default function Page() {
   }
 
   const setFile = async (file_name, file_data, set_file) => {
-    console.log("FILE TYPE = ", await getFileSignature(file_data));
     if (file_data !== null) {
       const fileType = getFileSignature(file_data);
       const byteArray = new Uint8Array(file_data.data);
@@ -92,7 +91,6 @@ export default function Page() {
       header += arr[i].toString(16);
     }
     const file_type = header.toUpperCase();
-    console.log("FILE TYPE = ", file_type);
     const file_type_dict = {
       "89504E47": "image/png",
       25504446: "application/pdf",
@@ -116,7 +114,6 @@ export default function Page() {
       .then((res) => {
         if (!res.isFilled) return;
         const data = res.data[0];
-        console.log("DATA = ", data);
         setFile("idCard_" + searchParams.get("id"), data.id_card, setIdCard);
         setFile("awards_" + searchParams.get("id"), data.awards, setawards);
         setFile(
@@ -150,8 +147,6 @@ export default function Page() {
         idCard.type !== "image/png" &&
         idCard.type !== "image/jpg"
       ) {
-        console.log("Error caught");
-
         setErrors(
           (prev) => (prev = { ...prev, idCard: "File type not supported" })
         );
@@ -203,16 +198,11 @@ export default function Page() {
   };
 
   const onSubmit = async () => {
-    console.log("submit");
     setSubmitClicked(true);
     const flag = checkErrors();
     if (flag) {
-      console.log("ERROR");
-      console.log(flag, check1, check2, idCard, awards, otherDocs);
       return;
     }
-
-    console.log("ERRORS= ", errors);
 
     let data = [];
     const id = searchParams.get("id");

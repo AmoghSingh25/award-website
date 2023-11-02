@@ -5,7 +5,6 @@ export default async function handler(req, res) {
     return res.status(404).json({ message: "Not found" });
   try {
     const ret = await loginJury(req.body.email, req.body.phone);
-    console.log(ret);
     res.status(200).json({
       message: "Logged in",
       status: "Logged in",

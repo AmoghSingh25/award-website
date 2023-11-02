@@ -52,7 +52,6 @@ export default function Page() {
       body: JSON.stringify(data),
     });
     const resp = await res.json();
-    console.log(resp);
     if (!resp.error) {
       data.id = resp.id;
       data.section = resp.last_saved;

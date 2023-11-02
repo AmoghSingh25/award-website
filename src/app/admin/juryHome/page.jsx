@@ -15,7 +15,6 @@ const columns = [
     headerName: "Preview",
     width: 70,
     renderCell: (params) => {
-      console.log(params);
       return <a href={"/admin/applicantView?id=" + params.id}>Click here</a>;
     },
   },
