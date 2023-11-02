@@ -10,11 +10,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-const pages = ["Apply", "Login"];
+
+const pages = ["Apply"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-const links = ["/signup", "/login"];
+const links = ["/signup"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -118,9 +117,8 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={()=>{
-                  router.push(`/${page.toLowerCase()}`);
-                }}
+                onClick={handleCloseNavMenu}
+                href={links[pages.indexOf(page)]}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}

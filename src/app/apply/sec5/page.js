@@ -127,7 +127,7 @@ export default function Page() {
       });
   }, []);
 
-  const checkErrors = async () => {
+  const checkErrors = () => {
     let flag = false;
     setErrors({
       check1: check1 ? null : "Please check this box",
@@ -200,8 +200,9 @@ export default function Page() {
   };
 
   const onSubmit = async () => {
+    console.log("submit");
     setSubmitClicked(true);
-    const flag = await checkErrors();
+    const flag = checkErrors();
     if (
       flag ||
       !check1 ||
@@ -210,6 +211,8 @@ export default function Page() {
       awards === null ||
       otherDocs === null
     ) {
+      console.log("ERROR");
+      console.log(flag, check1, check2, idCard, awards, otherDocs);
       return;
     }
 
