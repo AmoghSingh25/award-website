@@ -7,6 +7,7 @@ import "./modal.css";
 import AdminPanel from "../adminPanel/page";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, useController } from "react-hook-form";
+import LinearProgress from '@mui/material/LinearProgress';
 import * as yup from "yup";
 
 const schema = yup.object().shape({
@@ -24,7 +25,7 @@ const schema = yup.object().shape({
 export default function JuryManagementPage() {
   const [jurors, setJurors] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [loading, setLoading] = useState(true);
   const openModal = () => {
     setIsModalOpen(true);
     setIsModalOpen(true);
@@ -40,10 +41,13 @@ export default function JuryManagementPage() {
       .then((data) => {
         console.log(data);
         setJurors(data.data);
+        setLoading(false);
       });
   }, []);
 
   const addJuror = (data) => {
+    console.log("HERE", data);
+
     fetch("/api/admin/addJuror", {
       method: "POST",
       headers: {
@@ -53,10 +57,6 @@ export default function JuryManagementPage() {
     })
       .then((res) => res.json())
       .then((resp) => {
-        if (resp.status === "Failed") {
-          alert("Error, please check email and phone number");
-          return;
-        }
         closeModal();
         data.id = resp.id;
         setJurors([...jurors, data]);
@@ -124,6 +124,7 @@ export default function JuryManagementPage() {
           columns={columns}
           autoHeight
           disableRowSelectionOnClick
+          loading={loading}
         />
 
         <Modal
