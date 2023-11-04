@@ -2,6 +2,7 @@
 import react from "react";
 import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import { useEffect } from "react";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -32,14 +33,27 @@ const rows = [
   { id: 10, JuryName: "Olivia", TAA: 1 },
 ];
 
-export default function AssignJury({params}) {
-  console.log(params)
+export default function AssignJury({ params }) {
+  useEffect(() => {
+    console.log("ID = ", params.id);
+    const result = fetch("/api/admin/applicant_jury", {
+      method: "POST",
+      body: JSON.stringify({ id: params.id }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const [selectedRows, setSelectedRows] = react.useState([]);
   return (
-    <Box sx={{ height: 700, width: "70%" }}>
-            <h1>
-      Applicant {params.id}'s Assign Board
-    </h1>
+    <Box sx={{ height: "100%", width: "70%", ml: 2, mt: 4 }}>
+      <h1>Applicant {params.id}'s Assign Board</h1>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -52,6 +66,9 @@ export default function AssignJury({params}) {
       />
       <Button
         variant="contained"
+        sx={{
+          ml: 2,
+        }}
         onClick={() => {
           console.log(selectedRows); // add selected rows to the judges list. Also change Status to selected.
         }}

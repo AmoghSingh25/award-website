@@ -1,14 +1,28 @@
 "use client";
-import React, { useState } from "react";
-import { Button, Modal, TextField,Container } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Button, Modal, TextField, Container } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./modal.css";
-import AdminPanel from "../adminPanel/page"
+import AdminPanel from "../adminPanel/page";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm, useController } from "react-hook-form";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().required(),
+  name: yup.string().required(),
+  phone: yup
+    .string()
+    .required("Phone is required")
+    .matches(/^[0-9]+$/, "Must be only digits")
+    .min(10, "Must be exactly 10 digits")
+    .max(10, "Must be exactly 10 digits"),
+});
+
 export default function JuryManagementPage() {
   const [jurors, setJurors] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -20,19 +34,47 @@ export default function JuryManagementPage() {
     setIsModalOpen(false);
   };
 
-  const addJuror = () => {
-    if (email && password) {
-      setJurors([...jurors, { email, password }]);
-      setEmail("");
-      setPassword("");
-      closeModal();
-    }
+  useEffect(() => {
+    fetch("/api/admin/getJury")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setJurors(data.data);
+      });
+  }, []);
+
+  const addJuror = (data) => {
+    console.log("HERE", data);
+
+    fetch("/api/admin/addJuror", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((resp) => {
+        closeModal();
+        data.id = resp.id;
+        setJurors([...jurors, data]);
+      })
+      .catch((err) => alert(err));
   };
 
-  const disableJuror = (id) => {
+  const disableJuror = (id, is_active) => {
     const updatedJurors = jurors.map((juror) =>
-      juror.id === id ? { ...juror, disabled: true } : juror
+      juror.id === id ? { ...juror, is_active: !is_active } : juror
     );
+    fetch("/api/admin/disableJuror", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id, is_active: !is_active }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data.status));
     setJurors(updatedJurors);
   };
 
@@ -46,61 +88,97 @@ export default function JuryManagementPage() {
       renderCell: (params) => (
         <Button
           variant="contained"
-          color="error"
+          color={params.row.is_active ? "error" : "primary"}
           startIcon={<DeleteIcon />}
-          onClick={() => disableJuror(params.row.id)}
+          onClick={() => {
+            disableJuror(params.id, params.row.is_active);
+          }}
         >
-          Disable
+          {params.row.is_active ? "Disable" : "Enable"}
         </Button>
       ),
     },
   ];
 
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   return (
     <>
-    <AdminPanel/>
-    <Container maxWidth="xl">
-      <Button variant="contained" color="primary" onClick={openModal}>
-        Add Jury
-      </Button>
+      <AdminPanel />
+      <Container maxWidth="xl">
+        <Button variant="contained" color="primary" onClick={openModal}>
+          Add Jury
+        </Button>
 
-      <DataGrid
-        rows={jurors.map((juror, id) => ({ ...juror, id }))}
-        columns={columns}
-        autoHeight
-        checkboxSelection
-      />
+        <DataGrid
+          rows={jurors.map((juror) => ({ ...juror }))}
+          columns={columns}
+          autoHeight
+          disableRowSelectionOnClick
+        />
 
-      <Modal
-        open={isModalOpen}
-        onClose={closeModal}
-        className="modal-container" // Apply the modal container style
-      >
-        <div className="modal-content">
-          {" "}
-         
-          <h2>Add Jury</h2>
-          <div className="modal-div">
-            <TextField
-              label="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+        <Modal
+          open={isModalOpen}
+          onClose={closeModal}
+          className="modal-container"
+        >
+          <div className="modal-content">
+            {" "}
+            <h2>Add Jury</h2>
+            <div className="modal-div">
+              <TextField
+                label="Name"
+                name="name"
+                onChange={(e) => setName(e.target.value)}
+                {...register("name")}
+                error={!!errors.name}
+                helperText={errors.name?.message}
+              />
+            </div>
+            <div className="modal-div">
+              <TextField
+                label="Email"
+                name="email"
+                {...register("email")}
+                error={!!errors.email}
+                helperText={errors.email?.message}
+              />
+            </div>
+            <div className="modal-div">
+              <TextField
+                label="Phone number"
+                name="phone"
+                {...register("phone")}
+                error={!!errors.phone}
+                helperText={errors.phone?.message}
+              />
+            </div>
+            <div className="modal-div">
+              <TextField
+                label="Password"
+                name="password"
+                {...register("password")}
+                error={!!errors.password}
+                helperText={errors.password?.message}
+              />
+            </div>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleSubmit(addJuror)()}
+            >
+              Add
+            </Button>
           </div>
-          <div className="modal-div">
-            <TextField
-              label="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <Button variant="contained" color="primary" onClick={addJuror}>
-            Add
-          </Button>
-        </div>
-      </Modal>
-    </Container>
+        </Modal>
+      </Container>
     </>
-    
   );
 }

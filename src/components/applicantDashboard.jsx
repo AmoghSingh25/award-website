@@ -1,10 +1,11 @@
 "use client";
 import * as React from "react";
+import { useEffect } from "react";
 import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Link from "next/link";
 const columns = [
-  { field: "id", headerName: "Applicant ID", width: 120 },
+  { field: "id", headerName: "Applicant ID", width: 250 },
   { field: "name", headerName: "Applicant Name", width: 200 },
   {
     field: "assignJury",
@@ -18,31 +19,35 @@ const columns = [
       </Link>
     ),
   },
-  { field: "status", headerName: "Status", width: 120 },
-];
-
-const rows = [
-  { id: 1, name: "John Doe", status: "Pending" },
-  { id: 2, name: "Jane Smith", status: "Assigned" },
-  { id: 3, name: "Alice Johnson", status: "Pending" },
-  { id: 4, name: "Bob Brown", status: "Assigned" },
-  { id: 5, name: "Eve Williams", status: "Pending" },
-  { id: 6, name: "Chris Lee", status: "Pending" },
-  { id: 7, name: "Grace Clark", status: "Assigned" },
-  { id: 8, name: "Michael Wilson", status: "Pending" },
-  { id: 9, name: "Olivia Davis", status: "Assigned" },
-  { id: 10, name: "William Moore", status: "Assigned" },
 ];
 
 export default function applicantDashboard() {
+  const [rows, setRows] = React.useState([]);
+
+  useEffect(() => {
+    fetch("/api/admin/getApplicants", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        adminId: "tRw5pSZbJC[u4y!MV+3r",
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setRows(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
-    <Box sx={{ height: 700, width: "70%" }}>
+    <Box sx={{ height: 700, width: "90%" }}>
       <DataGrid
         rows={rows}
         disableRowSelectionOnClick
         columns={columns}
-        pageSize={5} // You can adjust the number of rows per page
-        checkboxSelection
+        pageSize={5}
+        disableColumnSelector
       />
     </Box>
   );
