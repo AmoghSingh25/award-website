@@ -4,7 +4,7 @@ import ResponsiveAppBar from "../components/appBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import styles from "./page.module.css";
-import FAQSection from "@/components/faqSection";
+import FAQSection from "src/components/faqSection.js";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
