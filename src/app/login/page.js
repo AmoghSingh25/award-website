@@ -202,6 +202,18 @@ export default function Page() {
               Login
             </a>
           </p>
+          <p>
+            Test mode
+            <a
+              href="/test"
+              style={{
+                textDecoration: "underline",
+                color: "#F5C005",
+              }}
+            >
+              TEST
+            </a>
+          </p>
         </Box>
       </Box>
     </ThemeProvider>
