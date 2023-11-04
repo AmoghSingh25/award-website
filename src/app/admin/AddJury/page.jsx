@@ -44,8 +44,6 @@ export default function JuryManagementPage() {
   }, []);
 
   const addJuror = (data) => {
-    console.log("HERE", data);
-
     fetch("/api/admin/addJuror", {
       method: "POST",
       headers: {
@@ -55,6 +53,10 @@ export default function JuryManagementPage() {
     })
       .then((res) => res.json())
       .then((resp) => {
+        if (resp.status === "Failed") {
+          alert("Error, please check email and phone number");
+          return;
+        }
         closeModal();
         data.id = resp.id;
         setJurors([...jurors, data]);
