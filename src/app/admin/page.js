@@ -12,7 +12,6 @@ import styles from "../page.module.css";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
-import Checkbox from "@mui/material/Checkbox";
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -39,14 +38,14 @@ export default function Page() {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    const res = await fetch("/api/loginJury", {
+    const res = await fetch("/api/loginAdmin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     const resp = await res.json();
     if (!resp.error) {
-      router.push("/admin/juryHome");
+      router.push("/admin/AddJury");
     }
     if (resp.error) {
       setError(resp.message);
@@ -58,6 +57,7 @@ export default function Page() {
   const [errorMessage, setError] = React.useState("");
 
   return (
+    <>
     <ThemeProvider theme={theme}>
       {errorMessage !== "" && (
         <Box
@@ -114,7 +114,7 @@ export default function Page() {
         }}
       >
         <Typography variant="h4" gutterBottom>
-          Jury Login
+          Admin Login
         </Typography>
         <Box
           component="form"
@@ -192,5 +192,7 @@ export default function Page() {
         </Box>
       </Box>
     </ThemeProvider>
+    </>
+    
   );
 }

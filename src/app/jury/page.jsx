@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
@@ -39,30 +39,17 @@ export default function Page() {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    const res = await fetch("/api/login", {
+    const res = await fetch("/api/loginJury", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     const resp = await res.json();
     if (!resp.error) {
-      data.id = resp.id;
-      data.section = resp.last_saved;
-      router.push("/apply/sec" + resp.last_saved + "?id=" + resp.id);
+      router.push("/jury/juryHome");
     }
-    if (resp.error && resp.status === "Already submitted") {
-      setError("Application already submitted");
-      return;
-    } else if (resp.error) {
-      if (resp.status === "User already exists") {
-        setError("Email or Phone already in use.");
-        return;
-      }
-      if (resp.status === "User does not exist") {
-        setError("User does not exist, please signup");
-        return;
-      }
-      setError("Error logging in");
+    if (resp.error) {
+      setError(resp.message);
       return;
     }
   };
@@ -127,7 +114,7 @@ export default function Page() {
         }}
       >
         <Typography variant="h4" gutterBottom>
-          Applicant Login
+          Jury Login
         </Typography>
         <Box
           component="form"
@@ -191,27 +178,15 @@ export default function Page() {
             </a>
           </p>
           <p>
-            Member of Jury ? Click here to{" "}
+            Applicant ? Click here to{" "}
             <a
-              href="/jury"
+              href="/login"
               style={{
                 textDecoration: "underline",
                 color: "#F5C005",
               }}
             >
               Login
-            </a>
-          </p>
-          <p>
-            Admin ? Click here to{" "}
-            <a
-              href="/admin"
-              style={{
-                textDecoration: "underline",
-                color: "#F5C005",
-              }}
-            >
-              Click Here
             </a>
           </p>
         </Box>

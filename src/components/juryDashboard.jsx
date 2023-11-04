@@ -12,7 +12,7 @@ const columns = [
     headerName: "Check Result",
     width: 180,
     renderCell: (params) => (
-      <Link href={`/test/JuryDashboard/${params.row.id}`}>
+      <Link href={`/admin/JuryDashboard/${params.row.id}`}>
         <Button variant="contained" color="primary">
           Check Result
         </Button>

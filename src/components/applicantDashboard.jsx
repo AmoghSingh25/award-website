@@ -11,7 +11,7 @@ const columns = [
     headerName: "Assign Jury",
     width: 140,
     renderCell: (params) => (
-      <Link href={`/test/ApplicantDashboard/${params.row.id}`}>
+      <Link href={`/admin/ApplicantDashboard/${params.row.id}`}>
         <Button variant="contained" color="primary">
           Assign
         </Button>

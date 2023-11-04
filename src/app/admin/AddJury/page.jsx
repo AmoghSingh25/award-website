@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { Button, Modal, TextField } from "@mui/material";
+import { Button, Modal, TextField,Container } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./modal.css";
-
+import AdminPanel from "../adminPanel/page"
 export default function JuryManagementPage() {
   const [jurors, setJurors] = useState([]);
   const [email, setEmail] = useState("");
@@ -57,7 +57,9 @@ export default function JuryManagementPage() {
   ];
 
   return (
-    <div>
+    <>
+    <AdminPanel/>
+    <Container maxWidth="xl">
       <Button variant="contained" color="primary" onClick={openModal}>
         Add Jury
       </Button>
@@ -97,6 +99,8 @@ export default function JuryManagementPage() {
           </Button>
         </div>
       </Modal>
-    </div>
+    </Container>
+    </>
+    
   );
 }
