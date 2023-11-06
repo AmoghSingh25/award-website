@@ -7,7 +7,7 @@ import "./modal.css";
 import AdminPanel from "../adminPanel/page";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, useController } from "react-hook-form";
-import LinearProgress from '@mui/material/LinearProgress';
+import LinearProgress from "@mui/material/LinearProgress";
 import * as yup from "yup";
 
 const schema = yup.object().shape({
@@ -26,6 +26,7 @@ export default function JuryManagementPage() {
   const [jurors, setJurors] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+
   const openModal = () => {
     setIsModalOpen(true);
     setIsModalOpen(true);
@@ -39,15 +40,12 @@ export default function JuryManagementPage() {
     fetch("/api/admin/getJury")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setJurors(data.data);
         setLoading(false);
       });
   }, []);
 
   const addJuror = (data) => {
-    console.log("HERE", data);
-
     fetch("/api/admin/addJuror", {
       method: "POST",
       headers: {
@@ -60,6 +58,7 @@ export default function JuryManagementPage() {
         closeModal();
         data.id = resp.id;
         setJurors([...jurors, data]);
+        setLoading(false);
       })
       .catch((err) => alert(err));
   };
@@ -74,9 +73,7 @@ export default function JuryManagementPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ id, is_active: !is_active }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data.status));
+    }).catch((err) => alert(err));
     setJurors(updatedJurors);
   };
 
@@ -115,7 +112,15 @@ export default function JuryManagementPage() {
     <>
       <AdminPanel />
       <Container maxWidth="xl">
-        <Button variant="contained" color="primary" onClick={openModal}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={openModal}
+          sx={{
+            m: 5,
+            mb: 0,
+          }}
+        >
           Add Jury
         </Button>
 
@@ -125,6 +130,11 @@ export default function JuryManagementPage() {
           autoHeight
           disableRowSelectionOnClick
           loading={loading}
+          sx={{
+            mt: 1,
+            ml: 5,
+            backgroundColor: "white",
+          }}
         />
 
         <Modal

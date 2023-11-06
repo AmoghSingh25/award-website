@@ -67,18 +67,21 @@ const Download = () => {
 
 export default function juryResult() {
   return (
-    <Box sx={{ height: 700, width: "70%" }}>
-      <h3>
-        Result Board
-        <Button variant="contained" onClick={() => Download()}>
-          Download Result
-        </Button>
-      </h3>
+    <Box sx={{ height: 700, width: "90%", pl: 3, pt: 3 }}>
+      <h3>Result Board</h3>
+      <Button variant="contained" onClick={() => Download()}>
+        Download Result
+      </Button>
       <DataGrid
         rows={rows}
         disableRowSelectionOnClick
         columns={columns}
         pageSize={5} // You can adjust the number of rows per page
+        sx={{
+          mt: 5,
+          ml: 5,
+          backgroundColor: "white",
+        }}
       />
     </Box>
   );

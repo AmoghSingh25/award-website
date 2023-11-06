@@ -3,73 +3,68 @@ import * as React from "react";
 import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Link from "next/link";
+import { useEffect } from "react";
+
 const columns = [
   { field: "id", headerName: "Applicant ID", width: 120 },
-  { field: "AssignedApplicants", headerName: "Applicant Name", width: 200 },
-  { field: "Comments", headerName: "Comments", width: 200 },
+  { field: "name", headerName: "Applicant Name", width: 200 },
+  { field: "comments", headerName: "Comments", width: 200 },
   {
-    field: "Result",
+    field: "status",
     headerName: "Result",
     width: 180,
     renderCell: (params) => (
-<Button
-            variant="contained"
-            color={params.row.Result ? "success" : "error"}
-          >
-          {
-            params.row.Result ? "Selected" : "Rejected"
-          }
-        </Button>
+      <Button
+        variant="contained"
+        color={
+          params.row.status === ""
+            ? "warning"
+            : params.row.status === "rejected"
+            ? "error"
+            : "success"
+        }
+      >
+        {params.row.status === ""
+          ? "Not submitted"
+          : params.row.status === "rejected"
+          ? "Rejected"
+          : "Selected"}
+      </Button>
     ),
   },
 ];
 
-const rows = [
-  {
-    id: 1,
-    AssignedApplicants: "Applicant 1",
-    Comments: "good",
-    Result: true,
-  },
-  {
-    id: 2,
-    AssignedApplicants: "Applicant 2",
-    Comments: "bad",
-    Result: false,
-  },
-  {
-    id: 3,
-    AssignedApplicants: "Applicant 3",
-    Comments: "good",
-    Result: true,
-  },
-  {
-    id: 4,
-    AssignedApplicants: "Applicant 4",
-    Comments: "bad",
-    Result: false,
-  },
-  {
-    id: 5,
-    AssignedApplicants: "Applicant 5",
-    Comments: "good",
-    Result: true,
-  },
+export default function juryResult({ params }) {
+  const [rows, setRows] = React.useState([]);
 
-];
+  useEffect(() => {
+    fetch("/api/admin/jurorBoard", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: params.id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setRows(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
-export default function juryResult({params}) {
   return (
-    
-    <Box sx={{ height: 700, width: "70%" }}>
-      <h1>
-      Juror {params.id}'s Result Board
-    </h1>
+    <Box sx={{ height: 700, width: "90%" }}>
+      <h1>Juror {params.id}'s Result Board</h1>
       <DataGrid
         rows={rows}
         disableRowSelectionOnClick
         columns={columns}
-        pageSize={5} // You can adjust the number of rows per page
+        pageSize={5}
+        sx={{
+          mt: 5,
+          ml: 5,
+          backgroundColor: "white",
+        }}
       />
     </Box>
   );

@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { useEffect, Suspense } from "react";
+import { useEffect, Suspense, useState } from "react";
 import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Link from "next/link";
@@ -21,9 +21,9 @@ const columns = [
   },
 ];
 
-export default function applicantDashboard() {
-  const [rows, setRows] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
+export default function ApplicantDashboard() {
+  const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch("/api/admin/getApplicants", {
       method: "POST",
@@ -34,7 +34,6 @@ export default function applicantDashboard() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setRows(data);
         setLoading(false);
       })
@@ -50,6 +49,11 @@ export default function applicantDashboard() {
         pageSize={5}
         disableColumnSelector
         loading={loading}
+        sx={{
+          mt: 5,
+          ml: 5,
+          backgroundColor: "white",
+        }}
       />
     </Box>
   );

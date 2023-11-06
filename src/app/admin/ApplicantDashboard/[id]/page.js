@@ -5,45 +5,56 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useEffect } from "react";
 
 const columns = [
-  { field: "id", headerName: "ID", width: 90 },
+  { field: "id", headerName: "ID", width: 300 },
   {
-    field: "JuryName",
+    field: "name",
     headerName: "Jury Name",
-    width: 150,
-    editable: true,
+    width: 300,
+    editable: false,
   },
   {
-    field: "TAA",
+    field: "count",
     headerName: "Total Assigned Applicants",
     width: 300,
-    editable: true,
+    editable: false,
   },
-];
-
-const rows = [
-  { id: 1, JuryName: "Snow", TAA: 3 },
-  { id: 2, JuryName: "Rose", TAA: 4 },
-  { id: 3, JuryName: "John", TAA: 2 },
-  { id: 4, JuryName: "Lily", TAA: 5 },
-  { id: 5, JuryName: "David", TAA: 1 },
-  { id: 6, JuryName: "Emma", TAA: 3 },
-  { id: 7, JuryName: "Michael", TAA: 4 },
-  { id: 8, JuryName: "Sophia", TAA: 2 },
-  { id: 9, JuryName: "William", TAA: 5 },
-  { id: 10, JuryName: "Olivia", TAA: 1 },
 ];
 
 export default function AssignJury({ params }) {
-  useEffect(() => {
-    console.log("ID = ", params.id);
-    const result = fetch("/api/admin/applicant_jury", {
+  const [rows, setRows] = react.useState([]);
+
+  const updateJury = (juryID) => {
+    fetch("/api/admin/updateJuryApplicant", {
       method: "POST",
-      body: JSON.stringify({ id: params.id }),
+      body: JSON.stringify({
+        jury: juryID,
+        applicantID: params.id,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-        return res;
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    const result = fetch("/api/admin/applicant_jury", {
+      method: "POST",
+      body: JSON.stringify({ id: params.id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setRows(res.juryCount);
+        setSelectedRows(res.selectedJury);
       })
       .catch((err) => {
         console.log(err);
@@ -51,17 +62,22 @@ export default function AssignJury({ params }) {
   }, []);
 
   const [selectedRows, setSelectedRows] = react.useState([]);
+
   return (
-    <Box sx={{ height: "100%", width: "70%", ml: 2, mt: 4 }}>
+    <Box sx={{ height: "100%", width: "90%", ml: 2, mt: 4 }}>
       <h1>Applicant {params.id}'s Assign Board</h1>
       <DataGrid
         rows={rows}
         columns={columns}
         checkboxSelection
+        rowSelectionModel={selectedRows}
         onRowSelectionModelChange={(ids) => {
-          const selectedIDs = new Set(ids);
-          const selectedRows = rows.filter((row) => selectedIDs.has(row.id));
-          setSelectedRows(selectedRows);
+          setSelectedRows(ids);
+        }}
+        sx={{
+          mt: 5,
+          ml: 5,
+          backgroundColor: "white",
         }}
       />
       <Button
@@ -70,7 +86,7 @@ export default function AssignJury({ params }) {
           ml: 2,
         }}
         onClick={() => {
-          console.log(selectedRows); // add selected rows to the judges list. Also change Status to selected.
+          updateJury(selectedRows);
         }}
       >
         Submit

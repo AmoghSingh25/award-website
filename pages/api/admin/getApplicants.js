@@ -5,8 +5,6 @@ export default async function getApplicants(req, res) {
     res.status(404).json({ message: "Not found" });
     return;
   }
-  console.log(req.body.adminId);
-  console.log(process.env.ADMIN_ID);
   if (
     req.body.adminId !== process.env.ADMIN_ID &&
     req.body.adminId !== "test_pass"
@@ -16,7 +14,6 @@ export default async function getApplicants(req, res) {
   }
   try {
     getAllApplicants().then((resp) => {
-      console.log(resp);
       res.status(200).json(resp);
     });
   } catch (error) {

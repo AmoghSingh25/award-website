@@ -1,8 +1,8 @@
-import getJurors from "../../../lib/admin/getJurors";
+import getJury from "../../../lib/admin/getJury";
 
 export default async function handler(req, res) {
   try {
-    const result = await getJurors();
+    const result = await getJury();
     if (result.status === "Failed") {
       res.status(500).json({ status: "Failed" });
       return;

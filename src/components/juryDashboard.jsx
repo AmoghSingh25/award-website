@@ -1,12 +1,14 @@
 "use client";
 import * as React from "react";
+import { useEffect } from "react";
 import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Link from "next/link";
+
 const columns = [
-  { field: "id", headerName: "Jury ID", width: 120 },
+  { field: "id", headerName: "Jury ID", width: 300 },
   { field: "name", headerName: "Jury Name", width: 200 },
-  { field: "TAA", headerName: "Total Assigned Applicants", width: 200 },
+  { field: "count", headerName: "Total Assigned Applicants", width: 200 },
   {
     field: "checkResult",
     headerName: "Check Result",
@@ -21,27 +23,37 @@ const columns = [
   },
 ];
 
-const rows = [
-  { id: 1, name: "Juror 1", TAA: 3 },
-  { id: 2, name: "Juror 2", TAA: 4 },
-  { id: 3, name: "Juror 3", TAA: 2 },
-  { id: 4, name: "Juror 4", TAA: 5 },
-  { id: 5, name: "Juror 5", TAA: 1 },
-  { id: 6, name: "Juror 6", TAA: 3 },
-  { id: 7, name: "Juror 7", TAA: 4 },
-  { id: 8, name: "Juror 8", TAA: 2 },
-  { id: 9, name: "Juror 9", TAA: 5 },
-  { id: 10, name: "Juror 10", TAA: 1 },
-];
-
 export default function JuryDashboard() {
+  const [rows, setRows] = React.useState([]);
+
+  useEffect(() => {
+    fetch("/api/admin/juryResult", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setRows(res.juryCount);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
-    <Box sx={{ height: 700, width: "70%" }}>
+    <Box sx={{ height: 700, width: "90%" }}>
       <DataGrid
         rows={rows}
         disableRowSelectionOnClick
         columns={columns}
         pageSize={5} // You can adjust the number of rows per page
+        sx={{
+          mt: 5,
+          ml: 5,
+          backgroundColor: "white",
+        }}
       />
     </Box>
   );
