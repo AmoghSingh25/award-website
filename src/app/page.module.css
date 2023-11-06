@@ -12,7 +12,15 @@
 }
 
 .banner {
-  background-image: url("https://images.pexels.com/photos/6532373/pexels-photo-6532373.jpeg?cs=srgb&dl=pexels-nataliya-vaitkevich-6532373.jpg&fm=jpg&w=6240&h=4160");
+  height: 80vh;
+  text-align: center;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #101627;
   height: 100vh;
   background-attachment: fixed;
 

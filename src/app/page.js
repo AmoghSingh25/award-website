@@ -13,6 +13,14 @@ import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
+let themeHeader = createTheme({
+  typography: {
+    fontFamily: ["Roboto", "Copperplate", "Raleway"].join(","),
+  },
+});
+
+themeHeader = responsiveFontSizes(themeHeader);
+
 import Grid from "@mui/material/Unstable_Grid2";
 
 function HomePage() {
@@ -20,7 +28,19 @@ function HomePage() {
     <ThemeProvider theme={theme}>
       <>
         <ResponsiveAppBar />
-        <div className={styles.banner}></div>
+        <div className={styles.banner}>
+          <ThemeProvider theme={themeHeader}>
+            <Typography
+              variant="h1"
+              component="h1"
+              sx={{
+                fontFamily: "Arial",
+              }}
+            >
+              Times Edu Ex Awards{" "}
+            </Typography>
+          </ThemeProvider>
+        </div>
         <div
           style={{
             height: "100%",
