@@ -10,6 +10,7 @@ export default async function handler(req, res) {
       status: "Logged in",
       error: false,
       id: ret.id,
+      type: ret.type,
     });
   } catch (error) {
     if (error.message === "Invalid Credentials") {

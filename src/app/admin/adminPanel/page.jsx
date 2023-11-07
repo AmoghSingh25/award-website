@@ -13,26 +13,31 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 
-const pages = [
-  {
-    title: "Add Jury",
-    href: "/admin/AddJury",
-  },
-  {
-    title: "Applicant Dashboard",
-    href: "/admin/ApplicantDashboard",
-  },
-  {
-    title: "Jury Dashboard",
-    href: "/admin/JuryDashboard",
-  },
-  {
-    title: "Result",
-    href: "/admin/Result",
-  },
-];
 function AdminPanel() {
+  const router = useRouter();
+  const searchParams = new useSearchParams(router.query);
+
+  const pages = [
+    {
+      title: "Add Jury",
+      href: "/admin/AddJury?id=",
+    },
+    {
+      title: "Applicant Dashboard",
+      href: "/admin/ApplicantDashboard?id=",
+    },
+    {
+      title: "Jury Dashboard",
+      href: "/admin/JuryDashboard?id=",
+    },
+    {
+      title: "Result",
+      href: "/admin/Result?id=",
+    },
+  ];
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -86,7 +91,7 @@ function AdminPanel() {
                 }}
               >
                 {pages.map((page) => (
-                  <Link href={page.href}>
+                  <Link href={page.href + searchParams.get("id")}>
                     <MenuItem key={page.title} onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">{page.title}</Typography>
                     </MenuItem>
@@ -96,7 +101,7 @@ function AdminPanel() {
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
-                <Link href={page.href}>
+                <Link href={page.href + searchParams.get("id")}>
                   <Button
                     key={page.title}
                     onClick={handleCloseNavMenu}

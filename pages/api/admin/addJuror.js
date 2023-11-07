@@ -2,8 +2,14 @@ import addJuror from "../../../lib/admin/addJuror";
 
 export default async function handler(req, res) {
   try {
-    const { name, email, phone, password } = req.body;
-    const result = await addJuror(name, email, phone, password);
+    const { name, email, phone, password, secondary_phone } = req.body;
+    const result = await addJuror(
+      name,
+      email,
+      phone,
+      password,
+      secondary_phone
+    );
     if (result.status === "Success") {
       res.status(200).json({ status: "Success", id: result.id });
     } else {

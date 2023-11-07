@@ -3,6 +3,7 @@ import react from "react";
 import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect } from "react";
+import Link from "next/link";
 
 const columns = [
   { field: "id", headerName: "ID", width: 300 },
@@ -66,6 +67,14 @@ export default function AssignJury({ params }) {
   return (
     <Box sx={{ height: "100%", width: "90%", ml: 2, mt: 4 }}>
       <h1>Applicant {params.id}'s Assign Board</h1>
+      <Link
+        href={{
+          pathname: `/admin/ApplicantDashboard`,
+          query: { id: params.id },
+        }}
+      >
+        <Button>Back</Button>
+      </Link>
       <DataGrid
         rows={rows}
         columns={columns}

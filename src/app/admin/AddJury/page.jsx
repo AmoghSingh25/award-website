@@ -20,8 +20,7 @@ const schema = yup.object().shape({
     .matches(/^[0-9]+$/, "Must be only digits")
     .min(10, "Must be exactly 10 digits")
     .max(10, "Must be exactly 10 digits"),
-  sphone: yup
-    .string().nullable().notRequired()
+  sphone: yup.string().nullable().notRequired(),
 });
 
 export default function JuryManagementPage() {
@@ -57,10 +56,16 @@ export default function JuryManagementPage() {
     })
       .then((res) => res.json())
       .then((resp) => {
+        if (resp.status === "Failed") {
+          alert(resp.error);
+          return;
+        }
         closeModal();
         data.id = resp.id;
+        data.is_active = true;
         setJurors([...jurors, data]);
         setLoading(false);
+        window.location.reload();
       })
       .catch((err) => alert(err));
   };
@@ -81,7 +86,6 @@ export default function JuryManagementPage() {
 
   const columns = [
     { field: "email", headerName: "Email", width: 200 },
-    { field: "password", headerName: "Password", width: 200 },
     {
       field: "actions",
       headerName: "Actions",

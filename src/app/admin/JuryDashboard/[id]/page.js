@@ -4,6 +4,7 @@ import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Link from "next/link";
 import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const columns = [
   { field: "id", headerName: "Applicant ID", width: 120 },
@@ -36,6 +37,8 @@ const columns = [
 
 export default function juryResult({ params }) {
   const [rows, setRows] = React.useState([]);
+  const router = useRouter();
+  const searchParams = new useSearchParams(router.query);
 
   useEffect(() => {
     fetch("/api/admin/jurorBoard", {
@@ -54,6 +57,18 @@ export default function juryResult({ params }) {
 
   return (
     <Box sx={{ height: 700, width: "90%" }}>
+      <Link
+        href={{
+          pathname: "/admin/JuryDashboard",
+          query: {
+            id: searchParams.get("id"),
+          },
+        }}
+      >
+        <Button variant="contained" color="primary">
+          Back
+        </Button>
+      </Link>
       <h1>Juror {params.id}'s Result Board</h1>
       <DataGrid
         rows={rows}

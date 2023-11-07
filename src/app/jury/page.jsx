@@ -39,20 +39,26 @@ export default function Page() {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    const res = await fetch("/api/loginJury", {
+    fetch("/api/loginJury", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    });
-    const resp = await res.json();
-    console.log(resp);
-    if (!resp.error) {
-      router.push("/jury/juryHome?id=" + resp.id);
-    }
-    if (resp.error) {
-      setError(resp.message);
-      return;
-    }
+    })
+      .then((res) => res.json())
+      .then((resp) => {
+        console.log(resp);
+        if (!resp.error) {
+          if (resp.type === "a") router.push("/admin/adminPanel?id=" + resp.id);
+          else router.push("/jury/juryHome?id=" + resp.id);
+        }
+        if (resp.error) {
+          setError(resp.message);
+          return;
+        }
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
   };
   const router = useRouter();
   const searchParams = new useSearchParams(router.query);
