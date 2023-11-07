@@ -683,6 +683,9 @@ function HomePage() {
                 <Typography variant="h4" component="h1" align="center">
                   Contact us
                 </Typography>
+                <Typography variant="h6" component="h1" align="center">
+                  Monday - Friday <br /> 9am to 6pm
+                </Typography>
                 <Box
                   sx={{
                     display: "flex",
