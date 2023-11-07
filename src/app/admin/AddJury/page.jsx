@@ -20,6 +20,8 @@ const schema = yup.object().shape({
     .matches(/^[0-9]+$/, "Must be only digits")
     .min(10, "Must be exactly 10 digits")
     .max(10, "Must be exactly 10 digits"),
+  sphone: yup
+    .string().nullable().notRequired()
 });
 
 export default function JuryManagementPage() {
@@ -171,6 +173,15 @@ export default function JuryManagementPage() {
                 {...register("phone")}
                 error={!!errors.phone}
                 helperText={errors.phone?.message}
+              />
+            </div>
+            <div className="modal-div">
+              <TextField
+                label="Secondary Phone number"
+                name="sphone"
+                {...register("sphone")}
+                error={!!errors.sphone}
+                helperText={errors.sphone?.message}
               />
             </div>
             <div className="modal-div">

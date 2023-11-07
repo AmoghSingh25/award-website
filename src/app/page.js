@@ -1,5 +1,5 @@
 "use client";
-
+import {useEffect} from 'react'
 import ResponsiveAppBar from "../components/appBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -16,6 +16,21 @@ theme = responsiveFontSizes(theme);
 import Grid from "@mui/material/Unstable_Grid2";
 
 function HomePage() {
+  useEffect(() => {
+    const url = window.location.href;
+    const section = url.split('#')[1];
+    
+    if (section) {
+      const sectionElement = document.getElementById(section);
+      if (sectionElement) {
+        sectionElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
+    }
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -46,7 +61,7 @@ function HomePage() {
                   variant="h5"
                   component="h1"
                   sx={{
-                    color: "white",
+                    color: "101627",
                     textAlign: "justify",
                   }}
                 >
@@ -65,11 +80,12 @@ function HomePage() {
               </Box>
               <Box
                 sx={{
-                  backgroundColor: "#f6f7fd",
+                  backgroundColor: "#101627",
                   paddingBottom: "3rem",
                   wordWrap: "break-word",
                   wordBreak: "break-word",
                 }}
+                id="category"
               >
                 <Typography
                   variant="h4"
@@ -490,8 +506,9 @@ function HomePage() {
 
               <Box
                 sx={{
-                  backgroundColor: "#101627",
+                  backgroundColor: "white",
                 }}
+                
               >
                 <Typography
                   variant="h4"
@@ -503,12 +520,13 @@ function HomePage() {
                     marginBottom: "1rem",
                     paddingTop: "3rem",
                   }}
+                  id="eligibility"
                 >
                   Eligibility
                 </Typography>
                 <ol
                   style={{
-                    color: "white",
+                    color: "black",
                     marginLeft: "6%",
                   }}
                 >
@@ -614,7 +632,7 @@ function HomePage() {
               </Box>
               <Box
                 sx={{
-                  backgroundColor: "white",
+                  backgroundColor: "#101627",
                 }}
               >
                 <Typography
@@ -622,7 +640,7 @@ function HomePage() {
                   component="h1"
                   align="center"
                   sx={{
-                    color: "#f1bf60",
+                    color: "white",
                     fontWeight: "bold",
                     marginBottom: "1rem",
                     paddingTop: "3rem",
@@ -634,7 +652,7 @@ function HomePage() {
                   variant="h4"
                   component="p"
                   sx={{
-                    color: "#101627",
+                    color: "white",
                     textAlign: "center",
                     fontWeight: "bold",
                     padding: "1rem",
@@ -643,13 +661,13 @@ function HomePage() {
                   To be revealed
                 </Typography>
               </Box>
-              <Box sx={{ backgroundColor: "#101627" }}>
+              <Box sx={{ backgroundColor: "white" }} id="faq">
                 <Typography
                   variant="h4"
                   component="h1"
                   align="center"
                   sx={{
-                    color: "#f1bf60",
+                    color: "black",
                     fontWeight: "bold",
                     marginBottom: "1rem",
                     paddingTop: "3rem",
@@ -659,7 +677,7 @@ function HomePage() {
                 </Typography>
                 <FAQSection />
               </Box>
-              <Box sx={{ py: 4, backgroundColor: "white" }}>
+              <Box sx={{ py: 4, backgroundColor: "#101627",color: "white" }} id="contactus">
                 <Typography variant="h4" component="h1" align="center">
                   Contact us
                 </Typography>
@@ -680,7 +698,7 @@ function HomePage() {
                     variant="h6"
                     component="h1"
                     sx={{
-                      color: "blue",
+                      color: "white",
                       fontWeight: "bold",
                       mx: "1rem",
                     }}
@@ -707,7 +725,7 @@ function HomePage() {
                     variant="h6"
                     component="h1"
                     sx={{
-                      color: "black",
+                      color: "white",
                       fontWeight: "bold",
                       mx: "1rem",
                     }}

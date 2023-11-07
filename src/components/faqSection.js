@@ -59,9 +59,9 @@ const data = {
 };
 
 const styles = {
-  bgColor: "#101627",
+  bgColor: "white",
   titleTextSize: "40px",
-  titleTextColor: "white",
+  titleTextColor: "black",
   rowTitleColor: "#f1bf60",
   padding: "10px",
   rowContentColor: "white",
