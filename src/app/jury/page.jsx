@@ -45,8 +45,9 @@ export default function Page() {
       body: JSON.stringify(data),
     });
     const resp = await res.json();
+    console.log(resp);
     if (!resp.error) {
-      router.push("/jury/juryHome");
+      router.push("/jury/juryHome?id=" + resp.id);
     }
     if (resp.error) {
       setError(resp.message);
