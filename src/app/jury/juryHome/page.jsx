@@ -2,84 +2,94 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
+import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
+import Button from "@mui/material/Button";
 
-const columns = [
-  { field: "id", headerName: "Applicant ID", width: 90 },
-  {
-    field: "firstName",
-    headerName: "Applicant Name",
-    width: 150,
-  },
-  {
-    field: "preview",
-    headerName: "Preview",
-    width: 70,
-    renderCell: (params) => {
-      return <a href={"/admin/applicantView?id=" + params.id}>Click here</a>;
+export default function juryHome({ params }) {
+  const columns = [
+    { field: "id", headerName: "Applicant ID", width: 90 },
+    {
+      field: "name",
+      headerName: "Applicant Name",
+      width: 150,
     },
-  },
-  {
-    field: "comment",
-    headerName: "Comment",
-    width: 110,
-  },
-  {
-    field: "result",
-    headerName: "Result",
-    width: 110,
-  },
-  {
-    field: "save",
-    headerName: "Save",
-    width: 110,
-  },
-];
+    {
+      field: "email",
+      headerName: "Applicant email",
+      width: 150,
+    },
+    {
+      field: "phone",
+      headerName: "Applicant Phone",
+      width: 150,
+    },
+    {
+      field: "preview",
+      headerName: "Preview",
+      width: 100,
+      renderCell: (params) => {
+        // return <a href={"/jury/applicantView?id=" + params.id}>Click here</a>;
+        return (
+          <Link
+            href={{
+              pathname: "/jury/applicantView",
+              query: { id: params.id, juryId: juryID },
+            }}
+          >
+            Preview
+          </Link>
+        );
+      },
+    },
+    {
+      field: "comment",
+      headerName: "Comment",
+      width: 110,
+      editable: true,
+    },
+    {
+      field: "result",
+      headerName: "Result",
+      width: 110,
+    },
+    {
+      field: "save",
+      headerName: "Save",
+      width: 110,
+    },
+  ];
 
-const rows = [
-  {
-    id: 1,
-    firstName: "John",
-    comment: "",
-    result: "",
-    save: "",
-  },
-  {
-    id: 2,
-    firstName: "Jane",
-    preview: "https://example.com/image2.jpg",
-    comment: "",
-    result: "",
-    save: "",
-  },
-  {
-    id: 3,
-    firstName: "Bob",
-    preview: "https://example.com/image3.jpg",
-    comment: "",
-    result: "",
-    save: "",
-  },
-  {
-    id: 4,
-    firstName: "Alice",
-    preview: <a>https://example.com/image4.jpg</a>,
-    comment: "",
-    result: "",
-    save: "",
-  },
-  {
-    id: 5,
-    firstName: "Charlie",
-    preview: "https://example.com/image5.jpg",
-    comment: "",
-    result: "",
-    save: "",
-  },
-];
+  const [rows, setRows] = React.useState([]);
+  const router = useRouter();
+  const useSearchParam = new useSearchParams(router.query);
+  const juryID = useSearchParam.get("id");
 
-export default function DataGridDemo() {
+  useEffect(() => {
+    const id = useSearchParam.get("id");
+    fetch("/api/admin/jurorBoard", {
+      method: "POSt",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setRows(data);
+      });
+  }, []);
+
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ height: "90vh", width: "100%", mt: 1, ml: 1 }}>
+      <h1>Jury - {useSearchParam.get("id")} </h1>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -91,8 +101,14 @@ export default function DataGridDemo() {
           },
         }}
         pageSizeOptions={[5]}
-        checkboxSelection
         disableRowSelectionOnClick
+        sx={{
+          mt: 5,
+          ml: 5,
+          backgroundColor: "white",
+          height: "80%",
+          p: 1,
+        }}
       />
     </Box>
   );
