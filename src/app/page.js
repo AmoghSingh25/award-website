@@ -16,6 +16,14 @@ import Image from "next/image";
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
+let themeHeader = createTheme({
+  typography: {
+    fontFamily: ["Roboto", "Copperplate", "Raleway"].join(","),
+  },
+});
+
+themeHeader = responsiveFontSizes(themeHeader);
+
 import Grid from "@mui/material/Unstable_Grid2";
 
 function HomePage() {
@@ -725,6 +733,9 @@ function HomePage() {
               >
                 <Typography variant="h4" component="h1" align="center">
                   Contact us
+                </Typography>
+                <Typography variant="h6" component="h1" align="center">
+                  Monday - Friday <br /> 9am to 6pm
                 </Typography>
                 <Box
                   sx={{
