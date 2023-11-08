@@ -1,0 +1,17 @@
+.faq-row-wrapper {
+  .faq-title {
+  }
+
+  .faq-body {
+    .faq-row {
+      .row-title {
+        font-weight: 600;
+      }
+
+      .row-content {
+        .row-content-text {
+        }
+      }
+    }
+  }
+}

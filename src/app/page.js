@@ -1,5 +1,5 @@
 "use client";
-import {useEffect} from 'react'
+import { useEffect } from "react";
 import ResponsiveAppBar from "../components/appBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -9,6 +9,9 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import Image from "next/image";
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -18,15 +21,16 @@ import Grid from "@mui/material/Unstable_Grid2";
 function HomePage() {
   useEffect(() => {
     const url = window.location.href;
-    const section = url.split('#')[1];
-    
+    const section = url.split("#")[1];
+
     if (section) {
       const sectionElement = document.getElementById(section);
+
       if (sectionElement) {
         sectionElement.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest",
+          behavior: "auto",
+          block: "center",
+          inline: "center",
         });
       }
     }
@@ -35,24 +39,63 @@ function HomePage() {
     <ThemeProvider theme={theme}>
       <>
         <ResponsiveAppBar />
-        <div className={styles.banner}></div>
         <div
           style={{
-            height: "100%",
+            zIndex: -1,
+            marginTop: "5rem",
           }}
         >
-          <div className={styles.scrollBg}>
+          <div
+            style={{
+              backgroundColor: "white",
+            }}
+          >
+            <div>
+              <Carousel autoPlay={true} infiniteLoop={true}>
+                <div>
+                  <Image
+                    src="/static/1.jpg"
+                    alt="Picture of the author"
+                    width={1080}
+                    height={720}
+                  />
+                </div>
+                <div>
+                  <Image
+                    src="/static/4.jpg"
+                    alt="Picture of the author"
+                    width={1080}
+                    height={720}
+                  />
+                </div>
+                <div>
+                  <Image
+                    src="/static/2.jpg"
+                    alt="Picture of the author"
+                    width={1080}
+                    height={720}
+                  />
+                </div>
+                <div>
+                  <Image
+                    src="/static/3.jpg"
+                    alt="Picture of the author"
+                    width={1080}
+                    height={720}
+                  />
+                </div>
+              </Carousel>
+            </div>
             <Box>
               <Box className={styles.aboutDiv}>
                 <Typography
                   variant="h4"
                   component="h1"
                   sx={{
-                    color: "#f1bf60",
+                    color: "#373f6e ",
                     fontWeight: "bold",
                     marginBottom: "1rem",
                     textAlign: "center",
-                    marginTop: "1rem",
                   }}
                 >
                   About the awards
@@ -508,14 +551,13 @@ function HomePage() {
                 sx={{
                   backgroundColor: "white",
                 }}
-                
               >
                 <Typography
                   variant="h4"
                   component="h1"
                   align="center"
                   sx={{
-                    color: "#f1bf60",
+                    color: "#373f6e",
                     fontWeight: "bold",
                     marginBottom: "1rem",
                     paddingTop: "3rem",
@@ -640,7 +682,7 @@ function HomePage() {
                   component="h1"
                   align="center"
                   sx={{
-                    color: "white",
+                    color: "#f1bf60",
                     fontWeight: "bold",
                     marginBottom: "1rem",
                     paddingTop: "3rem",
@@ -652,7 +694,7 @@ function HomePage() {
                   variant="h4"
                   component="p"
                   sx={{
-                    color: "white",
+                    color: "#f1bf60",
                     textAlign: "center",
                     fontWeight: "bold",
                     padding: "1rem",
@@ -677,7 +719,10 @@ function HomePage() {
                 </Typography>
                 <FAQSection />
               </Box>
-              <Box sx={{ py: 4, backgroundColor: "#101627",color: "white" }} id="contactus">
+              <Box
+                sx={{ py: 4, backgroundColor: "#101627", color: "white" }}
+                id="contactus"
+              >
                 <Typography variant="h4" component="h1" align="center">
                   Contact us
                 </Typography>

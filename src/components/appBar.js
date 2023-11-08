@@ -12,9 +12,9 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const pages = ["Apply","Category","Eligibility","FAQ","Contact Us"];
+const pages = ["Apply", "Category", "Eligibility", "FAQ", "Contact Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-const links = ["/signup","#category","#eligibility","#faq","#contactus"];
+const links = ["/signup", "#category", "#eligibility", "#faq", "#contactus"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -34,6 +34,7 @@ function ResponsiveAppBar() {
       sx={{
         backgroundColor: "#070c22",
         position: "fixed",
+        zIndex: 1000,
       }}
     >
       <Container maxWidth="xl">
