@@ -87,6 +87,7 @@ export default function Page() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
   const onSubmit = (data) => {
     data.id = searchParams.get("id");
     const res = fetch("/api/saveSection", {

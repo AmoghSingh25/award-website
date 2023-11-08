@@ -1,14 +1,17 @@
 "use client";
-
+import { useEffect } from "react";
 import ResponsiveAppBar from "../components/appBar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import styles from "./page.module.css";
-import FAQSection from "@/components/faqSection";
+import FAQSection from "src/components/faqSection.js";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import Image from "next/image";
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -24,40 +27,83 @@ themeHeader = responsiveFontSizes(themeHeader);
 import Grid from "@mui/material/Unstable_Grid2";
 
 function HomePage() {
+  useEffect(() => {
+    const url = window.location.href;
+    const section = url.split("#")[1];
+
+    if (section) {
+      const sectionElement = document.getElementById(section);
+
+      if (sectionElement) {
+        sectionElement.scrollIntoView({
+          behavior: "auto",
+          block: "center",
+          inline: "center",
+        });
+      }
+    }
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <>
         <ResponsiveAppBar />
-        <div className={styles.banner}>
-          <ThemeProvider theme={themeHeader}>
-            <Typography
-              variant="h1"
-              component="h1"
-              sx={{
-                fontFamily: "Arial",
-              }}
-            >
-              Times Edu Ex Awards{" "}
-            </Typography>
-          </ThemeProvider>
-        </div>
         <div
           style={{
-            height: "100%",
+            zIndex: -1,
+            marginTop: "5rem",
           }}
         >
-          <div className={styles.scrollBg}>
+          <div
+            style={{
+              backgroundColor: "white",
+            }}
+          >
+            <div>
+              <Carousel autoPlay={true} infiniteLoop={true}>
+                <div>
+                  <Image
+                    src="/static/1.jpg"
+                    alt="Picture of the author"
+                    width={1080}
+                    height={720}
+                  />
+                </div>
+                <div>
+                  <Image
+                    src="/static/4.jpg"
+                    alt="Picture of the author"
+                    width={1080}
+                    height={720}
+                  />
+                </div>
+                <div>
+                  <Image
+                    src="/static/2.jpg"
+                    alt="Picture of the author"
+                    width={1080}
+                    height={720}
+                  />
+                </div>
+                <div>
+                  <Image
+                    src="/static/3.jpg"
+                    alt="Picture of the author"
+                    width={1080}
+                    height={720}
+                  />
+                </div>
+              </Carousel>
+            </div>
             <Box>
               <Box className={styles.aboutDiv}>
                 <Typography
                   variant="h4"
                   component="h1"
                   sx={{
-                    color: "#f1bf60",
+                    color: "#373f6e ",
                     fontWeight: "bold",
                     marginBottom: "1rem",
                     textAlign: "center",
-                    marginTop: "1rem",
                   }}
                 >
                   About the awards
@@ -66,7 +112,7 @@ function HomePage() {
                   variant="h5"
                   component="h1"
                   sx={{
-                    color: "white",
+                    color: "101627",
                     textAlign: "justify",
                   }}
                 >
@@ -85,11 +131,12 @@ function HomePage() {
               </Box>
               <Box
                 sx={{
-                  backgroundColor: "#f6f7fd",
+                  backgroundColor: "#101627",
                   paddingBottom: "3rem",
                   wordWrap: "break-word",
                   wordBreak: "break-word",
                 }}
+                id="category"
               >
                 <Typography
                   variant="h4"
@@ -510,7 +557,7 @@ function HomePage() {
 
               <Box
                 sx={{
-                  backgroundColor: "#101627",
+                  backgroundColor: "white",
                 }}
               >
                 <Typography
@@ -518,17 +565,18 @@ function HomePage() {
                   component="h1"
                   align="center"
                   sx={{
-                    color: "#f1bf60",
+                    color: "#373f6e",
                     fontWeight: "bold",
                     marginBottom: "1rem",
                     paddingTop: "3rem",
                   }}
+                  id="eligibility"
                 >
                   Eligibility
                 </Typography>
                 <ol
                   style={{
-                    color: "white",
+                    color: "black",
                     marginLeft: "6%",
                   }}
                 >
@@ -634,7 +682,7 @@ function HomePage() {
               </Box>
               <Box
                 sx={{
-                  backgroundColor: "white",
+                  backgroundColor: "#101627",
                 }}
               >
                 <Typography
@@ -654,7 +702,7 @@ function HomePage() {
                   variant="h4"
                   component="p"
                   sx={{
-                    color: "#101627",
+                    color: "#f1bf60",
                     textAlign: "center",
                     fontWeight: "bold",
                     padding: "1rem",
@@ -663,13 +711,13 @@ function HomePage() {
                   To be revealed
                 </Typography>
               </Box>
-              <Box sx={{ backgroundColor: "#101627" }}>
+              <Box sx={{ backgroundColor: "white" }} id="faq">
                 <Typography
                   variant="h4"
                   component="h1"
                   align="center"
                   sx={{
-                    color: "#f1bf60",
+                    color: "black",
                     fontWeight: "bold",
                     marginBottom: "1rem",
                     paddingTop: "3rem",
@@ -679,7 +727,10 @@ function HomePage() {
                 </Typography>
                 <FAQSection />
               </Box>
-              <Box sx={{ py: 4, backgroundColor: "white" }}>
+              <Box
+                sx={{ py: 4, backgroundColor: "#101627", color: "white" }}
+                id="contactus"
+              >
                 <Typography variant="h4" component="h1" align="center">
                   Contact us
                 </Typography>
@@ -703,7 +754,7 @@ function HomePage() {
                     variant="h6"
                     component="h1"
                     sx={{
-                      color: "blue",
+                      color: "white",
                       fontWeight: "bold",
                       mx: "1rem",
                     }}
@@ -730,7 +781,7 @@ function HomePage() {
                     variant="h6"
                     component="h1"
                     sx={{
-                      color: "black",
+                      color: "white",
                       fontWeight: "bold",
                       mx: "1rem",
                     }}

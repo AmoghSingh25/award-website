@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Faq from "react-faq-component";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-
+import style from "./faqSection.module.css";
 const data = {
   rows: [
     {
@@ -59,12 +59,12 @@ const data = {
 };
 
 const styles = {
-  bgColor: "#101627",
-  titleTextSize: "40px",
-  titleTextColor: "white",
-  rowTitleColor: "#f1bf60",
-  padding: "10px",
-  rowContentColor: "white",
+  bgColor: "white",
+  titleTextSize: "50px",
+  titleTextColor: "black",
+  rowTitleColor: "#373f6e",
+  padding: "20px",
+  rowContentColor: "black",
   arrowColor: "white",
 };
 
@@ -83,6 +83,7 @@ export default function FAQSection() {
         padding: "2%",
         color: "white",
       }}
+      className={style.faq_style_wrapper}
     >
       <Faq data={data} styles={styles} config={config} />
     </div>

@@ -193,13 +193,25 @@ export default function Page() {
           <p>
             Member of Jury ? Click here to{" "}
             <a
-              href="/admin"
+              href="/jury"
               style={{
                 textDecoration: "underline",
                 color: "#F5C005",
               }}
             >
               Login
+            </a>
+          </p>
+          <p>
+            Admin ? Click here to{" "}
+            <a
+              href="/admin"
+              style={{
+                textDecoration: "underline",
+                color: "#F5C005",
+              }}
+            >
+              Click Here
             </a>
           </p>
         </Box>
