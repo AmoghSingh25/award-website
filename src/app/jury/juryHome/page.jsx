@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 
-export default function juryHome({ params }) {
+export default function JuryHome({ params }) {
   const columns = [
     { field: "id", headerName: "Applicant ID", width: 90 },
     {
@@ -61,7 +61,7 @@ export default function juryHome({ params }) {
     },
   ];
 
-  const [rows, setRows] = React.useState([]);
+  const [rows, setRows] = useState([]);
   const router = useRouter();
   const useSearchParam = new useSearchParams(router.query);
   const juryID = useSearchParam.get("id");

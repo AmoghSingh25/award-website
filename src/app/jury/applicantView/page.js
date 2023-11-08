@@ -12,9 +12,6 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import DataComponent from "./dataComponent";
 
-import { pdfjs, Document } from "react-pdf";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
