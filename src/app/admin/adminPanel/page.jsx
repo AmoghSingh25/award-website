@@ -90,8 +90,8 @@ function AdminPanel() {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {pages.map((page) => (
-                  <Link href={page.href + searchParams.get("id")}>
+                {pages.map((page, id) => (
+                  <Link href={page.href + searchParams.get("id")} key={id}>
                     <MenuItem key={page.title} onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">{page.title}</Typography>
                     </MenuItem>
@@ -100,8 +100,8 @@ function AdminPanel() {
               </Menu>
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <Link href={page.href + searchParams.get("id")}>
+              {pages.map((page, idx) => (
+                <Link href={page.href + searchParams.get("id")} key={idx}>
                   <Button
                     key={page.title}
                     onClick={handleCloseNavMenu}
