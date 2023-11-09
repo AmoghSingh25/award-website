@@ -50,51 +50,34 @@ function HomePage() {
         <div
           style={{
             zIndex: -1,
-            marginTop: "5rem",
           }}
         >
           <div
             style={{
               backgroundColor: "white",
+              // paddingTop: "3rem",
             }}
           >
             <div>
               <Carousel autoPlay={true} infiniteLoop={true}>
                 <div>
-                  <Image
-                    src="/static/1.jpg"
-                    alt="Picture of the author"
-                    width={1080}
-                    height={720}
-                  />
+                  <Image src="/static/1.jpg" width={1080} height={720} />
                 </div>
                 <div>
-                  <Image
-                    src="/static/4.jpg"
-                    alt="Picture of the author"
-                    width={1080}
-                    height={720}
-                  />
+                  <Image src="/static/5.jpg" width={1080} height={720} />
                 </div>
                 <div>
-                  <Image
-                    src="/static/2.jpg"
-                    alt="Picture of the author"
-                    width={1080}
-                    height={720}
-                  />
+                  <Image src="/static/4.jpg" width={1080} height={720} />
                 </div>
                 <div>
-                  <Image
-                    src="/static/3.jpg"
-                    alt="Picture of the author"
-                    width={1080}
-                    height={720}
-                  />
+                  <Image src="/static/2.jpg" width={1080} height={720} />
+                </div>
+                <div>
+                  <Image src="/static/3.jpg" width={1080} height={720} />
                 </div>
               </Carousel>
             </div>
-            <Box>
+            <Box id="about">
               <Box className={styles.aboutDiv}>
                 <Typography
                   variant="h4"
