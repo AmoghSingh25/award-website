@@ -59,21 +59,86 @@ function HomePage() {
             }}
           >
             <div>
-              <Carousel autoPlay={true} infiniteLoop={true}>
-                <div>
-                  <Image src="/static/1.jpg" width={1080} height={720} />
+              <Carousel autoPlay={false} infiniteLoop={true}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                >
+                  <Image
+                    src="/static/1.jpg"
+                    width={1080}
+                    height={720}
+                    style={{
+                      objectFit: "cover",
+                      height: "fit-content",
+                    }}
+                  />
                 </div>
-                <div>
-                  <Image src="/static/5.jpg" width={1080} height={720} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                >
+                  <Image
+                    src="/static/5.jpg"
+                    width={1080}
+                    height={720}
+                    style={{
+                      objectFit: "scale-down",
+                      height: "fit-content",
+                    }}
+                  />
                 </div>
-                <div>
-                  <Image src="/static/4.jpg" width={1080} height={720} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                >
+                  <Image
+                    src="/static/2.jpg"
+                    width={1080}
+                    height={720}
+                    style={{
+                      objectFit: "scale-down",
+                      height: "fit-content",
+                    }}
+                  />
                 </div>
-                <div>
-                  <Image src="/static/2.jpg" width={1080} height={720} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                >
+                  <Image
+                    src="/static/3.jpg"
+                    width={1080}
+                    height={720}
+                    style={{
+                      objectFit: "scale-down",
+                      height: "fit-content",
+                    }}
+                  />
                 </div>
-                <div>
-                  <Image src="/static/3.jpg" width={1080} height={720} />
+                <div
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                >
+                  <Image
+                    src="/static/4.jpg"
+                    width={1080}
+                    height={720}
+                    style={{
+                      objectFit: "scale-down",
+                      height: "fit-content",
+                    }}
+                  />
                 </div>
               </Carousel>
             </div>

@@ -118,13 +118,16 @@ export default function Page() {
         sx={{
           display: "flex",
           flexDirection: "column",
+          justifyItems: "center",
           alignItems: "center",
+          mx: "auto",
           mt: 10,
           backgroundColor: "#f5f5f5",
-          mx: "20%",
-          padding: "2%",
           borderRadius: "20px",
+          width: "50vw",
+          padding: "20px",
         }}
+        className={styles.loginBox}
       >
         <Typography variant="h4" gutterBottom>
           Applicant Login
@@ -137,7 +140,7 @@ export default function Page() {
             display: "flex",
             alignItems: "center",
             flexDirection: "column",
-            width: "60%",
+            width: "100%",
           }}
         >
           <TextField
