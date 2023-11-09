@@ -1,0 +1,11 @@
+.faq-row-wrapper {
+  .faq-body {
+    .faq-row {
+      .row-title {
+        .row-title-text {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import Faq from "react-faq-component";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import style from "./faqSection.module.css";
+import "./faqSection.css";
+
 const data = {
   rows: [
     {
@@ -65,7 +66,7 @@ const styles = {
   rowTitleColor: "#373f6e",
   padding: "20px",
   rowContentColor: "black",
-  arrowColor: "white",
+  arrowColor: "#373f6e",
 };
 
 const config = {
@@ -83,7 +84,7 @@ export default function FAQSection() {
         padding: "2%",
         color: "white",
       }}
-      className={style.faq_style_wrapper}
+      className="faq-style-wrapper"
     >
       <Faq data={data} styles={styles} config={config} />
     </div>
