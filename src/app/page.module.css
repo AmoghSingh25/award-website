@@ -37,7 +37,16 @@
   position: relative;
 }
 .aboutDiv {
-  height: 50vh;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3%;
+  background-color: white;
+}
+.aboutDiv2 {
+  height: 160vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -73,7 +82,10 @@
 .gridList {
   margin: 2%;
 }
-
+ .carousel_container{
+    height: 720;
+    width: 1080;
+  }
 @media (max-width: 768px) {
   .main {
     padding: 2rem;
@@ -83,6 +95,9 @@
   }
   .aboutDiv {
     height: 100%;
+  }
+  .aboutDiv2 {
+    height: 150%;
   }
   .prevWinners {
     height: 100%;
@@ -106,5 +121,13 @@
   }
   .gridList {
     margin: 2%;
+  }
+  .carousel_container{
+    height: 300px;
+    width: 100%;
+  }
+  .carousel_image{
+    height: 360px;
+    width: 100%;
   }
 }
