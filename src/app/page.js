@@ -50,6 +50,9 @@ function HomePage() {
         <div
           style={{
             zIndex: -1,
+            marginTop: "1rem",
+            marginLeft: "1rem",
+            marginRight: "1rem",
           }}
         >
           <div
@@ -70,10 +73,7 @@ function HomePage() {
                     src="/static/1.jpg"
                     width={1080}
                     height={720}
-                    style={{
-                      objectFit: "cover",
-                      height: "fit-content",
-                    }}
+                     sizes="(max-width: 768px) 40vw"
                   />
                 </div>
                 <div
@@ -175,6 +175,84 @@ function HomePage() {
                   they might achieve remarkable things in life despite
                   adversity. This initiative will identify the real doers and
                   motivate them to perform better than before.
+                </Typography>
+              </Box>
+              <Box className={styles.aboutDiv2}>
+                <Typography
+                  variant="h4"
+                  component="h1"
+                  sx={{
+                    color: "#373f6e ",
+                    fontWeight: "bold",
+                    marginBottom: "1rem",
+                    textAlign: "center",
+                  }}
+                >
+                  About Vellore Institute of Technology
+                </Typography>
+                <Typography
+                  variant="h5"
+                  component="h1"
+                  sx={{
+                    color: "101627",
+                    textAlign: "justify",
+                  }}
+                >
+                  {" "}
+                  VIT Chennai, one of the leading engineering colleges in India,
+                  offers the best exposure in terms of world class education,
+                  internship opportunities, top-notch placement opportunities,
+                  and infrastructural amenities. We ensure that the graduates
+                  walk out with many skills and learning. We provide an
+                  environment for attaining technical mastery and honing
+                  interpretive and analytical skills, which is the need of the
+                  hour. VIT Chennai, fosters holistic growth rooted in ethical
+                  and moral principles to achieve its vision and mission of
+                  enriching the learning process learning process for the future
+                  leaders of our society.
+                  <br /> VIT was established in 1984 as a self-financing
+                  institution called the Vellore Engineering College under
+                  Section 3 of the University Grants Commission (UGC) Act, 1956.
+                  VIT Chennai was established in 2010. Dr G. Viswanathan, is a
+                  former parliamentarian and a profound minister in Tamil Nadu
+                  Government. Mr Sankar Viswanathan, Dr Sekar Viswanathan, and
+                  Mr G.V Selvam are the Vice Presidents of our institute.
+                  <br /> VIT Chennai offers 21 Undergraduate, 19 Postgraduate,
+                  02 Integrated M. Tech and Research programmes. In addition,
+                  full-time PhD in Engineering, Law, Management, Science and
+                  Languages, along with direct PhD programmes are offered. The
+                  faculties have exceptional skills in training students. They
+                  possess a perfect blend of knowledge, industry experience and
+                  research skills.
+                  <br /> VIT Chennai, the top engineering college in India, aims
+                  to provide a world-class education that imbibes strong ethical
+                  values in our students to gain a competitive edge over others.
+                  Our mission is to maintain an intellectually stimulating
+                  environment for students to learn professional ethics and push
+                  them out of their comfort zones to reach heights of success.
+                  <br /> At VIT Chennai we believe in fostering an environment
+                  that helps to brainstorm creative ideas and be the place where
+                  students find their voice. We offer an array of student- led
+                  clubs that help to create, nurture and display talent and also
+                  serve as a recreational space for students. The club also
+                  involves students in important societal causes. to display
+                  their talents and get involved with important causes. At
+                  present, there are 140 + clubs and chapters present on campus.
+                  The infrastructural amenities in the campus are top-notch and
+                  will continue to grow immensely in the upcoming years. These
+                  constant efforts make VIT the top engineering college in
+                  India.
+                  <br />
+                  <br />{" "}
+                  <p style={{ fontWeight: "bold", textAlign: "center" }}>
+                    {" "}
+                    Placement Opportunities and Counselling
+                  </p>
+                  <br /> We place students in top-notch reputed companies
+                  offering a wide range of exposures which equip them for their
+                  future. We hold the records of highest number of recruitments
+                  through placements. We offer international internship
+                  opportunities as well.
                 </Typography>
               </Box>
               <Box
