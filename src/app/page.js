@@ -58,46 +58,91 @@ function HomePage() {
           <div
             style={{
               backgroundColor: "white",
+              // paddingTop: "3rem",
             }}
           >
             <div>
-              <Carousel autoPlay={true} infiniteLoop={true}>
-                <div>
+              <Carousel autoPlay={false} infiniteLoop={true}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                >
                   <Image
                     src="/static/1.jpg"
-                    alt="Picture of the author"
                     width={1080}
                     height={720}
                      sizes="(max-width: 768px) 40vw"
                   />
                 </div>
-                <div>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                >
                   <Image
-                    src="/static/4.jpg"
-                    alt="Picture of the author"
+                    src="/static/5.jpg"
                     width={1080}
                     height={720}
+                    style={{
+                      objectFit: "scale-down",
+                      height: "fit-content",
+                    }}
                   />
                 </div>
-                <div>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                >
                   <Image
                     src="/static/2.jpg"
-                    alt="Picture of the author"
                     width={1080}
                     height={720}
+                    style={{
+                      objectFit: "scale-down",
+                      height: "fit-content",
+                    }}
                   />
                 </div>
-                <div>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                >
                   <Image
                     src="/static/3.jpg"
-                    alt="Picture of the author"
                     width={1080}
                     height={720}
+                    style={{
+                      objectFit: "scale-down",
+                      height: "fit-content",
+                    }}
+                  />
+                </div>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                >
+                  <Image
+                    src="/static/4.jpg"
+                    width={1080}
+                    height={720}
+                    style={{
+                      objectFit: "scale-down",
+                      height: "fit-content",
+                    }}
                   />
                 </div>
               </Carousel>
             </div>
-            <Box>
+            <Box id="about">
               <Box className={styles.aboutDiv}>
                 <Typography
                   variant="h4"

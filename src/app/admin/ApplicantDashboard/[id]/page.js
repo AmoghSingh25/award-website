@@ -66,7 +66,7 @@ export default function AssignJury({ params }) {
 
   return (
     <Box sx={{ height: "100%", width: "90%", ml: 2, mt: 4 }}>
-      <h1>Applicant {params.id}'s Assign Board</h1>
+      <h1>Applicant {params.id}&apos; Assign Board</h1>
       <Link
         href={{
           pathname: `/admin/ApplicantDashboard`,

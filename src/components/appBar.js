@@ -11,10 +11,25 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter, useSearchParams } from "next/navigation";
+import HideOnScroll from "./HideOnScroll";
 
-const pages = ["Apply", "Category", "Eligibility", "FAQ", "Contact Us"];
+const pages = [
+  "Apply",
+  "About",
+  "Category",
+  "Eligibility",
+  "FAQ",
+  "Contact Us",
+];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-const links = ["/signup", "#category", "#eligibility", "#faq", "#contactus"];
+const links = [
+  "/signup",
+  "#about",
+  "#category",
+  "#eligibility",
+  "#faq",
+  "#contactus",
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -29,107 +44,109 @@ function ResponsiveAppBar() {
   };
   const router = useRouter();
   return (
-    <AppBar
-      position="static"
-      sx={{
-        backgroundColor: "#070c22",
-        position: "fixed",
-        zIndex: 1000,
-      }}
-    >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              color: "#F5C005",
-            }}
-          >
-            Times Edu Ex Awards
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="inherit"
-              onClick={handleOpenNavMenu}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+    <HideOnScroll threshold={400}>
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: "#070c22",
+          position: "fixed",
+          zIndex: 1000,
+        }}
+      >
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
               sx={{
-                display: { xs: "block", md: "none" },
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                color: "#F5C005",
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page}>
-                  <Typography textAlign="center">
-                    <a
-                      href={links[pages.indexOf(page)]}
-                      style={{ color: "inherit", textDecoration: "none" }}
-                    >
-                      {page}
-                    </a>
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Times Edu Ex Awards
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                href={links[pages.indexOf(page)]}
-                sx={{ my: 2, color: "white", display: "block" }}
+              Times Edu Ex Awards
+            </Typography>
+
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="inherit"
+                onClick={handleOpenNavMenu}
               >
-                {page}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page}>
+                    <Typography textAlign="center">
+                      <a
+                        href={links[pages.indexOf(page)]}
+                        style={{ color: "inherit", textDecoration: "none" }}
+                      >
+                        {page}
+                      </a>
+                    </Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              Times Edu Ex Awards
+            </Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  href={links[pages.indexOf(page)]}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              ))}
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </HideOnScroll>
   );
 }
 export default ResponsiveAppBar;

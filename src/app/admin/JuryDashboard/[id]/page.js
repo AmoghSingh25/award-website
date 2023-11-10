@@ -35,8 +35,8 @@ const columns = [
   },
 ];
 
-export default function juryResult({ params }) {
-  const [rows, setRows] = React.useState([]);
+export default function JuryResult({ params }) {
+  const [rows, setRows] = useState([]);
   const router = useRouter();
   const searchParams = new useSearchParams(router.query);
 
@@ -69,7 +69,7 @@ export default function juryResult({ params }) {
           Back
         </Button>
       </Link>
-      <h1>Juror {params.id}'s Result Board</h1>
+      <h1>Juror {params.id}&apos;s Result Board</h1>
       <DataGrid
         rows={rows}
         disableRowSelectionOnClick
