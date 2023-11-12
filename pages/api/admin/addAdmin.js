@@ -1,9 +1,9 @@
-import addJuror from "../../../lib/admin/addJuror";
+import addAdmin from "../../../lib/admin/addAdmin";
 
 export default async function handler(req, res) {
   try {
     const { name, email, phone, secondary_phone, username } = req.body;
-    const result = await addJuror(
+    const result = await addAdmin(
       name,
       email,
       phone,

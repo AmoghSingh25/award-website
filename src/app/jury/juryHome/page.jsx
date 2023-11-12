@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 
 export default function JuryHome({ params }) {
   const columns = [
-    { field: "id", headerName: "Applicant ID", width: 90 },
+    { field: "id", headerName: "Applicant ID", width: 200 },
     {
       field: "name",
       headerName: "Applicant Name",
@@ -33,14 +33,23 @@ export default function JuryHome({ params }) {
       renderCell: (params) => {
         // return <a href={"/jury/applicantView?id=" + params.id}>Click here</a>;
         return (
-          <Link
-            href={{
-              pathname: "/jury/applicantView",
-              query: { id: params.id, juryId: juryID },
+          <Button
+            variant="contained"
+            size="small"
+            sx={{
+              backgroundColor: "#373f6e",
             }}
           >
-            Preview
-          </Link>
+            <Link
+              href={{
+                pathname: "/jury/applicantView",
+                query: { applicantId: params.id, id: juryID },
+              }}
+              style={{}}
+            >
+              Preview
+            </Link>
+          </Button>
         );
       },
     },
@@ -51,14 +60,86 @@ export default function JuryHome({ params }) {
       editable: true,
     },
     {
-      field: "result",
+      field: "status",
       headerName: "Result",
-      width: 110,
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <select
+            id="status"
+            name="status"
+            defaultValue={params.row.status}
+            style={{
+              backgroundColor:
+                params.row.status === "Selected"
+                  ? "green"
+                  : params.row.status === "Rejected"
+                  ? "red"
+                  : "",
+              color:
+                params.row.status === "Rejected" ||
+                params.row.status == "Selected"
+                  ? "white"
+                  : "black",
+              width: "100%",
+              padding: "5px",
+              borderRadius: "5px",
+            }}
+            onChange={(e) => {
+              console.log(e.target.value);
+              rows.find((row) => row.id === params.id).status = e.target.value;
+              params.row.status = e.target.value;
+            }}
+          >
+            <option
+              value=""
+              style={{
+                backgroundColor: "white",
+              }}
+            ></option>
+            <option
+              value="Selected"
+              style={{
+                backgroundColor: "green",
+                color: "white",
+              }}
+            >
+              Selected
+            </option>
+            <option
+              value="Rejected"
+              style={{
+                backgroundColor: "red",
+                color: "white",
+              }}
+            >
+              Rejected
+            </option>
+          </select>
+        );
+      },
     },
     {
       field: "save",
       headerName: "Save",
       width: 110,
+      renderCell: (params) => {
+        return (
+          <Button
+            variant="contained"
+            size="small"
+            style={{
+              backgroundColor: "#373f6e",
+            }}
+            onClick={() => {
+              console.log("Save ");
+              saveData(params.row);
+            }}
+          >
+            Save
+          </Button>
+        );
+      },
     },
   ];
 
@@ -66,6 +147,38 @@ export default function JuryHome({ params }) {
   const router = useRouter();
   const useSearchParam = new useSearchParams(router.query);
   const juryID = useSearchParam.get("id");
+
+  const saveData = (row) => {
+    console.log("Save");
+    console.log(row);
+    fetch("/api/admin/saveResult", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: row.id,
+        status: row.status,
+        comment: row.comment,
+        juryId: juryID,
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        if (data.message == "Success") {
+          alert("Saved Successfully");
+        } else {
+          alert("Error Occured");
+        }
+      })
+      .catch((err) => {
+        console.log("error");
+      });
+  };
 
   useEffect(() => {
     const id = useSearchParam.get("id");
@@ -85,6 +198,9 @@ export default function JuryHome({ params }) {
       .then((data) => {
         console.log(data);
         setRows(data);
+      })
+      .catch((err) => {
+        console.log("error");
       });
   }, []);
 

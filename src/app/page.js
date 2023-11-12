@@ -9,6 +9,7 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
@@ -66,77 +67,85 @@ function HomePage() {
                 <div
                   style={{
                     width: "100%",
-                    height: "fit-content",
+                    maxHeight: "fit-content",
                   }}
                 >
                   <Image
                     src="/static/1.jpg"
-                    width={1080}
-                    height={720}
-                     sizes="(max-width: 768px) 40vw"
+                    width={1280}
+                    height={800}
+                    style={{
+                      objectFit: "cover",
+                      height: "fit-content",
+                      maxHeight: "90vh",
+                    }}
                   />
                 </div>
                 <div
                   style={{
                     width: "100%",
-                    height: "fit-content",
+                    maxHeight: "fit-content",
                   }}
                 >
                   <Image
                     src="/static/5.jpg"
-                    width={1080}
-                    height={720}
+                    width={1280}
+                    height={800}
                     style={{
-                      objectFit: "scale-down",
+                      objectFit: "cover",
                       height: "fit-content",
+                      maxHeight: "90vh",
                     }}
                   />
                 </div>
                 <div
                   style={{
                     width: "100%",
-                    height: "fit-content",
+                    maxHeight: "fit-content",
                   }}
                 >
                   <Image
                     src="/static/2.jpg"
-                    width={1080}
-                    height={720}
+                    width={1280}
+                    height={800}
                     style={{
-                      objectFit: "scale-down",
+                      objectFit: "cover",
                       height: "fit-content",
+                      maxHeight: "90vh",
                     }}
                   />
                 </div>
                 <div
                   style={{
                     width: "100%",
-                    height: "fit-content",
+                    maxHeight: "fit-content",
                   }}
                 >
                   <Image
                     src="/static/3.jpg"
-                    width={1080}
-                    height={720}
+                    width={1280}
+                    height={800}
                     style={{
-                      objectFit: "scale-down",
+                      objectFit: "cover",
                       height: "fit-content",
+                      maxHeight: "90vh",
                     }}
                   />
                 </div>
                 <div
                   style={{
                     width: "100%",
-                    height: "fit-content",
+                    maxHeight: "fit-content",
                   }}
                 >
                   <Image
                     src="/static/4.jpg"
-                    width={1080}
-                    height={720}
+                    width={1280}
+                    height={800}
                     style={{
-                      objectFit: "scale-down",
+                      objectFit: "cover",
                       height: "fit-content",
+                      maxHeight: "90vh",
                     }}
                   />
                 </div>
@@ -150,14 +159,13 @@ function HomePage() {
                   sx={{
                     color: "#373f6e ",
                     fontWeight: "bold",
-                    marginBottom: "1rem",
                     textAlign: "center",
                   }}
                 >
                   About the awards
                 </Typography>
                 <Typography
-                  variant="h5"
+                  variant="h6"
                   component="h1"
                   sx={{
                     color: "101627",
@@ -191,7 +199,7 @@ function HomePage() {
                   About Vellore Institute of Technology
                 </Typography>
                 <Typography
-                  variant="h5"
+                  variant="h6"
                   component="h1"
                   sx={{
                     color: "101627",
@@ -869,6 +877,8 @@ function HomePage() {
                     justifyContent: "center",
                     alignItems: "center",
                     mt: 4,
+                    mx: "auto",
+                    overflowWrap: "anywhere",
                   }}
                 >
                   <FontAwesomeIcon
@@ -877,7 +887,7 @@ function HomePage() {
                     fontSize="3vh"
                   />
                   <Typography
-                    variant="h6"
+                    variant="body1"
                     component="h1"
                     sx={{
                       color: "white",
@@ -904,7 +914,7 @@ function HomePage() {
                     fontSize="3vh"
                   />
                   <Typography
-                    variant="h6"
+                    variant="body1"
                     component="h1"
                     sx={{
                       color: "white",
@@ -913,6 +923,33 @@ function HomePage() {
                     }}
                   >
                     <a href="tel:+919962053587">+91 9962053587</a>
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    mt: 4,
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faWhatsapp}
+                    color="#f1bf60"
+                    fontSize="4vh"
+                  />
+                  <Typography
+                    variant="body1"
+                    component="h1"
+                    sx={{
+                      color: "white",
+                      fontWeight: "bold",
+                      mx: "1rem",
+                    }}
+                  >
+                    <a href="whatsapp://send?phone=+919962053587">
+                      +91 9962053587
+                    </a>
                   </Typography>
                 </Box>
               </Box>

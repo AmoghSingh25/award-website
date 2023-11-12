@@ -12,7 +12,7 @@ import * as yup from "yup";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().required(),
+  username: yup.string().required(),
   name: yup.string().required(),
   phone: yup
     .string()
@@ -47,6 +47,7 @@ export default function JuryManagementPage() {
   }, []);
 
   const addJuror = (data) => {
+    console.log(data);
     fetch("/api/admin/addJuror", {
       method: "POST",
       headers: {
@@ -86,6 +87,8 @@ export default function JuryManagementPage() {
 
   const columns = [
     { field: "email", headerName: "Email", width: 200 },
+    { field: "username", headerName: "Username", width: 200 },
+    { field: "phone", headerName: "Phone Number", width: 200 },
     {
       field: "actions",
       headerName: "Actions",
@@ -163,6 +166,16 @@ export default function JuryManagementPage() {
             </div>
             <div className="modal-div">
               <TextField
+                label="Username"
+                name="username"
+                onChange={(e) => setName(e.target.value)}
+                {...register("username")}
+                error={!!errors.username}
+                helperText={errors.username?.message}
+              />
+            </div>
+            <div className="modal-div">
+              <TextField
                 label="Email"
                 name="email"
                 {...register("email")}
@@ -188,7 +201,7 @@ export default function JuryManagementPage() {
                 helperText={errors.sphone?.message}
               />
             </div>
-            <div className="modal-div">
+            {/* <div className="modal-div">
               <TextField
                 label="Password"
                 name="password"
@@ -196,7 +209,7 @@ export default function JuryManagementPage() {
                 error={!!errors.password}
                 helperText={errors.password?.message}
               />
-            </div>
+            </div> */}
             <Button
               variant="contained"
               color="primary"

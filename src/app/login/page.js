@@ -205,7 +205,7 @@ export default function Page() {
               Login
             </a>
           </p>
-          <p>
+          {/* <p>
             Admin ? Click here to{" "}
             <a
               href="/admin"
@@ -216,7 +216,7 @@ export default function Page() {
             >
               Click Here
             </a>
-          </p>
+          </p> */}
         </Box>
       </Box>
     </ThemeProvider>

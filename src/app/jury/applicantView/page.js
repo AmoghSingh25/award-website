@@ -49,7 +49,7 @@ export default function Page() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: searchParams.get("id"),
+        id: searchParams.get("applicantId"),
       }),
     })
       .then((res) => res.json())
@@ -68,7 +68,7 @@ export default function Page() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: searchParams.get("id"),
+        id: searchParams.get("applicantId"),
       }),
     })
       .then((res) => res.json())
@@ -413,7 +413,7 @@ export default function Page() {
                   href={{
                     pathname: "/jury/juryHome",
                     query: {
-                      id: searchParams.get("juryId"),
+                      id: searchParams.get("id"),
                     },
                   }}
                   style={{
