@@ -193,30 +193,6 @@ export default function Page() {
               Signup
             </a>
           </p>
-          <p>
-            Member of Jury ? Click here to{" "}
-            <a
-              href="/jury"
-              style={{
-                textDecoration: "underline",
-                color: "#F5C005",
-              }}
-            >
-              Login
-            </a>
-          </p>
-          {/* <p>
-            Admin ? Click here to{" "}
-            <a
-              href="/admin"
-              style={{
-                textDecoration: "underline",
-                color: "#F5C005",
-              }}
-            >
-              Click Here
-            </a>
-          </p> */}
         </Box>
       </Box>
     </ThemeProvider>
