@@ -74,6 +74,7 @@ function HomePage() {
                     src="/static/1.jpg"
                     width={1280}
                     height={800}
+                    alt=""
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
@@ -91,6 +92,7 @@ function HomePage() {
                     src="/static/5.jpg"
                     width={1280}
                     height={800}
+                    alt=""
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
@@ -108,6 +110,7 @@ function HomePage() {
                     src="/static/2.jpg"
                     width={1280}
                     height={800}
+                    alt=""
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
@@ -125,6 +128,7 @@ function HomePage() {
                     src="/static/3.jpg"
                     width={1280}
                     height={800}
+                    alt=""
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
@@ -141,6 +145,7 @@ function HomePage() {
                   <Image
                     src="/static/4.jpg"
                     width={1280}
+                    alt=""
                     height={800}
                     style={{
                       objectFit: "cover",

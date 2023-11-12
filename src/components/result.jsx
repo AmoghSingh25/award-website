@@ -44,7 +44,7 @@ const Download = () => {
     });
 };
 
-export default function juryResult() {
+export default function JuryResult() {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
 
