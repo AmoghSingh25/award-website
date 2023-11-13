@@ -63,7 +63,7 @@ function HomePage() {
             }}
           >
             <div>
-              <Carousel autoPlay={false} infiniteLoop={true}>
+              <Carousel autoPlay={false} infiniteLoop={true} showThumbs={false}>
                 <div
                   style={{
                     width: "100%",
@@ -156,6 +156,7 @@ function HomePage() {
                 </div>
               </Carousel>
             </div>
+
             <Box id="about">
               <Box className={styles.aboutDiv}>
                 <Typography
@@ -268,6 +269,119 @@ function HomePage() {
                   opportunities as well.
                 </Typography>
               </Box>
+            </Box>
+            <Box id="Partners">
+              <Typography
+                variant="h4"
+                component="h1"
+                sx={{
+                  color: "#373f6e ",
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              >
+                Partners
+              </Typography>
+              <Grid
+                container
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                sx={{ mx: 2 }}
+              >
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Image
+                    src="/static/VIT.jpeg"
+                    alt="VIT"
+                    width={1280}
+                    height={720}
+                    style={{
+                      objectFit: "cover",
+                      height: "fit-content",
+                      maxWidth: "30vw",
+                    }}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Image
+                    src="/static/TOI.jpg"
+                    alt="TOI"
+                    width={1280}
+                    height={720}
+                    style={{
+                      objectFit: "cover",
+                      height: "fit-content",
+                      maxWidth: "30vw",
+                    }}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Image
+                    src="/static/EY.png"
+                    alt="VIT"
+                    width={1280}
+                    height={720}
+                    style={{
+                      objectFit: "cover",
+                      height: "fit-content",
+                      maxWidth: "30vw",
+                    }}
+                  />
+                </Grid>
+                {/* <Grid item xs={12} sm={6} md={4}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Image
+                      src="/static/TOI.jpg"
+                      alt="TOI"
+                      width={1280}
+                      height={720}
+                    />
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                  <Image
+                    src="/static/EY.png"
+                    alt="EY"
+                    width={1280}
+                    height={720}
+                    style={{ objectFit: "scale-down" }}
+                  />
+                </Grid> */}
+              </Grid>
+            </Box>
+            <Box id="category">
               <Box
                 sx={{
                   backgroundColor: "#101627",
@@ -275,7 +389,6 @@ function HomePage() {
                   wordWrap: "break-word",
                   wordBreak: "break-word",
                 }}
-                id="category"
               >
                 <Typography
                   variant="h4"

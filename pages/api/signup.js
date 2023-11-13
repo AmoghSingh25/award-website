@@ -6,14 +6,10 @@ export default async function handler(req, res) {
     return res.status(404).json({ message: "Not found" });
   try {
     const id = await signup(req.body.email, req.body.phone, req.body.name);
-    const lastSaved = await saveStatus(id);
-    const last_saved = lastSaved.last_saved_section;
     res.status(200).json({
-      message: "Signed up",
-      status: "Signed up",
+      message: "OTP Sent",
+      status: "OTP Sent",
       error: false,
-      id: id,
-      last_saved: last_saved,
     });
   } catch (error) {
     console.log(error);

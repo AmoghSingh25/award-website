@@ -35,8 +35,6 @@ const Download = () => {
     .then((res) => res.json())
     .then((data) => {
       const excel_col = Object.keys(data.data[0]);
-      console.log(excel_col);
-      console.log(data.data);
       downloadCsv(data.data, excel_col, "applicants");
     })
     .catch((err) => {
@@ -57,7 +55,6 @@ export default function JuryResult() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setRows(data.data);
         setLoading(false);
       })

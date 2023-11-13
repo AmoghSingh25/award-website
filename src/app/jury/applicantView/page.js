@@ -85,7 +85,6 @@ export default function Page() {
         if (resp.achievement) {
           setFile("achievement", resp.achievement.data, setAchievement);
         }
-        console.log(resp);
       })
       .catch((err) => {
         setError("Error fetching data");
@@ -128,7 +127,6 @@ export default function Page() {
     for (let i = 0; i < arr.length; i++) {
       header += arr[i].toString(16);
     }
-    console.log(header);
     const file_type = header.toUpperCase();
     const file_type_dict = {
       "89504E47": "image/png",

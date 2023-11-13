@@ -86,7 +86,6 @@ export default function JuryHome({ params }) {
               borderRadius: "5px",
             }}
             onChange={(e) => {
-              console.log(e.target.value);
               rows.find((row) => row.id === params.id).status = e.target.value;
               params.row.status = e.target.value;
             }}
@@ -132,7 +131,6 @@ export default function JuryHome({ params }) {
               backgroundColor: "#373f6e",
             }}
             onClick={() => {
-              console.log("Save ");
               saveData(params.row);
             }}
           >
@@ -149,8 +147,6 @@ export default function JuryHome({ params }) {
   const juryID = useSearchParam.get("id");
 
   const saveData = (row) => {
-    console.log("Save");
-    console.log(row);
     fetch("/api/admin/saveResult", {
       method: "POST",
       headers: {
@@ -164,11 +160,9 @@ export default function JuryHome({ params }) {
       }),
     })
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.message == "Success") {
           alert("Saved Successfully");
         } else {
@@ -192,11 +186,9 @@ export default function JuryHome({ params }) {
       }),
     })
       .then((res) => {
-        console.log(res);
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setRows(data);
       })
       .catch((err) => {

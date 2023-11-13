@@ -14,7 +14,7 @@ const data = {
     {
       title: "What is the opening and the closing date for the nominations? ",
       content:
-        "Opening date is 7th August 2021 and the closing date to complete and submit the nomination is 30th August 2021. ",
+        "Opening date is 15th November, 2023 and the closing date to complete and submit the nomination is 31st December, 2023. ",
     },
 
     {

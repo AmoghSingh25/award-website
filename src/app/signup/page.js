@@ -53,9 +53,17 @@ export default function Page() {
     });
     const resp = await res.json();
     if (!resp.error) {
-      data.id = resp.id;
-      data.section = resp.last_saved;
-      router.push("/apply/sec" + resp.last_saved + "?id=" + resp.id);
+      // data.id = resp.id;
+      // data.section = resp.last_saved;
+      // router.push("/apply/sec" + resp.last_saved + "?id=" + resp.id);
+      router.push(
+        "/verifyOTP?email=" +
+          data.email +
+          "&phone=" +
+          data.phone +
+          "&name=" +
+          data.name
+      );
     }
     if (resp.error && resp.status === "Already submitted") {
       setError("Application already submitted");

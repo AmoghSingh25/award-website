@@ -47,7 +47,6 @@ export default function JuryManagementPage() {
   }, []);
 
   const addJuror = (data) => {
-    console.log(data);
     fetch("/api/admin/addJuror", {
       method: "POST",
       headers: {
