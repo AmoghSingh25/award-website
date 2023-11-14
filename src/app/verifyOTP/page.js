@@ -58,7 +58,7 @@ export default function Page() {
     <Box className={styles.mainBox}>
       <Box>
         <Typography variant="h4" className={styles.header}>
-          Verify OTP
+          Enter OTP sent to email
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.formBox}>
           <TextField
@@ -80,7 +80,14 @@ export default function Page() {
               },
             }}
           />
-          <Button variant="contained" type="submit" color="primary">
+          <Button
+            variant="contained"
+            type="submit"
+            color="primary"
+            sx={{
+              backgroundColor: "#1e3c72",
+            }}
+          >
             Submit
           </Button>
         </form>
