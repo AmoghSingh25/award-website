@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter, useSearchParams } from "next/navigation";
 import HideOnScroll from "./HideOnScroll";
+import Image from "next/image";
 
 const pages = [
   "Apply",
@@ -68,7 +69,12 @@ function ResponsiveAppBar() {
                 color: "#F5C005",
               }}
             >
-              Times Edu Ex Awards
+              <Image
+                src="/images/logo1.jpg"
+                alt="Times EduEx Awards"
+                width={100}
+                height={100}
+              />
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -129,7 +135,12 @@ function ResponsiveAppBar() {
                 textDecoration: "none",
               }}
             >
-              Times Edu Ex Awards
+              <Image
+                src="/images/logo1.jpg"
+                alt="Times EduEx Awards"
+                width={100}
+                height={100}
+              />
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
