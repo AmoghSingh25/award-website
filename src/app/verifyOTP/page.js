@@ -55,8 +55,8 @@ export default function Page() {
   const router = useRouter();
 
   return (
-    <Box className={styles.mainBox}>
-      <Box>
+    <div className={styles.mainBox}>
+      <div>
         <Typography variant="h4" className={styles.header}>
           Enter OTP sent to email
         </Typography>
@@ -69,6 +69,9 @@ export default function Page() {
             helperText={errors.otp?.message}
             className={styles.textField}
             type="number"
+            sx={{
+              margin: "10px",
+            }}
             InputProps={{
               type: "number",
               sx: {
@@ -92,7 +95,7 @@ export default function Page() {
           </Button>
         </form>
         <Typography variant="body1">{error}</Typography>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 }

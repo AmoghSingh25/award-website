@@ -42,7 +42,7 @@ export default function Page() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ tableName: "case_study", data: data }),
+      body: JSON.stringify({ tableName: "case_study", data: data, id: id }),
     });
     res
       .then((res) => res.json())
@@ -292,7 +292,7 @@ export default function Page() {
             boxShadow: "none",
           }}
         >
-          Next
+          Save & Next
         </Button>
       </div>
     </div>

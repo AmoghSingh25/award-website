@@ -43,7 +43,6 @@ const schema = yup.object().shape({
       name: yup.string().required(),
       year: yup
         .number()
-        .required()
         .typeError("Must be a number")
         .positive()
         .integer()
@@ -83,10 +82,10 @@ export default function Page() {
   };
 
   const onSubmit = (data) => {
-    if (rows1.length === 0) {
-      setError("Please fill in the required fields");
-      return;
-    }
+    // if (rows1.length === 0) {
+    //   setError("Please fill in the required fields");
+    //   return;
+    // }
     if (rows1.length > 10) {
       setError("You can only enter a maximum of 10 awards");
       return;
@@ -95,10 +94,10 @@ export default function Page() {
       setError("You can only enter a maximum of 10 publications");
       return;
     }
-    if (rows2.length === 0) {
-      setError("Please fill in the required fields");
-      return;
-    }
+    // if (rows2.length === 0) {
+    //   setError("Please fill in the required fields");
+    //   return;
+    // }
 
     schema
       .validate({ awards: rows1 }, { abortEarly: false })
@@ -148,7 +147,11 @@ export default function Page() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ tableName: "award_achievements", data: data }),
+        body: JSON.stringify({
+          tableName: "award_achievements",
+          data: data,
+          id: id,
+        }),
       });
       res
         .then((res) => res.json())
@@ -398,7 +401,7 @@ export default function Page() {
               boxShadow: "none",
             }}
           >
-            Next
+            Save & Next
           </Button>
         </div>
       </div>

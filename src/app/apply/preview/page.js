@@ -7,20 +7,13 @@ import * as yup from "yup";
 import DataTable from "@/components/previewDataTable";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import styles from "./page.module.css";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import SectionHeader from "../../../components/sectionHeader";
 import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import DataComponent from "./dataComponent";
-import { TextareaAutosize } from "@mui/base/TextareaAutosize";
+import Link from "next/link";
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -90,6 +83,13 @@ export default function Page() {
   ];
 
   const [errorMessage, setError] = useState("");
+  const [confirmation, setConfirmation] = useState("");
+
+  const onSubmit = () => {
+    setConfirmation(
+      "Are you sure you want to submit the application? \n Once submitted, the form cannot be edited"
+    );
+  };
 
   const submitApplication = () => {
     fetch("/api/saveApplication", {
@@ -175,6 +175,72 @@ export default function Page() {
                   className={styles.okButton}
                 >
                   Ok
+                </Button>
+              </Box>
+            </Box>
+          )}
+          {confirmation !== "" && (
+            <Box
+              sx={{
+                position: "absolute",
+                width: "200vw",
+                minHeight: "100vh",
+                height: "170vh",
+                backgroundColor: "rgba(255,255,255,0.7)",
+                zIndex: "1000",
+              }}
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  width: "20vw",
+                  height: "20vh",
+                  top: "130vh",
+                  left: "40vw",
+                  backgroundColor: "#ffefb6",
+                  zIndex: "1000",
+                  textAlign: "center",
+                  borderRadius: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                }}
+              >
+                {confirmation}
+                <Button
+                  onClick={() => {
+                    setConfirmation("");
+                  }}
+                  className={styles.okButton}
+                  sx={{
+                    backgroundColor: "#313d8b",
+                    color: "White",
+                    marginTop: "1rem",
+                    ":hover": {
+                      backgroundColor: "#313d8b",
+                    },
+                  }}
+                >
+                  Go back
+                </Button>
+                <Button
+                  onClick={() => {
+                    submitApplication();
+                  }}
+                  className={styles.okButton}
+                  sx={{
+                    backgroundColor: "#313d8b",
+                    color: "White",
+                    marginTop: "1rem",
+                    ":hover": {
+                      backgroundColor: "#313d8b",
+                    },
+                  }}
+                >
+                  Confirm
                 </Button>
               </Box>
             </Box>
@@ -354,6 +420,16 @@ export default function Page() {
               </div>
             </Box>
             <div style={{ flexDirection: "row", width: "100%" }}>
+              <p
+                style={{
+                  width: "12%",
+                  // textAlign: "center",
+                  margin: "0 0 0 10px",
+                  color: "red",
+                }}
+              >
+                If any field needs to be edited, press the previous button
+              </p>
               <Button
                 type="button"
                 variant="contained"
@@ -363,25 +439,22 @@ export default function Page() {
                   borderRadius: "20px",
                   boxShadow: "none",
                 }}
-                onClick={() => {
-                  data;
-                }}
               >
-                {/* <Link
+                <Link
                   href={{
-                    pathname: "/apply/sec1",
+                    pathname: "/apply/sec6",
                     query: {
                       id: searchParams.get("id"),
                     },
                   }}
-                > */}
-                Previous
-                {/* </Link> */}
+                >
+                  Previous
+                </Link>
               </Button>
               <Button
                 type="button"
                 variant="contained"
-                onClick={() => submitApplication()}
+                onClick={() => onSubmit()}
                 sx={{
                   m: 2,
                   color: "white",

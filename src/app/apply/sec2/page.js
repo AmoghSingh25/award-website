@@ -552,7 +552,7 @@ export default function Page() {
               boxShadow: "none",
             }}
           >
-            Next
+            Save & Next
           </Button>
         </div>
       </div>

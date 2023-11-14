@@ -290,8 +290,8 @@ function HomePage() {
                 <Grid
                   item
                   xs={12}
-                  sm={12}
-                  md={4}
+                  sm={6}
+                  md={6}
                   sx={{
                     display: "flex",
                     justifyContent: "center",
@@ -300,20 +300,20 @@ function HomePage() {
                   <Image
                     src="/static/VIT.jpeg"
                     alt="VIT"
-                    width={1280}
-                    height={720}
+                    width={640}
+                    height={360}
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
-                      maxWidth: "30vw",
+                      maxWidth: "20vw",
                     }}
                   />
                 </Grid>
                 <Grid
                   item
                   xs={12}
-                  sm={12}
-                  md={4}
+                  sm={6}
+                  md={6}
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -323,37 +323,16 @@ function HomePage() {
                   <Image
                     src="/static/TOI.jpg"
                     alt="TOI"
-                    width={1280}
-                    height={720}
+                    width={640}
+                    height={360}
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
-                      maxWidth: "30vw",
+                      maxWidth: "20vw",
                     }}
                   />
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={4}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Image
-                    src="/static/EY.png"
-                    alt="VIT"
-                    width={1280}
-                    height={720}
-                    style={{
-                      objectFit: "cover",
-                      height: "fit-content",
-                      maxWidth: "30vw",
-                    }}
-                  />
-                </Grid>
+
                 {/* <Grid item xs={12} sm={6} md={4}>
                   <Box
                     sx={{
@@ -380,6 +359,42 @@ function HomePage() {
                   />
                 </Grid> */}
               </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  component="h1"
+                  sx={{
+                    color: "#373f6e ",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    paddingBottom: "1rem",
+                  }}
+                >
+                  Process Advisors
+                </Typography>
+                <Image
+                  src="/static/EY.png"
+                  alt="VIT"
+                  width={640}
+                  height={360}
+                  style={{
+                    objectFit: "cover",
+                    height: "fit-content",
+                    maxWidth: "20vw",
+                  }}
+                />
+              </Grid>
             </Box>
             <Box id="category">
               <Box
@@ -395,7 +410,7 @@ function HomePage() {
                   component="h1"
                   align="center"
                   sx={{
-                    color: "#f1bf60",
+                    color: "white",
                     fontWeight: "bold",
                     paddingTop: "3rem",
                   }}
@@ -409,7 +424,7 @@ function HomePage() {
                     mx: "5%",
                     border: "1px solid black",
                     mt: "5%",
-                    backgroundColor: "#F6D9A2",
+                    backgroundColor: "white",
                   }}
                 >
                   <Grid
@@ -942,7 +957,7 @@ function HomePage() {
                   component="h1"
                   align="center"
                   sx={{
-                    color: "#f1bf60",
+                    color: "white",
                     fontWeight: "bold",
                     marginBottom: "1rem",
                     paddingTop: "3rem",
@@ -954,7 +969,7 @@ function HomePage() {
                   variant="h4"
                   component="p"
                   sx={{
-                    color: "#f1bf60",
+                    color: "white",
                     textAlign: "center",
                     fontWeight: "bold",
                     padding: "1rem",
@@ -980,11 +995,30 @@ function HomePage() {
                 <FAQSection />
               </Box>
               <Box
-                sx={{ py: 4, backgroundColor: "#101627", color: "white" }}
+                sx={{
+                  py: 4,
+                  backgroundColor: "#101627",
+                  color: "white",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
                 id="contactus"
               >
-                <Typography variant="h4" component="h1" align="center">
+                <Typography variant="h2" component="h1" align="center">
                   Contact us
+                </Typography>
+                <Typography
+                  variant="body2"
+                  component="h1"
+                  align="center"
+                  color="red"
+                  width="30vh"
+                  mb={2}
+                >
+                  * Management shall take 4-5 working days to respond to queries
+                  received
                 </Typography>
                 <Typography variant="h6" component="h1" align="center">
                   Monday - Friday <br /> 9am to 6pm
@@ -1001,7 +1035,7 @@ function HomePage() {
                 >
                   <FontAwesomeIcon
                     icon={faEnvelope}
-                    color="#f1bf60"
+                    color="white"
                     fontSize="3vh"
                   />
                   <Typography
@@ -1028,7 +1062,7 @@ function HomePage() {
                 >
                   <FontAwesomeIcon
                     icon={faPhone}
-                    color="#f1bf60"
+                    color="white"
                     fontSize="3vh"
                   />
                   <Typography
@@ -1053,7 +1087,7 @@ function HomePage() {
                 >
                   <FontAwesomeIcon
                     icon={faWhatsapp}
-                    color="#f1bf60"
+                    color="white"
                     fontSize="4vh"
                   />
                   <Typography

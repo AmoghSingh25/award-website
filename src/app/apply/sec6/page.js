@@ -22,16 +22,16 @@ theme = responsiveFontSizes(theme);
 const schema = yup.object().shape({
   check1: yup
     .boolean()
-    .required("Please check this box")
-    .oneOf([true], "Please check this box"),
+    .required("Please read and agree")
+    .oneOf([true], "Please read and agree"),
   check2: yup
     .boolean()
-    .required("Please check this box")
-    .oneOf([true], "Please check this box"),
+    .required("Please read and agree")
+    .oneOf([true], "Please read and agree"),
   check3: yup
     .boolean()
-    .required("Please check this box")
-    .oneOf([true], "Please check this box"),
+    .required("Please read and agree")
+    .oneOf([true], "Please read and agree"),
 });
 export default function Page() {
   const {
@@ -165,15 +165,15 @@ export default function Page() {
               sx={{ mt: "0.5%" }}
             >
               I/we hereby declare that the details furnished in the application
-              form and supporting documents submitted for Teachers Excellence
-              Awards 2023, are to the best of my knowledge and belief true,
-              correct and complete. In case any of the said information is found
-              to be false or untrue or misleading or misrepresenting, I am/we
-              are aware that I/we will be held liable for it. *
+              form and supporting documents submitted for Times Education
+              Excellence Awards 2023, are to the best of my knowledge and belief
+              true, correct and complete. In case any of the said information is
+              found to be false or untrue or misleading or misrepresenting, I
+              am/we are aware that I/we will be held liable for it. *
             </Typography>
           </div>
           {errors.check1 && (
-            <p className={styles.errorMessage}>Please check this box</p>
+            <p className={styles.errorMessage}>Please read and agree</p>
           )}
           <div className={styles.checkDiv}>
             <Controller
@@ -207,7 +207,7 @@ export default function Page() {
             </Typography>
           </div>
           {errors.check2 && (
-            <p className={styles.errorMessage}>Please check this box</p>
+            <p className={styles.errorMessage}>Please read and agree</p>
           )}
           <div className={styles.checkDiv}>
             <Controller
@@ -239,7 +239,7 @@ export default function Page() {
             </Typography>
           </div>
           {errors.check3 && (
-            <p className={styles.errorMessage}>Please check this box</p>
+            <p className={styles.errorMessage}>Please read and agree</p>
           )}
           <p
             style={{

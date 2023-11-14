@@ -25,12 +25,12 @@ const schema = yup.object().shape({
   awards: yup.string().required(),
   check1: yup
     .boolean()
-    .required("Please check this box")
-    .oneOf([true], "Please check this box"),
+    .required("Please read and agree")
+    .oneOf([true], "Please read and agree"),
   check2: yup
     .boolean()
-    .required("Please check this box")
-    .oneOf([true], "Please check this box"),
+    .required("Please read and agree")
+    .oneOf([true], "Please read and agree"),
 });
 export default function Page() {
   const [check1, setCheck1] = useState(false);
@@ -70,7 +70,7 @@ export default function Page() {
 
   const setFile = async (file_name, file_data, set_file) => {
     if (file_data !== null) {
-      const fileType = getFileSignature(file_data);
+      const fileType = await getFileSignature(file_data);
       const byteArray = new Uint8Array(file_data.data);
       const file = new File(
         [byteArray],
@@ -127,8 +127,8 @@ export default function Page() {
   const checkErrors = () => {
     let flag = false;
     setErrors({
-      check1: check1 ? null : "Please check this box",
-      check2: check2 ? null : "Please check this box",
+      check1: check1 ? null : "Please read and agree",
+      check2: check2 ? null : "Please read and agree",
       idCard: idCard ? null : "Please upload ID Card",
     });
     if (!check1 || !check2 || idCard === null) {
@@ -316,7 +316,9 @@ export default function Page() {
           <div className={styles.fileInfo}>
             <p>
               Please upload the following documents in PDF/JPG/JPEG/PNG format
-              only. The file size should not exceed 2 MB.
+              only.
+              <br />
+              The file size should not exceed 2 MB.
             </p>
           </div>
 
@@ -514,7 +516,7 @@ export default function Page() {
               boxShadow: "none",
             }}
           >
-            Next
+            Save & Next
           </Button>
         </div>
       </div>
