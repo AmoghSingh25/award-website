@@ -19,6 +19,7 @@ const pages = [
   "About",
   "Category",
   "Eligibility",
+  "Jury",
   "FAQ",
   "Contact Us",
 ];
@@ -28,6 +29,7 @@ const links = [
   "#about",
   "#category",
   "#eligibility",
+  "#jury",
   "#faq",
   "#contactus",
 ];
@@ -66,15 +68,10 @@ function ResponsiveAppBar() {
                 display: { xs: "none", md: "flex" },
                 fontFamily: "monospace",
                 fontWeight: 700,
-                color: "#F5C005",
+                color: "white",
               }}
             >
-              <Image
-                src="/images/logo1.jpg"
-                alt="Times EduEx Awards"
-                width={100}
-                height={100}
-              />
+              Times Edu Ex Awards
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -131,16 +128,11 @@ function ResponsiveAppBar() {
                 flexGrow: 1,
                 fontFamily: "monospace",
                 fontWeight: 700,
-                color: "inherit",
+                color: "white",
                 textDecoration: "none",
               }}
             >
-              <Image
-                src="/images/logo1.jpg"
-                alt="Times EduEx Awards"
-                width={100}
-                height={100}
-              />
+              Times Edu Ex Awards
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (

@@ -280,18 +280,24 @@ function HomePage() {
                   textAlign: "center",
                 }}
               >
-                Partners
+                Brought to you by
               </Typography>
-              <Grid
-                container
-                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-                sx={{ mx: 2 }}
-              >
+              <Grid container sx={{ mx: 2 }}>
+                <Grid
+                  item
+                  xs={0}
+                  sm={3}
+                  md={3}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                ></Grid>
                 <Grid
                   item
                   xs={12}
-                  sm={6}
-                  md={6}
+                  sm={3}
+                  md={3}
                   sx={{
                     display: "flex",
                     justifyContent: "center",
@@ -312,8 +318,8 @@ function HomePage() {
                 <Grid
                   item
                   xs={12}
-                  sm={6}
-                  md={6}
+                  sm={3}
+                  md={3}
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -369,6 +375,7 @@ function HomePage() {
                   justifyContent: "center",
                   flexDirection: "column",
                   alignItems: "center",
+                  mb: 4,
                 }}
               >
                 <Typography
@@ -951,6 +958,7 @@ function HomePage() {
                 sx={{
                   backgroundColor: "#101627",
                 }}
+                id="jury"
               >
                 <Typography
                   variant="h4"

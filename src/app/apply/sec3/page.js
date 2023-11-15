@@ -309,7 +309,7 @@ export default function Page() {
               className={styles.inputLabel}
             >
               List down the awards or honors received for teaching excellence
-              (Maximum 10) *
+              (Maximum 10)
             </Typography>
             <DataTable
               rows={rows1}
@@ -336,7 +336,7 @@ export default function Page() {
             className={styles.inputLabel}
           >
             List any publications, research, or educational contribution
-            (Maximum 10) *
+            (Maximum 10)
           </Typography>
           <Box>
             <DataTable
@@ -356,15 +356,6 @@ export default function Page() {
               <FontAwesomeIcon icon={faPlus} fontSize={"3vh"} color={"black"} />
             </button>
           </Box>
-
-          <p
-            style={{
-              float: "right",
-              color: "red",
-            }}
-          >
-            * marked fields are required
-          </p>
         </Box>
         <div style={{ flexDirection: "row", width: "100%" }}>
           <Button
