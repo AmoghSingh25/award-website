@@ -144,12 +144,9 @@ export default function TermsAndConditions() {
                         wordWrap: "break-word",
                       }}
                     >
-                      Teacher Experience
-                      <br />
-                      5-15 Years
-                      <br />
-                      15-25 Years
-                      <br />
+                      Teacher Experience <br/> 
+                      5-15 Years / 
+                      15-25 Years /
                       More than 25 Years
                     </Typography>
                   </Box>
