@@ -9,7 +9,7 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faWhatsapp, faFacebook,faTwitter, faYoutube, faInstagram, faThreads, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
@@ -1031,87 +1031,175 @@ function HomePage() {
                 <Typography variant="h6" component="h1" align="center">
                   Monday - Friday <br /> 9am to 6pm
                 </Typography>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    mt: 4,
-                    mx: "auto",
-                    overflowWrap: "anywhere",
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faEnvelope}
-                    color="white"
-                    fontSize="3vh"
-                  />
-                  <Typography
-                    variant="body1"
-                    component="h1"
-                    sx={{
-                      color: "white",
-                      fontWeight: "bold",
-                      mx: "1rem",
-                    }}
-                  >
-                    <a href="mailto:timeseduex2023@gmail.com">
-                      timeseduex2023@gmail.com
-                    </a>
+                <Typography display="flex" flexDirection="row">
+                  <Typography component="h1" display="flex" flexDirection="row" md={{
+                        display: "flex",
+                        flexDirection: "column",
+                 }} >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        mt: 4,
+                        mx: "auto",
+                        overflowWrap: "anywhere",
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faEnvelope}
+                        color="white"
+                        fontSize="3vh"
+                      />
+                      <Typography
+                        variant="body1"
+                        component="h1"
+                        sx={{
+                          color: "white",
+                          fontWeight: "bold",
+                          mx: "1rem",
+                        }}
+                      >
+                        <a href="mailto:timeseduex2023@gmail.com">
+                          timeseduex2023@gmail.com
+                        </a>
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        mt: 4,
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faPhone}
+                        color="white"
+                        fontSize="3vh"
+                      />
+                      <Typography
+                        variant="body1"
+                        component="h1"
+                        sx={{
+                          color: "white",
+                          fontWeight: "bold",
+                          mx: "1rem",
+                        }}
+                      >
+                        <a href="tel:+919962053587">+91 9962053587</a>
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        mt: 4,
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faWhatsapp}
+                        color="white"
+                        fontSize="4vh"
+                      />
+                      <Typography
+                        variant="body1"
+                        component="h1"
+                        sx={{
+                          color: "white",
+                          fontWeight: "bold",
+                          mx: "1rem",
+                        }}
+                      >
+                        <a href="whatsapp://send?phone=+919962053587">
+                          +91 9962053587
+                        </a>
+                      </Typography>
+                    </Box>
                   </Typography>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    mt: 4,
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    color="white"
-                    fontSize="3vh"
-                  />
-                  <Typography
-                    variant="body1"
+                </Typography>
+                 {/* <Typography variant="h2" component="h6" align="center">
+                  VIT Chennai Social Media Handles
+                </Typography> */}
+                <Typography
                     component="h1"
-                    sx={{
-                      color: "white",
-                      fontWeight: "bold",
-                      mx: "1rem",
-                    }}
+                    display="flex"
+                    flexDirection="row" md={{
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
                   >
-                    <a href="tel:+919962053587">+91 9962053587</a>
-                  </Typography>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    mt: 4,
-                  }}
-                >
-                  <FontAwesomeIcon
-                    icon={faWhatsapp}
-                    color="white"
-                    fontSize="4vh"
-                  />
-                  <Typography
-                    variant="body1"
+                                      <Typography
                     component="h1"
-                    sx={{
-                      color: "white",
-                      fontWeight: "bold",
-                      mx: "1rem",
-                    }}
+                    display="flex"
+                    flexDirection="column"
                   >
-                    <a href="whatsapp://send?phone=+919962053587">
-                      +91 9962053587
-                    </a>
+                    <SocialMediaLink
+                      icon={faFacebook}
+                      color="white"
+                
+                      link="https://www.facebook.com/VITCChennai"
+                      label="VITC Facebook"
+                    />
+                    <SocialMediaLink
+                      icon={faTwitter}
+                      color="white"
+                     
+                      link="https://twitter.com/ChennaiVit"
+                      label="VITC Twitter"
+                    /> </Typography>
+                          <Typography
+                    component="h1"
+                    display="flex"
+                    flexDirection="column"
+                  >
+                    <SocialMediaLink
+                      icon={faLinkedin}
+                      color="white"
+              
+                      link="https://www.linkedin.com/company/vitchennai"
+                      label="VITC LinkedIn"
+                    />
+                    <SocialMediaLink
+                      icon={faYoutube}
+                      color="white"
+             
+                      link="https://www.youtube.com/c/VITChennaic"
+                      label="VITC YouTube"
+      />  </Typography>
+                          <Typography
+                    component="h1"
+                    display="flex"
+                    flexDirection="column"
+                  >
+                    <SocialMediaLink
+                      icon={faInstagram}
+                      color="white"
+                
+                      link="https://www.instagram.com/vit.chennai/"
+                      label="VITC Instagram"
+                    />
+                    <SocialMediaLink
+                      icon={faThreads}
+                      color="white"
+              
+                      link="https://www.threads.net/@vit.chennai"
+                      label="VITC Threads"
+                    /> </Typography>
+                          <Typography
+                    component="h1"
+                    display="flex"
+                    flexDirection="column"
+                  >
+                    <SocialMediaLink
+                      icon={faWhatsapp}
+                      color="white"
+                     
+                      link="https://www.whatsapp.com/channel/0029Va7NRhG4inoyNS6z9w28 "
+                      label="VITC Whatsapp"
+      /></Typography>
                   </Typography>
-                </Box>
               </Box>
             </Box>
           </div>
@@ -1122,3 +1210,30 @@ function HomePage() {
 }
 
 export default HomePage;
+const SocialMediaLink = ({ icon, color, fontSize, link, label }) => (
+  <Box
+    sx={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      mt: 4,
+      mx: "auto",
+      overflowWrap: "anywhere",
+    }}
+  >
+    <FontAwesomeIcon icon={icon} color={color} fontSize={fontSize} />
+    <Typography
+      variant="body1"
+      component="h1"
+      sx={{
+        color: "white",
+        fontWeight: "bold",
+        mx: "1rem",
+      }}
+    >
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        {label}
+      </a>
+    </Typography>
+  </Box>
+);
