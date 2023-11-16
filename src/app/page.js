@@ -940,15 +940,7 @@ function HomePage() {
               <Typography variant="h6" component="h1" align="center">
                 Monday - Friday <br /> 9 AM to 6 PM
               </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                className={styles.contactDiv}
-              >
+              <Box className={styles.contactDiv}>
                 <Box
                   sx={{
                     display: "flex",
