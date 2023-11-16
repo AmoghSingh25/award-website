@@ -46,6 +46,35 @@
   background-color: white;
   text-justify: inter-word;
 }
+
+.iconDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+@media (max-width: 750px) {
+  .contactDiv {
+    display: "flex";
+    flex-direction: column;
+  }
+  .iconDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+  }
+  .socialMediaDiv {
+    margin: 0;
+  }
+  .socialMediaIcon {
+    max-width: 2rem;
+    max-height: 2rem;
+  }
+}
+
 .aboutDiv2 {
   height: fit-content;
   width: 100%;

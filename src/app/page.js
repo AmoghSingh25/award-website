@@ -737,355 +737,339 @@ function HomePage() {
                   </Grid>
                 </Grid>
               </Box>
-
-              <Box
+            </Box>
+            <Box
+              sx={{
+                backgroundColor: "white",
+              }}
+            >
+              <Typography
+                variant="h4"
+                component="h1"
+                align="center"
                 sx={{
-                  backgroundColor: "white",
+                  color: "#373f6e",
+                  fontWeight: "bold",
+                  marginBottom: "1rem",
+                  paddingTop: "3rem",
+                }}
+                id="eligibility"
+              >
+                Eligibility
+              </Typography>
+              <ol
+                style={{
+                  color: "black",
+                  marginLeft: "6%",
                 }}
               >
-                <Typography
-                  variant="h4"
-                  component="h1"
-                  align="center"
-                  sx={{
-                    color: "#373f6e",
-                    fontWeight: "bold",
-                    marginBottom: "1rem",
-                    paddingTop: "3rem",
-                  }}
-                  id="eligibility"
-                >
-                  Eligibility
-                </Typography>
-                <ol
-                  style={{
-                    color: "black",
-                    marginLeft: "6%",
-                  }}
-                >
-                  <li>
-                    <Typography
-                      variant="body1"
-                      component="p"
-                      sx={{ padding: "1rem" }}
-                    >
-                      The awards will be open to teachers teaching in
-                      government/private schools across the state of Tamil Nadu
-                      only
-                    </Typography>
-                  </li>
-                  <li>
-                    <Typography
-                      variant="body1"
-                      component="p"
-                      sx={{ padding: "1rem" }}
-                    >
-                      Teachers who are a full-time teaching faculty in any
-                      affiliated educational institution in Tamil Nadu as on
-                      September 30, 2023, can apply for the Awards
-                    </Typography>
-                  </li>
-                  <li>
-                    <Typography
-                      variant="body1"
-                      component="p"
-                      sx={{ padding: "1rem" }}
-                    >
-                      Individual should have minimum 5 years of experience as a
-                      teacher as on September 30, 2023, to apply for the awards
-                    </Typography>
-                  </li>
-                  <li>
-                    <Typography
-                      variant="body1"
-                      component="p"
-                      sx={{ padding: "1rem" }}
-                    >
-                      Along with the journey, the teachers should highlight the
-                      work done by them as a teacher in the last two-year period
-                      i.e., October 01, 2021, to September 30, 2023
-                    </Typography>
-                  </li>
-                  <li>
-                    <Typography
-                      variant="body1"
-                      component="p"
-                      sx={{ padding: "1rem" }}
-                    >
-                      The teachers must submit a progress report highlight the
-                      outcome of the work done by them within the period i.e.,
-                      October 01, 2022, to September 30, 2023
-                    </Typography>
-                  </li>
-                  <li>
-                    <Typography
-                      variant="body1"
-                      component="p"
-                      sx={{ padding: "1rem" }}
-                    >
-                      Educational Administrators, Inspectors of Education, the
-                      staff of training Institutes and contractual teachers are
-                      not eligible for these awards.
-                    </Typography>
-                  </li>
-                  <li>
-                    <Typography
-                      variant="body1"
-                      component="p"
-                      sx={{ padding: "1rem" }}
-                    >
-                      Employees and immediate family members of BCCL/Organizers,
-                      Jury, sponsors, and partners of the awards are not allowed
-                      to participate in the Awards
-                    </Typography>
-                  </li>
-                  <li>
-                    <Typography
-                      variant="body1"
-                      component="p"
-                      sx={{ padding: "1rem" }}
-                    >
-                      The Jury holds the right to disqualify any application
-                      which does not meet the eligibility criteria. Jury&apos;s
-                      decisions are final and binding on all Participants and
-                      cannot be challenged in any manner whatsoever.
-                    </Typography>
-                  </li>
-                  <li>
-                    <Typography
-                      variant="body1"
-                      component="p"
-                      sx={{ padding: "1rem" }}
-                    >
-                      The Organizers may modify the eligibility criteria from
-                      time to time with retrospective effect.
-                    </Typography>
-                  </li>
-                </ol>
-              </Box>
-              <Box
+                <li>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    sx={{ padding: "1rem" }}
+                  >
+                    The awards will be open to teachers teaching in
+                    government/private schools across the state of Tamil Nadu
+                    only
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    sx={{ padding: "1rem" }}
+                  >
+                    Teachers who are a full-time teaching faculty in any
+                    affiliated educational institution in Tamil Nadu as on
+                    September 30, 2023, can apply for the Awards
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    sx={{ padding: "1rem" }}
+                  >
+                    Individual should have minimum 5 years of experience as a
+                    teacher as on September 30, 2023, to apply for the awards
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    sx={{ padding: "1rem" }}
+                  >
+                    Along with the journey, the teachers should highlight the
+                    work done by them as a teacher in the last two-year period
+                    i.e., October 01, 2021, to September 30, 2023
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    sx={{ padding: "1rem" }}
+                  >
+                    The teachers must submit a progress report highlight the
+                    outcome of the work done by them within the period i.e.,
+                    October 01, 2022, to September 30, 2023
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    sx={{ padding: "1rem" }}
+                  >
+                    Educational Administrators, Inspectors of Education, the
+                    staff of training Institutes and contractual teachers are
+                    not eligible for these awards.
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    sx={{ padding: "1rem" }}
+                  >
+                    Employees and immediate family members of BCCL/Organizers,
+                    Jury, sponsors, and partners of the awards are not allowed
+                    to participate in the Awards
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    sx={{ padding: "1rem" }}
+                  >
+                    The Jury holds the right to disqualify any application which
+                    does not meet the eligibility criteria. Jury&apos;s
+                    decisions are final and binding on all Participants and
+                    cannot be challenged in any manner whatsoever.
+                  </Typography>
+                </li>
+                <li>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    sx={{ padding: "1rem" }}
+                  >
+                    The Organizers may modify the eligibility criteria from time
+                    to time with retrospective effect.
+                  </Typography>
+                </li>
+              </ol>
+            </Box>
+            <Box
+              sx={{
+                backgroundColor: "#101627",
+              }}
+              id="jury"
+            >
+              <Typography
+                variant="h4"
+                component="h1"
+                align="center"
                 sx={{
-                  backgroundColor: "#101627",
-                }}
-                id="jury"
-              >
-                <Typography
-                  variant="h4"
-                  component="h1"
-                  align="center"
-                  sx={{
-                    color: "white",
-                    fontWeight: "bold",
-                    marginBottom: "1rem",
-                    paddingTop: "3rem",
-                  }}
-                >
-                  Grand Jury
-                </Typography>
-                <Typography
-                  variant="h4"
-                  component="p"
-                  sx={{
-                    color: "white",
-                    textAlign: "center",
-                    fontWeight: "bold",
-                    padding: "1rem",
-                  }}
-                >
-                  To be revealed
-                </Typography>
-              </Box>
-              <Box sx={{ backgroundColor: "white" }} id="faq">
-                <Typography
-                  variant="h4"
-                  component="h1"
-                  align="center"
-                  sx={{
-                    color: "black",
-                    fontWeight: "bold",
-                    marginBottom: "1rem",
-                    paddingTop: "3rem",
-                  }}
-                >
-                  FAQs
-                </Typography>
-                <FAQSection />
-              </Box>
-              <Box
-                sx={{
-                  py: 4,
-                  backgroundColor: "#101627",
                   color: "white",
+                  fontWeight: "bold",
+                  marginBottom: "1rem",
+                  paddingTop: "3rem",
+                }}
+              >
+                Grand Jury
+              </Typography>
+              <Typography
+                variant="h4"
+                component="p"
+                sx={{
+                  color: "white",
+                  textAlign: "center",
+                  fontWeight: "bold",
+                  padding: "1rem",
+                }}
+              >
+                To be revealed
+              </Typography>
+            </Box>
+            <Box sx={{ backgroundColor: "white" }} id="faq">
+              <Typography
+                variant="h4"
+                component="h1"
+                align="center"
+                sx={{
+                  color: "black",
+                  fontWeight: "bold",
+                  marginBottom: "1rem",
+                  paddingTop: "3rem",
+                }}
+              >
+                FAQs
+              </Typography>
+              <FAQSection />
+            </Box>
+            <Box
+              sx={{
+                py: 4,
+                backgroundColor: "#101627",
+                color: "white",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              id="contactus"
+            >
+              <Typography variant="h4" component="h1" align="center">
+                Contact us
+              </Typography>
+              <Typography
+                variant="body2"
+                component="h1"
+                align="center"
+                color="red"
+                px={2}
+                mb={2}
+              >
+                * Management shall take 4-5 working days to respond to queries
+                received
+              </Typography>
+              <Typography variant="h6" component="h1" align="center">
+                Monday - Friday <br /> 9 AM to 6 PM
+              </Typography>
+              <Box
+                sx={{
                   display: "flex",
-                  flexDirection: "column",
+                  flexDirection: "row",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
-                id="contactus"
+                className={styles.contactDiv}
               >
-                <Typography variant="h4" component="h1" align="center">
-                  Contact us
-                </Typography>
-                <Typography
-                  variant="body2"
-                  component="h1"
-                  align="center"
-                  color="red"
-                  width="90vh"
-                  mb={2}
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    mt: 4,
+                    mx: "auto",
+                    overflowWrap: "anywhere",
+                  }}
                 >
-                  * Management shall take 4-5 working days to respond to queries
-                  received
-                </Typography>
-                <Typography variant="h6" component="h1" align="center">
-                  Monday - Friday <br /> 9 AM to 6 PM
-                </Typography>
-                <Typography display="flex" flexDirection="row">
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    color="white"
+                    fontSize="3vh"
+                  />
                   <Typography
+                    variant="body1"
                     component="h1"
-                    display="flex"
-                    flexDirection="row"
-                    md={{
-                      display: "flex",
-                      flexDirection: "column",
+                    sx={{
+                      color: "white",
+                      fontWeight: "bold",
+                      mx: "1rem",
                     }}
                   >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        mt: 4,
-                        mx: "auto",
-                        overflowWrap: "anywhere",
-                      }}
-                    >
-                      <FontAwesomeIcon
-                        icon={faEnvelope}
-                        color="white"
-                        fontSize="3vh"
-                      />
-                      <Typography
-                        variant="body1"
-                        component="h1"
-                        sx={{
-                          color: "white",
-                          fontWeight: "bold",
-                          mx: "1rem",
-                        }}
-                      >
-                        <a href="mailto:timeseduex2023@gmail.com">
-                          timeseduex2023@gmail.com
-                        </a>
-                      </Typography>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        mt: 4,
-                      }}
-                    >
-                      <FontAwesomeIcon
-                        icon={faPhone}
-                        color="white"
-                        fontSize="3vh"
-                      />
-                      <Typography
-                        variant="body1"
-                        component="h1"
-                        sx={{
-                          color: "white",
-                          fontWeight: "bold",
-                          mx: "1rem",
-                        }}
-                      >
-                        <a href="tel:+919962053587">+91 9962053587</a>
-                      </Typography>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        mt: 4,
-                      }}
-                    >
-                      <SocialIcon url="https://www.whatsapp.com/" />
-                      <Typography
-                        variant="body1"
-                        component="h1"
-                        sx={{
-                          color: "white",
-                          fontWeight: "bold",
-                          mx: "1rem",
-                        }}
-                      >
-                        <a href="whatsapp://send?phone=+919962053587">
-                          +91 9962053587
-                        </a>
-                      </Typography>
-                    </Box>
+                    <a href="mailto:timeseduex2023@gmail.com">
+                      timeseduex2023@gmail.com
+                    </a>
                   </Typography>
-                </Typography>
-                {/* <Typography variant="h2" component="h6" align="center">
-                  VIT Chennai Social Media Handles
-                </Typography> */}
-              </Box>
-              <Box>
-                <Typography
-                  component="h4"
-                  display="flex"
-                  flexDirection="row"
-                  md={{
-                    display: "flex",
-                    flexDirection: "row",
-                  }}
+                </Box>
+                <Box
                   sx={{
-                    paddingBottom: "1rem",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    mt: 4,
                   }}
                 >
-                  <SocialMediaLink
-                    color="black"
-                    link="https://www.facebook.com/VITCChennai"
-                    label="VITC Facebook"
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    color="white"
+                    fontSize="3vh"
                   />
-                  <SocialMediaLink
-                    color="black"
-                    link="https://twitter.com/ChennaiVit"
-                    label="VITC Twitter"
-                  />
-                  <SocialMediaLink
-                    color="black"
-                    link="https://www.linkedin.com/company/vitchennai"
-                    label="VITC LinkedIn"
-                  />
-                  <SocialMediaLink
-                    color="black"
-                    link="https://www.youtube.com/c/VITChennaic"
-                    label="VITC YouTube"
-                  />{" "}
-                  <SocialMediaLink
-                    color="black"
-                    link="https://www.instagram.com/vit.chennai/"
-                    label="VITC Instagram"
-                  />
-                  <SocialMediaLink
-                    color="black"
-                    link="https://www.threads.net/@vit.chennai"
-                    label="VITC Threads"
-                    icon={faThreads}
-                    fontSize="2rem"
-                  />
-                  <SocialMediaLink
-                    color="black"
-                    link="https://www.whatsapp.com/channel/0029Va7NRhG4inoyNS6z9w28 "
-                    label="VITC Whatsapp"
-                  />
-                </Typography>
+                  <Typography
+                    variant="body1"
+                    component="h1"
+                    sx={{
+                      color: "white",
+                      fontWeight: "bold",
+                      mx: "1rem",
+                    }}
+                  >
+                    <a href="tel:+919962053587">+91 9962053587</a>
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    mt: 4,
+                  }}
+                >
+                  <SocialIcon url="https://www.whatsapp.com/" />
+                  <Typography
+                    variant="body1"
+                    component="h1"
+                    sx={{
+                      color: "white",
+                      fontWeight: "bold",
+                      mx: "1rem",
+                    }}
+                  >
+                    <a href="whatsapp://send?phone=+919962053587">
+                      +91 9962053587
+                    </a>
+                  </Typography>
+                </Box>
               </Box>
+              {/* <Typography variant="h2" component="h6" align="center">
+                  VIT Chennai Social Media Handles
+                </Typography> */}
             </Box>
+            <div className={styles.iconDiv}>
+              <SocialMediaLink
+                color="black"
+                link="https://www.facebook.com/VITCChennai"
+                label="VITC Facebook"
+              />
+              <SocialMediaLink
+                color="black"
+                link="https://twitter.com/ChennaiVit"
+                label="VITC Twitter"
+              />
+              <SocialMediaLink
+                color="black"
+                link="https://www.linkedin.com/company/vitchennai"
+                label="VITC LinkedIn"
+              />
+              <SocialMediaLink
+                color="black"
+                link="https://www.youtube.com/c/VITChennaic"
+                label="VITC YouTube"
+              />{" "}
+              <SocialMediaLink
+                color="black"
+                link="https://www.instagram.com/vit.chennai/"
+                label="VITC Instagram"
+              />
+              <SocialMediaLink
+                color="black"
+                link="https://www.threads.net/@vit.chennai"
+                label="VITC Threads"
+                icon={faThreads}
+                fontSize="2rem"
+              />
+              <SocialMediaLink
+                color="black"
+                link="https://www.whatsapp.com/channel/0029Va7NRhG4inoyNS6z9w28 "
+                label="VITC Whatsapp"
+              />
+            </div>
           </div>
         </div>
       </>
@@ -1105,29 +1089,20 @@ const SocialMediaLink = ({
   <Box
     sx={{
       display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      mt: 4,
-      mx: "auto",
+      mt: "2%",
       overflowWrap: "anywhere",
+      mx: "1%",
     }}
+    className={styles.socialMediaDiv}
   >
     {icon && <FontAwesomeIcon icon={icon} color={color} fontSize={fontSize} />}
     {!icon && (
-      <SocialIcon url={link} target="_blank" rel="noopener noreferrer" />
+      <SocialIcon
+        url={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.socialMediaIcon}
+      />
     )}
-    <Typography
-      variant="body1"
-      component="h1"
-      sx={{
-        color: { color },
-        fontWeight: "bold",
-        mx: "1rem",
-      }}
-    >
-      <a href={link} target="_blank" rel="noopener noreferrer">
-        {label}
-      </a>
-    </Typography>
   </Box>
 );
