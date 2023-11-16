@@ -8,16 +8,8 @@ import FAQSection from "src/components/faqSection.js";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SocialIcon } from "react-social-icons";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
-import {
-  faWhatsapp,
-  faFacebook,
-  faTwitter,
-  faYoutube,
-  faInstagram,
-  faThreads,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
@@ -1019,11 +1011,7 @@ function HomePage() {
                         mt: 4,
                       }}
                     >
-                      <FontAwesomeIcon
-                        icon={faWhatsapp}
-                        color="white"
-                        fontSize="4vh"
-                      />
+                      <SocialIcon url="https://www.whatsapp.com/" />
                       <Typography
                         variant="body1"
                         component="h1"
@@ -1043,81 +1031,55 @@ function HomePage() {
                 {/* <Typography variant="h2" component="h6" align="center">
                   VIT Chennai Social Media Handles
                 </Typography> */}
+              </Box>
+              <Box>
                 <Typography
-                  component="h1"
+                  component="h4"
                   display="flex"
                   flexDirection="row"
                   md={{
                     display: "flex",
-                    flexDirection: "column",
+                    flexDirection: "row",
+                  }}
+                  sx={{
+                    paddingBottom: "1rem",
                   }}
                 >
-                  <Typography
-                    component="h1"
-                    display="flex"
-                    flexDirection="column"
-                  >
-                    <SocialMediaLink
-                      icon={faFacebook}
-                      color="white"
-                      link="https://www.facebook.com/VITCChennai"
-                      label="VITC Facebook"
-                    />
-                    <SocialMediaLink
-                      icon={faTwitter}
-                      color="white"
-                      link="https://twitter.com/ChennaiVit"
-                      label="VITC Twitter"
-                    />{" "}
-                  </Typography>
-                  <Typography
-                    component="h1"
-                    display="flex"
-                    flexDirection="column"
-                  >
-                    <SocialMediaLink
-                      icon={faLinkedin}
-                      color="white"
-                      link="https://www.linkedin.com/company/vitchennai"
-                      label="VITC LinkedIn"
-                    />
-                    <SocialMediaLink
-                      icon={faYoutube}
-                      color="white"
-                      link="https://www.youtube.com/c/VITChennaic"
-                      label="VITC YouTube"
-                    />{" "}
-                  </Typography>
-                  <Typography
-                    component="h1"
-                    display="flex"
-                    flexDirection="column"
-                  >
-                    <SocialMediaLink
-                      icon={faInstagram}
-                      color="white"
-                      link="https://www.instagram.com/vit.chennai/"
-                      label="VITC Instagram"
-                    />
-                    <SocialMediaLink
-                      icon={faThreads}
-                      color="white"
-                      link="https://www.threads.net/@vit.chennai"
-                      label="VITC Threads"
-                    />{" "}
-                  </Typography>
-                  <Typography
-                    component="h1"
-                    display="flex"
-                    flexDirection="column"
-                  >
-                    <SocialMediaLink
-                      icon={faWhatsapp}
-                      color="white"
-                      link="https://www.whatsapp.com/channel/0029Va7NRhG4inoyNS6z9w28 "
-                      label="VITC Whatsapp"
-                    />
-                  </Typography>
+                  <SocialMediaLink
+                    color="black"
+                    link="https://www.facebook.com/VITCChennai"
+                    label="VITC Facebook"
+                  />
+                  <SocialMediaLink
+                    color="black"
+                    link="https://twitter.com/ChennaiVit"
+                    label="VITC Twitter"
+                  />
+                  <SocialMediaLink
+                    color="black"
+                    link="https://www.linkedin.com/company/vitchennai"
+                    label="VITC LinkedIn"
+                  />
+                  <SocialMediaLink
+                    color="black"
+                    link="https://www.youtube.com/c/VITChennaic"
+                    label="VITC YouTube"
+                  />{" "}
+                  <SocialMediaLink
+                    color="black"
+                    link="https://www.instagram.com/vit.chennai/"
+                    label="VITC Instagram"
+                  />
+                  <SocialMediaLink
+                    color="black"
+                    link="https://www.threads.net/@vit.chennai"
+                    label="VITC Threads"
+                  />
+                  <SocialMediaLink
+                    color="black"
+                    link="https://www.whatsapp.com/channel/0029Va7NRhG4inoyNS6z9w28 "
+                    label="VITC Whatsapp"
+                  />
                 </Typography>
               </Box>
             </Box>
@@ -1140,12 +1102,12 @@ const SocialMediaLink = ({ icon, color, fontSize, link, label }) => (
       overflowWrap: "anywhere",
     }}
   >
-    <FontAwesomeIcon icon={icon} color={color} fontSize={fontSize} />
+    <SocialIcon url={link} target="_blank" rel="noopener noreferrer" />
     <Typography
       variant="body1"
       component="h1"
       sx={{
-        color: "white",
+        color: { color },
         fontWeight: "bold",
         mx: "1rem",
       }}
