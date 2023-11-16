@@ -55,9 +55,16 @@
   padding: 10px;
 }
 
+.contactDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 750px) {
   .contactDiv {
-    display: "flex";
+    display: flex;
     flex-direction: column;
   }
   .iconDiv {
