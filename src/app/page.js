@@ -9,7 +9,15 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
-import { faWhatsapp, faFacebook,faTwitter, faYoutube, faInstagram, faThreads, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faWhatsapp,
+  faFacebook,
+  faTwitter,
+  faYoutube,
+  faInstagram,
+  faThreads,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
@@ -51,7 +59,7 @@ function HomePage() {
         <div
           style={{
             zIndex: -1,
-            paddingTop: "4rem",
+            paddingTop: "6rem",
             marginLeft: "1rem",
             marginRight: "1rem",
             backgroundColor: "white",
@@ -197,8 +205,12 @@ function HomePage() {
                   and moral principles to achieve its vision and mission of
                   enriching the learning process learning process for the future
                   leaders of our society. For more details, please visit{" "}
-                  <a href="https://chennai.vit.ac.in/" target="_blank">
-                    our website
+                  <a
+                    href="https://chennai.vit.ac.in/"
+                    target="_blank"
+                    style={{ color: "blue" }}
+                  >
+                    our website.
                   </a>
                 </Typography>
               </Box>
@@ -397,20 +409,23 @@ function HomePage() {
                   spacing={2}
                   sx={{
                     mx: "5%",
-                    border: "1px solid black",
-                    mt: "5%",
+                    mb: "3%",
+                    mt: "2%",
                     backgroundColor: "white",
+                    borderRadius: "1rem",
                   }}
                 >
                   <Grid
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      backgroundColor: "#4b5ed7",
+                      borderRadius: "1rem 0 0 0",
+                      borderRight: "2px solid black",
                     }}
                   >
                     <Typography
@@ -420,7 +435,7 @@ function HomePage() {
                       sx={{
                         fontWeight: "bold",
                         wordWrap: "break-word",
-                        color: "black",
+                        color: "white",
                         justifyContent: "center",
                       }}
                     >
@@ -431,11 +446,12 @@ function HomePage() {
                     item
                     xs={10}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      backgroundColor: "#4b5ed7",
+                      borderRadius: "0 1rem 0 0",
                     }}
                   >
                     <Typography
@@ -444,7 +460,7 @@ function HomePage() {
                       sx={{
                         fontWeight: "bold",
                         textAlign: "center",
-                        color: "black",
+                        color: "white",
                         wordWrap: "break-word",
                       }}
                     >
@@ -456,11 +472,11 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      borderRight: "2px solid black",
                     }}
                   >
                     <Typography
@@ -479,7 +495,6 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
@@ -502,7 +517,6 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
@@ -526,7 +540,6 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
@@ -549,7 +562,6 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
@@ -572,7 +584,6 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
@@ -595,11 +606,12 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      pb: "2rem",
+                      borderRight: "2px solid black",
                     }}
                   >
                     <Typography
@@ -618,11 +630,11 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      pb: "2rem",
                     }}
                   >
                     <Typography
@@ -641,11 +653,11 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      pb: "2rem",
                     }}
                   >
                     <Typography
@@ -664,11 +676,11 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      pb: "2rem",
                     }}
                   >
                     <Typography
@@ -688,11 +700,11 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      pb: "2rem",
                     }}
                   >
                     <Typography
@@ -711,11 +723,11 @@ function HomePage() {
                     item
                     xs={2}
                     sx={{
-                      border: "1px solid black",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      pb: "2rem",
                     }}
                   >
                     <Typography
@@ -724,7 +736,6 @@ function HomePage() {
                       sx={{
                         color: "black",
                         fontWeight: "bold",
-
                         textAlign: "center",
                       }}
                     >
@@ -937,10 +948,15 @@ function HomePage() {
                   Monday - Friday <br /> 9 AM to 6 PM
                 </Typography>
                 <Typography display="flex" flexDirection="row">
-                  <Typography component="h1" display="flex" flexDirection="row" md={{
-                        display: "flex",
-                        flexDirection: "column",
-                 }} >
+                  <Typography
+                    component="h1"
+                    display="flex"
+                    flexDirection="row"
+                    md={{
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
                     <Box
                       sx={{
                         display: "flex",
@@ -1024,18 +1040,19 @@ function HomePage() {
                     </Box>
                   </Typography>
                 </Typography>
-                 {/* <Typography variant="h2" component="h6" align="center">
+                {/* <Typography variant="h2" component="h6" align="center">
                   VIT Chennai Social Media Handles
                 </Typography> */}
                 <Typography
-                    component="h1"
-                    display="flex"
-                    flexDirection="row" md={{
-                        display: "flex",
-                        flexDirection: "column",
-                      }}
-                  >
-                                      <Typography
+                  component="h1"
+                  display="flex"
+                  flexDirection="row"
+                  md={{
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Typography
                     component="h1"
                     display="flex"
                     flexDirection="column"
@@ -1043,18 +1060,17 @@ function HomePage() {
                     <SocialMediaLink
                       icon={faFacebook}
                       color="white"
-                
                       link="https://www.facebook.com/VITCChennai"
                       label="VITC Facebook"
                     />
                     <SocialMediaLink
                       icon={faTwitter}
                       color="white"
-                     
                       link="https://twitter.com/ChennaiVit"
                       label="VITC Twitter"
-                    /> </Typography>
-                          <Typography
+                    />{" "}
+                  </Typography>
+                  <Typography
                     component="h1"
                     display="flex"
                     flexDirection="column"
@@ -1062,18 +1078,17 @@ function HomePage() {
                     <SocialMediaLink
                       icon={faLinkedin}
                       color="white"
-              
                       link="https://www.linkedin.com/company/vitchennai"
                       label="VITC LinkedIn"
                     />
                     <SocialMediaLink
                       icon={faYoutube}
                       color="white"
-             
                       link="https://www.youtube.com/c/VITChennaic"
                       label="VITC YouTube"
-      />  </Typography>
-                          <Typography
+                    />{" "}
+                  </Typography>
+                  <Typography
                     component="h1"
                     display="flex"
                     flexDirection="column"
@@ -1081,18 +1096,17 @@ function HomePage() {
                     <SocialMediaLink
                       icon={faInstagram}
                       color="white"
-                
                       link="https://www.instagram.com/vit.chennai/"
                       label="VITC Instagram"
                     />
                     <SocialMediaLink
                       icon={faThreads}
                       color="white"
-              
                       link="https://www.threads.net/@vit.chennai"
                       label="VITC Threads"
-                    /> </Typography>
-                          <Typography
+                    />{" "}
+                  </Typography>
+                  <Typography
                     component="h1"
                     display="flex"
                     flexDirection="column"
@@ -1100,11 +1114,11 @@ function HomePage() {
                     <SocialMediaLink
                       icon={faWhatsapp}
                       color="white"
-                     
                       link="https://www.whatsapp.com/channel/0029Va7NRhG4inoyNS6z9w28 "
                       label="VITC Whatsapp"
-      /></Typography>
+                    />
                   </Typography>
+                </Typography>
               </Box>
             </Box>
           </div>

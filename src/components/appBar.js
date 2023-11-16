@@ -58,7 +58,13 @@ function ResponsiveAppBar() {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "flex", md: "none" },
+                flexDirection: "row",
+              }}
+            >
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -101,24 +107,15 @@ function ResponsiveAppBar() {
                   </MenuItem>
                 ))}
               </Menu>
-              <div
+              <Image
+                src="/images/logo1.jpg"
+                alt="Times EduEx Awards"
+                width={100}
+                height={100}
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "row",
+                  margin: "auto",
                 }}
-              >
-                <Image
-                  src="/images/logo1.jpg"
-                  alt="Times EduEx Awards"
-                  width={100}
-                  height={100}
-                  style={{
-                    margin: "auto",
-                  }}
-                />
-              </div>
+              />
             </Box>
             {/* <Typography
               variant="h5"
