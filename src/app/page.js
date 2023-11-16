@@ -13,6 +13,8 @@ import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
+import { Grid } from "@mui/material";
+import { faThreads } from "@fortawesome/free-brands-svg-icons";
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -24,8 +26,6 @@ let themeHeader = createTheme({
 });
 
 themeHeader = responsiveFontSizes(themeHeader);
-
-import Grid from "@mui/material/Unstable_Grid2";
 
 function HomePage() {
   useEffect(() => {
@@ -405,6 +405,7 @@ function HomePage() {
                     mt: "2%",
                     backgroundColor: "white",
                     borderRadius: "1rem",
+                    width: "90%",
                   }}
                 >
                   <Grid
@@ -1074,6 +1075,8 @@ function HomePage() {
                     color="black"
                     link="https://www.threads.net/@vit.chennai"
                     label="VITC Threads"
+                    icon={faThreads}
+                    fontSize="2rem"
                   />
                   <SocialMediaLink
                     color="black"
@@ -1091,7 +1094,14 @@ function HomePage() {
 }
 
 export default HomePage;
-const SocialMediaLink = ({ icon, color, fontSize, link, label }) => (
+const SocialMediaLink = ({
+  icon,
+  color,
+  fontSize,
+  link,
+  label,
+  fontAwesome,
+}) => (
   <Box
     sx={{
       display: "flex",
@@ -1102,7 +1112,10 @@ const SocialMediaLink = ({ icon, color, fontSize, link, label }) => (
       overflowWrap: "anywhere",
     }}
   >
-    <SocialIcon url={link} target="_blank" rel="noopener noreferrer" />
+    {icon && <FontAwesomeIcon icon={icon} color={color} fontSize={fontSize} />}
+    {!icon && (
+      <SocialIcon url={link} target="_blank" rel="noopener noreferrer" />
+    )}
     <Typography
       variant="body1"
       component="h1"
