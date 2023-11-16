@@ -51,9 +51,10 @@ function HomePage() {
         <div
           style={{
             zIndex: -1,
-            marginTop: "1rem",
+            paddingTop: "4rem",
             marginLeft: "1rem",
             marginRight: "1rem",
+            backgroundColor: "white",
           }}
         >
           <div
@@ -63,7 +64,31 @@ function HomePage() {
             }}
           >
             <div>
-              <Carousel autoPlay={false} infiniteLoop={true} showThumbs={false}>
+              <Carousel
+                autoPlay={true}
+                infiniteLoop={true}
+                showThumbs={false}
+                interval={4000}
+                stopOnHover={false}
+              >
+                <div
+                  style={{
+                    width: "100%",
+                    maxHeight: "fit-content",
+                  }}
+                >
+                  <Image
+                    src="/banner.jpg"
+                    width={1280}
+                    height={800}
+                    alt=""
+                    style={{
+                      objectFit: "cover",
+                      height: "fit-content",
+                      maxHeight: "90vh",
+                    }}
+                  />
+                </div>
                 <div
                   style={{
                     width: "100%",
@@ -89,7 +114,7 @@ function HomePage() {
                   }}
                 >
                   <Image
-                    src="/static/5.jpg"
+                    src="/static/4.jpg"
                     width={1280}
                     height={800}
                     alt=""
@@ -136,28 +161,48 @@ function HomePage() {
                     }}
                   />
                 </div>
-                <div
-                  style={{
-                    width: "100%",
-                    maxHeight: "fit-content",
-                  }}
-                >
-                  <Image
-                    src="/static/4.jpg"
-                    width={1280}
-                    alt=""
-                    height={800}
-                    style={{
-                      objectFit: "cover",
-                      height: "fit-content",
-                      maxHeight: "90vh",
-                    }}
-                  />
-                </div>
               </Carousel>
             </div>
-
             <Box id="about">
+              <Box className={styles.aboutDiv2}>
+                <Typography
+                  variant="h4"
+                  component="h1"
+                  sx={{
+                    color: "#373f6e ",
+                    fontWeight: "bold",
+                    marginBottom: "1rem",
+                    textAlign: "center",
+                  }}
+                >
+                  About VIT Chennai
+                </Typography>
+                <Typography
+                  variant="h6"
+                  component="h1"
+                  sx={{
+                    color: "101627",
+                    textAlign: "justify",
+                  }}
+                >
+                  {" "}
+                  VIT Chennai, one of the leading engineering colleges in India,
+                  offers the best exposure in terms of world class education,
+                  internship opportunities, top-notch placement opportunities,
+                  and infrastructural amenities. We ensure that the graduates
+                  walk out with many skills and learning. We provide an
+                  environment for attaining technical mastery and honing
+                  interpretive and analytical skills, which is the need of the
+                  hour. VIT Chennai, fosters holistic growth rooted in ethical
+                  and moral principles to achieve its vision and mission of
+                  enriching the learning process learning process for the future
+                  leaders of our society. For more details, please visit{" "}
+                  <a href="https://chennai.vit.ac.in/" target="_blank">
+                    our website
+                  </a>
+                </Typography>
+              </Box>
+
               <Box className={styles.aboutDiv}>
                 <Typography
                   variant="h4"
@@ -191,88 +236,11 @@ function HomePage() {
                   motivate them to perform better than before.
                 </Typography>
               </Box>
-              <Box className={styles.aboutDiv2}>
-                <Typography
-                  variant="h4"
-                  component="h1"
-                  sx={{
-                    color: "#373f6e ",
-                    fontWeight: "bold",
-                    marginBottom: "1rem",
-                    textAlign: "center",
-                  }}
-                >
-                  About Vellore Institute of Technology
-                </Typography>
-                <Typography
-                  variant="h6"
-                  component="h1"
-                  sx={{
-                    color: "101627",
-                    textAlign: "justify",
-                  }}
-                >
-                  {" "}
-                  VIT Chennai, one of the leading engineering colleges in India,
-                  offers the best exposure in terms of world class education,
-                  internship opportunities, top-notch placement opportunities,
-                  and infrastructural amenities. We ensure that the graduates
-                  walk out with many skills and learning. We provide an
-                  environment for attaining technical mastery and honing
-                  interpretive and analytical skills, which is the need of the
-                  hour. VIT Chennai, fosters holistic growth rooted in ethical
-                  and moral principles to achieve its vision and mission of
-                  enriching the learning process learning process for the future
-                  leaders of our society.
-                  <br /> VIT was established in 1984 as a self-financing
-                  institution called the Vellore Engineering College under
-                  Section 3 of the University Grants Commission (UGC) Act, 1956.
-                  VIT Chennai was established in 2010. Dr G. Viswanathan, is a
-                  former parliamentarian and a profound minister in Tamil Nadu
-                  Government. Mr Sankar Viswanathan, Dr Sekar Viswanathan, and
-                  Mr G.V Selvam are the Vice Presidents of our institute.
-                  <br /> VIT Chennai offers 21 Undergraduate, 19 Postgraduate,
-                  02 Integrated M. Tech and Research programmes. In addition,
-                  full-time PhD in Engineering, Law, Management, Science and
-                  Languages, along with direct PhD programmes are offered. The
-                  faculties have exceptional skills in training students. They
-                  possess a perfect blend of knowledge, industry experience and
-                  research skills.
-                  <br /> VIT Chennai, the top engineering college in India, aims
-                  to provide a world-class education that imbibes strong ethical
-                  values in our students to gain a competitive edge over others.
-                  Our mission is to maintain an intellectually stimulating
-                  environment for students to learn professional ethics and push
-                  them out of their comfort zones to reach heights of success.
-                  <br /> At VIT Chennai we believe in fostering an environment
-                  that helps to brainstorm creative ideas and be the place where
-                  students find their voice. We offer an array of student- led
-                  clubs that help to create, nurture and display talent and also
-                  serve as a recreational space for students. The club also
-                  involves students in important societal causes. to display
-                  their talents and get involved with important causes. At
-                  present, there are 140 + clubs and chapters present on campus.
-                  The infrastructural amenities in the campus are top-notch and
-                  will continue to grow immensely in the upcoming years. These
-                  constant efforts make VIT the top engineering college in
-                  India.
-                  <br />
-                  <br />{" "}
-                  <p style={{ fontWeight: "bold", textAlign: "center" }}>
-                    {" "}
-                    Placement Opportunities and Counselling
-                  </p>
-                  <br /> We place students in top-notch reputed companies
-                  offering a wide range of exposures which equip them for their
-                  future. We hold the records of highest number of recruitments
-                  through placements. We offer international internship
-                  opportunities as well.
-                </Typography>
-              </Box>
             </Box>
+
             <Box id="Partners">
               <Typography
-                variant="h4"
+                variant="h6"
                 component="h1"
                 sx={{
                   color: "#373f6e ",
@@ -280,7 +248,7 @@ function HomePage() {
                   textAlign: "center",
                 }}
               >
-                Brought to you by
+                <br /> Brought to you by
               </Typography>
               <Grid container sx={{ mx: 2 }}>
                 <Grid
@@ -329,7 +297,7 @@ function HomePage() {
                   <Image
                     src="/static/TOI.jpg"
                     alt="TOI"
-                    width={640}
+                    width={240}
                     height={360}
                     style={{
                       objectFit: "cover",
@@ -379,7 +347,7 @@ function HomePage() {
                 }}
               >
                 <Typography
-                  variant="h4"
+                  variant="h6"
                   component="h1"
                   sx={{
                     color: "#373f6e ",
@@ -394,7 +362,7 @@ function HomePage() {
                   src="/static/EY.png"
                   alt="VIT"
                   width={640}
-                  height={360}
+                  height={60}
                   style={{
                     objectFit: "cover",
                     height: "fit-content",
@@ -407,7 +375,7 @@ function HomePage() {
               <Box
                 sx={{
                   backgroundColor: "#101627",
-                  paddingBottom: "3rem",
+                  paddingBottom: "1rem",
                   wordWrap: "break-word",
                   wordBreak: "break-word",
                 }}
@@ -422,7 +390,7 @@ function HomePage() {
                     paddingTop: "3rem",
                   }}
                 >
-                  Categories
+                  Award Categories
                 </Typography>
                 <Grid
                   container
@@ -439,392 +407,329 @@ function HomePage() {
                     xs={2}
                     sx={{
                       border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    <Box
+                    <Typography
+                      variant="h5"
+                      component="h1"
+                      align="center"
                       sx={{
-                        display: "flex",
-                        alignItems: "center",
+                        fontWeight: "bold",
+                        wordWrap: "break-word",
+                        color: "black",
                         justifyContent: "center",
-                        overflowWrap: "break-word",
                       }}
                     >
-                      <Typography
-                        variant="h5"
-                        component="h1"
-                        align="center"
-                        sx={{
-                          fontWeight: "bold",
-                          wordWrap: "break-word",
-                          color: "black",
-                        }}
-                      >
-                        Segment
-                      </Typography>
-                    </Box>
+                      Segment
+                    </Typography>
                   </Grid>
                   <Grid
                     item
                     xs={10}
                     sx={{
                       border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    <Box
+                    <Typography
+                      variant="h5"
+                      component="h1"
                       sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        color: "black",
+                        wordWrap: "break-word",
                       }}
                     >
-                      <Typography
-                        variant="h5"
-                        component="h1"
-                        sx={{
-                          fontWeight: "bold",
-                          textAlign: "center",
-                          color: "black",
-                          wordWrap: "break-word",
-                        }}
-                      >
-                        Teacher Experience
-                        <br />
-                        5-15 Years
-                        <br />
-                        15-25 Years
-                        <br />
-                        More than 25 Years
-                      </Typography>
-                    </Box>
+                      Teaching Experience <br /> 5-15 Years / 15-25 Years / More
+                      than 25 Years
+                    </Typography>
                   </Grid>
                   <Grid
                     item
                     xs={2}
                     sx={{
                       border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    <Box
+                    <Typography
+                      variant="h5"
+                      component="h1"
                       sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        color: "black",
                       }}
                     >
-                      <Typography
-                        variant="h5"
-                        component="h1"
-                        sx={{
-                          fontWeight: "bold",
-                          textAlign: "center",
-                          color: "black",
-                        }}
-                      >
-                        For Grade 10
-                      </Typography>
-                    </Box>
+                      For Grade 10
+                    </Typography>
                   </Grid>
                   <Grid
                     item
                     xs={2}
                     sx={{
                       border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    <Box
+                    <Typography
+                      variant="h6"
+                      component="h1"
                       sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        color: "black",
                       }}
                     >
-                      <Typography
-                        variant="h6"
-                        component="h1"
-                        sx={{
-                          textAlign: "center",
-                          fontWeight: "bold",
+                      English
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={2}
+                    sx={{
+                      border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      component="h1"
+                      sx={{
+                        textAlign: "center",
+                        fontWeight: "bold",
 
-                          color: "black",
-                        }}
-                      >
-                        English
-                      </Typography>
-                    </Box>
+                        color: "black",
+                      }}
+                    >
+                      Regional
+                    </Typography>
                   </Grid>
                   <Grid
                     item
                     xs={2}
                     sx={{
                       border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    <Box
+                    <Typography
+                      variant="h6"
+                      component="h1"
                       sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        textAlign: "center",
+                        color: "black",
+                        fontWeight: "bold",
                       }}
                     >
-                      <Typography
-                        variant="h6"
-                        component="h1"
-                        sx={{
-                          textAlign: "center",
-                          fontWeight: "bold",
+                      Mathematics
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={2}
+                    sx={{
+                      border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      component="h1"
+                      sx={{
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        color: "black",
+                      }}
+                    >
+                      Science
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={2}
+                    sx={{
+                      border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      component="h1"
+                      sx={{
+                        textAlign: "center",
+                        color: "black",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Social studies (History, Geography, Civics, and Economics)
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={2}
+                    sx={{
+                      border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h5"
+                      component="h1"
+                      sx={{
+                        fontWeight: "bold",
+                        textAlign: "center",
+                        color: "black",
+                      }}
+                    >
+                      For Grade 12
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={2}
+                    sx={{
+                      border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      component="h1"
+                      sx={{
+                        textAlign: "center",
+                        color: "black",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Mathematics
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={2}
+                    sx={{
+                      border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      component="h1"
+                      sx={{
+                        textAlign: "center",
+                        color: "black",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Physics
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={2}
+                    sx={{
+                      border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      component="h1"
+                      color="white"
+                      sx={{
+                        textAlign: "center",
+                        color: "black",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Chemistry
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={2}
+                    sx={{
+                      border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      component="h1"
+                      sx={{
+                        textAlign: "center",
+                        color: "black",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Biology
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={2}
+                    sx={{
+                      border: "1px solid black",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      component="h1"
+                      sx={{
+                        color: "black",
+                        fontWeight: "bold",
 
-                          color: "black",
-                        }}
-                      >
-                        Regional
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      border: "1px solid black",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        textAlign: "center",
                       }}
                     >
-                      <Typography
-                        variant="h6"
-                        component="h1"
-                        sx={{
-                          textAlign: "center",
-                          color: "black",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Mathematics
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      border: "1px solid black",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        component="h1"
-                        sx={{
-                          textAlign: "center",
-                          fontWeight: "bold",
-                          color: "black",
-                        }}
-                      >
-                        Science
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      border: "1px solid black",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        component="h1"
-                        sx={{
-                          textAlign: "center",
-                          color: "black",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Social studies (History, Geography, Civics, and
-                        Economics)
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      border: "1px solid black",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h5"
-                        component="h1"
-                        sx={{
-                          fontWeight: "bold",
-                          textAlign: "center",
-                          color: "black",
-                        }}
-                      >
-                        For Grade 12
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      border: "1px solid black",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        component="h1"
-                        sx={{
-                          textAlign: "center",
-                          color: "black",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Mathematics
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      border: "1px solid black",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        component="h1"
-                        sx={{
-                          textAlign: "center",
-                          color: "black",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Physics
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      border: "1px solid black",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        component="h1"
-                        color="white"
-                        sx={{
-                          textAlign: "center",
-                          color: "black",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Chemistry
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      border: "1px solid black",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        component="h1"
-                        sx={{
-                          textAlign: "center",
-                          color: "black",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Biology
-                      </Typography>
-                    </Box>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      border: "1px solid black",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        component="h1"
-                        sx={{
-                          color: "black",
-                          fontWeight: "bold",
-
-                          textAlign: "center",
-                        }}
-                      >
-                        Computer Science
-                      </Typography>
-                    </Box>
+                      Computer Science
+                    </Typography>
                   </Grid>
                 </Grid>
               </Box>
@@ -1014,7 +919,7 @@ function HomePage() {
                 }}
                 id="contactus"
               >
-                <Typography variant="h2" component="h1" align="center">
+                <Typography variant="h4" component="h1" align="center">
                   Contact us
                 </Typography>
                 <Typography
@@ -1022,14 +927,14 @@ function HomePage() {
                   component="h1"
                   align="center"
                   color="red"
-                  width="30vh"
+                  width="90vh"
                   mb={2}
                 >
                   * Management shall take 4-5 working days to respond to queries
                   received
                 </Typography>
                 <Typography variant="h6" component="h1" align="center">
-                  Monday - Friday <br /> 9am to 6pm
+                  Monday - Friday <br /> 9 AM to 6 PM
                 </Typography>
                 <Typography display="flex" flexDirection="row">
                   <Typography component="h1" display="flex" flexDirection="row" md={{

@@ -58,22 +58,6 @@ function ResponsiveAppBar() {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                color: "white",
-              }}
-            >
-              Times Edu Ex Awards
-            </Typography>
-
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
@@ -85,6 +69,7 @@ function ResponsiveAppBar() {
               >
                 <MenuIcon />
               </IconButton>
+
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorElNav}
@@ -116,8 +101,26 @@ function ResponsiveAppBar() {
                   </MenuItem>
                 ))}
               </Menu>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "row",
+                }}
+              >
+                <Image
+                  src="/images/logo1.jpg"
+                  alt="Times EduEx Awards"
+                  width={100}
+                  height={100}
+                  style={{
+                    margin: "auto",
+                  }}
+                />
+              </div>
             </Box>
-            <Typography
+            {/* <Typography
               variant="h5"
               noWrap
               component="a"
@@ -133,14 +136,39 @@ function ResponsiveAppBar() {
               }}
             >
               Times Edu Ex Awards
-            </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            </Typography> */}
+
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                flexDirection: "row",
+              }}
+            >
+              <Image
+                src="/images/logo1.jpg"
+                alt="Times EduEx Awards"
+                width={100}
+                height={100}
+                style={{
+                  marginRight: "1rem",
+                }}
+              />
               {pages.map((page) => (
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
                   href={links[pages.indexOf(page)]}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    textAlign: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
                 >
                   {page}
                 </Button>
