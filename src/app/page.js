@@ -125,42 +125,6 @@ function HomePage() {
                     }}
                   />
                 </div>
-                <div
-                  style={{
-                    width: "100%",
-                    maxHeight: "fit-content",
-                  }}
-                >
-                  <Image
-                    src="/static/2.jpg"
-                    width={1280}
-                    height={800}
-                    alt=""
-                    style={{
-                      objectFit: "cover",
-                      height: "fit-content",
-                      maxHeight: "140vh",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    width: "100%",
-                    maxHeight: "fit-content",
-                  }}
-                >
-                  <Image
-                    src="/static/3.jpg"
-                    width={1280}
-                    height={800}
-                    alt=""
-                    style={{
-                      objectFit: "cover",
-                      height: "fit-content",
-                      maxHeight: "140vh",
-                    }}
-                  />
-                </div>
               </Carousel>
             </div>
             <Box id="about">
