@@ -967,7 +967,13 @@ function HomePage() {
                     mt: 4,
                   }}
                 >
-                  <SocialIcon url="https://www.whatsapp.com/" />
+                  <SocialIcon
+                    url="https://www.whatsapp.com/"
+                    style={{
+                      maxWidth: "2rem",
+                      maxHeight: "2rem",
+                    }}
+                  />
                   <Typography
                     variant="body1"
                     component="h1"
@@ -1018,7 +1024,7 @@ function HomePage() {
                 link="https://www.threads.net/@vit.chennai"
                 label="VITC Threads"
                 icon={faThreads}
-                fontSize="2rem"
+                fontSize="1.5rem"
               />
               <SocialMediaLink
                 color="black"
@@ -1034,14 +1040,7 @@ function HomePage() {
 }
 
 export default HomePage;
-const SocialMediaLink = ({
-  icon,
-  color,
-  fontSize,
-  link,
-  label,
-  fontAwesome,
-}) => (
+const SocialMediaLink = ({ icon, color, fontSize, link }) => (
   <Box
     sx={{
       display: "flex",
@@ -1051,7 +1050,14 @@ const SocialMediaLink = ({
     }}
     className={styles.socialMediaDiv}
   >
-    {icon && <FontAwesomeIcon icon={icon} color={color} fontSize={fontSize} />}
+    {icon && (
+      <FontAwesomeIcon
+        icon={icon}
+        color={color}
+        fontSize={fontSize}
+        href={link}
+      />
+    )}
     {!icon && (
       <SocialIcon
         url={link}

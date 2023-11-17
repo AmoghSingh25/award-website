@@ -62,6 +62,11 @@
   align-items: center;
 }
 
+.socialMediaIcon {
+  max-width: 2rem;
+  max-height: 2rem;
+}
+
 @media (max-width: 750px) {
   .contactDiv {
     display: flex;
