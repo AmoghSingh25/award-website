@@ -20,7 +20,7 @@ export default function ApplicantDashboard() {
       renderCell: (params) => (
         <Link
           href={{
-            pathname: `/admin/ApplicantDashboard/${params.row.id}`,
+            pathname: `/admin/AssignJury/${params.row.id}`,
             query: { id: searchParams.get("id") },
           }}
         >

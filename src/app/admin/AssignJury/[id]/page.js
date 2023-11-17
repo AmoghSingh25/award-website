@@ -59,6 +59,7 @@ export default function AssignJury({ params }) {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         setRows(res.juryCount);
         setSelectedRows(res.selectedJury);
       })
@@ -74,8 +75,8 @@ export default function AssignJury({ params }) {
       <h1>Applicant {params.id}&apos; Assign Board</h1>
       <Link
         href={{
-          pathname: `/admin/ApplicantDashboard`,
-          query: { id: params.id },
+          pathname: `/admin/AssignJury`,
+          query: { id: searchParams.get("id") },
         }}
       >
         <Button>Back</Button>

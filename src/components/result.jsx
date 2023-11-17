@@ -18,9 +18,19 @@ const columns = [
     renderCell: (params) => (
       <Button
         variant="contained"
-        color={params.row.Result ? "success" : "error"}
+        color={
+          params.row.review_status === ""
+            ? "warning"
+            : params.row.review_status === "rejected"
+            ? "error"
+            : "success"
+        }
       >
-        {params.row.Result ? "Selected" : "Rejected"}
+        {params.row.review_status === ""
+          ? "Not submitted"
+          : params.row.review_status === "rejected"
+          ? "Rejected"
+          : "Selected"}
       </Button>
     ),
   },

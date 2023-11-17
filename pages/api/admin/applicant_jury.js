@@ -1,4 +1,5 @@
 import applicant_jury from "../../../lib/admin/applicant_jury";
+import checkAdmin from "../../../lib/checkAdmin";
 
 export default async function handler(req, res) {
   try {
