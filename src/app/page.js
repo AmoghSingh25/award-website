@@ -85,7 +85,7 @@ function HomePage() {
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
-                      maxHeight: "90vh",
+                      maxHeight: "130vh",
                     }}
                   />
                 </div>
@@ -103,7 +103,7 @@ function HomePage() {
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
-                      maxHeight: "90vh",
+                      maxHeight: "140vh",
                     }}
                   />
                 </div>
@@ -121,7 +121,7 @@ function HomePage() {
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
-                      maxHeight: "90vh",
+                      maxHeight: "140vh",
                     }}
                   />
                 </div>
@@ -139,7 +139,7 @@ function HomePage() {
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
-                      maxHeight: "90vh",
+                      maxHeight: "140vh",
                     }}
                   />
                 </div>
@@ -157,7 +157,7 @@ function HomePage() {
                     style={{
                       objectFit: "cover",
                       height: "fit-content",
-                      maxHeight: "90vh",
+                      maxHeight: "140vh",
                     }}
                   />
                 </div>
