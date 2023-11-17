@@ -69,6 +69,7 @@ export default function Page() {
       },
       body: JSON.stringify({
         id: searchParams.get("applicantId"),
+        userID: searchParams.get("id"),
       }),
     })
       .then((res) => res.json())

@@ -41,6 +41,9 @@ export default function JuryDashboard() {
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        userID: searchParams.get("id"),
+      }),
     })
       .then((res) => res.json())
       .then((res) => {

@@ -25,16 +25,16 @@ function AdminPanel() {
       href: "/admin/AddJury?id=",
     },
     {
-      title: "Applicant Dashboard",
-      href: "/admin/ApplicantDashboard?id=",
+      title: "Assign Jury",
+      href: "/admin/AssignJury?id=",
+    },
+    {
+      title: "Applicants View",
+      href: "/admin/ApplicantView?id=",
     },
     {
       title: "Jury Dashboard",
       href: "/admin/JuryDashboard?id=",
-    },
-    {
-      title: "Result",
-      href: "/admin/Result?id=",
     },
   ];
 

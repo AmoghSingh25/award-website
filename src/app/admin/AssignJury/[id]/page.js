@@ -4,6 +4,7 @@ import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect } from "react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const columns = [
   { field: "id", headerName: "ID", width: 300 },
@@ -23,6 +24,9 @@ const columns = [
 
 export default function AssignJury({ params }) {
   const [rows, setRows] = react.useState([]);
+  const router = useRouter();
+
+  const searchParams = new useSearchParams(router.query);
 
   const updateJury = (juryID) => {
     fetch("/api/admin/updateJuryApplicant", {
@@ -30,6 +34,7 @@ export default function AssignJury({ params }) {
       body: JSON.stringify({
         jury: juryID,
         applicantID: params.id,
+        userID: searchParams.get("id"),
       }),
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +52,7 @@ export default function AssignJury({ params }) {
   useEffect(() => {
     const result = fetch("/api/admin/applicant_jury", {
       method: "POST",
-      body: JSON.stringify({ id: params.id }),
+      body: JSON.stringify({ id: params.id, userID: searchParams.get("id") }),
       headers: {
         "Content-Type": "application/json",
       },

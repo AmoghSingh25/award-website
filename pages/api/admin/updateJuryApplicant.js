@@ -1,4 +1,5 @@
 import updateJuryApplicant from "../../../lib/admin/updateJuryApplicant";
+import checkAdmin from "../../../lib/checkAdmin";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -6,7 +7,11 @@ export default async function handler(req, res) {
     return;
   }
   try {
-    const { jury, applicantID } = req.body;
+    const { jury, applicantID, userID } = req.body;
+    const isAdmin = await checkAdmin(userID);
+    if (!isAdmin) {
+      res.status(400).json({ status: "Failed" });
+    }
     const result = await updateJuryApplicant(jury, applicantID);
     res.status(200).json({ data: result });
   } catch (error) {

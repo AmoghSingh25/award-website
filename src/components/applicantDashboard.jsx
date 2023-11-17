@@ -38,7 +38,7 @@ export default function ApplicantDashboard() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        adminId: "tRw5pSZbJC[u4y!MV+3r",
+        userID: searchParams.get("id"),
       }),
     })
       .then((res) => res.json())

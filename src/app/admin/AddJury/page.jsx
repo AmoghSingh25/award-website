@@ -7,6 +7,7 @@ import "./modal.css";
 import AdminPanel from "../adminPanel/page";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, useController } from "react-hook-form";
+import { useRouter, useSearchParams } from "next/navigation";
 import LinearProgress from "@mui/material/LinearProgress";
 import * as yup from "yup";
 
@@ -27,6 +28,8 @@ export default function JuryManagementPage() {
   const [jurors, setJurors] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const searchParams = new useSearchParams(router.query);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -38,15 +41,26 @@ export default function JuryManagementPage() {
   };
 
   useEffect(() => {
-    fetch("/api/admin/getJury")
+    console.log(searchParams.get("id"));
+    fetch("/api/admin/getJury", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userID: searchParams.get("id"),
+      }),
+    })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setJurors(data.data);
         setLoading(false);
       });
   }, []);
 
   const addJuror = (data) => {
+    data.userID = searchParams.get("id");
     fetch("/api/admin/addJuror", {
       method: "POST",
       headers: {
@@ -79,7 +93,11 @@ export default function JuryManagementPage() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id, is_active: !is_active }),
+      body: JSON.stringify({
+        id: id,
+        is_active: !is_active,
+        userID: searchParams.get("id"),
+      }),
     }).catch((err) => alert(err));
     setJurors(updatedJurors);
   };

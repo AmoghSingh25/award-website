@@ -4,6 +4,7 @@ import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import downloadCsv from "download-csv";
 import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const columns = [
   { field: "id", headerName: "Applicant ID", width: 120 },
@@ -25,12 +26,15 @@ const columns = [
   },
 ];
 
-const Download = () => {
+const Download = (userID) => {
   fetch("/api/admin/downloadData", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      userID: userID,
+    }),
   })
     .then((res) => res.json())
     .then((data) => {
@@ -45,6 +49,9 @@ const Download = () => {
 export default function JuryResult() {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  const searchParams = new useSearchParams(router.query);
 
   useEffect(() => {
     fetch("/api/admin/getApplicantResult", {
@@ -52,6 +59,9 @@ export default function JuryResult() {
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        userID: searchParams.get("id"),
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -66,7 +76,10 @@ export default function JuryResult() {
   return (
     <Box sx={{ height: 700, width: "90%", pl: 3, pt: 3 }}>
       <h3>Result Board</h3>
-      <Button variant="contained" onClick={() => Download()}>
+      <Button
+        variant="contained"
+        onClick={() => Download(searchParams.get("id"))}
+      >
         Download Result
       </Button>
       <DataGrid

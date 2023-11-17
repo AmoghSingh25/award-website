@@ -157,6 +157,7 @@ export default function JuryHome({ params }) {
         status: row.status,
         comment: row.comment,
         juryId: juryID,
+        userID: searchParams.get("id"),
       }),
     })
       .then((res) => {
@@ -183,6 +184,7 @@ export default function JuryHome({ params }) {
       },
       body: JSON.stringify({
         id: id,
+        userID: searchParams.get("id"),
       }),
     })
       .then((res) => {

@@ -3,7 +3,7 @@ import * as React from "react";
 import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const columns = [
@@ -46,7 +46,7 @@ export default function JuryResult({ params }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: params.id }),
+      body: JSON.stringify({ id: params.id, userID: searchParams.get("id") }),
     })
       .then((res) => res.json())
       .then((data) => {
