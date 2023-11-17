@@ -956,7 +956,7 @@ function HomePage() {
                       mx: "1rem",
                     }}
                   >
-                    <a href="tel:+919962053587">+91 9962053587</a>
+                    <a href="tel:+917305807017">+91 7305807017</a>
                   </Typography>
                 </Box>
                 <Box
@@ -977,8 +977,8 @@ function HomePage() {
                       mx: "1rem",
                     }}
                   >
-                    <a href="whatsapp://send?phone=+919962053587">
-                      +91 9962053587
+                    <a href="whatsapp://send?phone=+917305807017">
+                      +91 7305807017
                     </a>
                   </Typography>
                 </Box>
