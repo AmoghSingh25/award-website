@@ -1,10 +1,10 @@
 import React from "react";
-import AdminPanel from "../adminPanel/page"
+import AdminPanel from "../adminPanel/AdminPanel";
 import JuryDashboard from "src/components/juryDashboard";
 function page() {
   return (
     <div>
-      <AdminPanel/>
+      <AdminPanel />
       <JuryDashboard />
     </div>
   );

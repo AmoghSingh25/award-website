@@ -1051,12 +1051,9 @@ const SocialMediaLink = ({ icon, color, fontSize, link }) => (
     className={styles.socialMediaDiv}
   >
     {icon && (
-      <FontAwesomeIcon
-        icon={icon}
-        color={color}
-        fontSize={fontSize}
-        href={link}
-      />
+      <a href={link}>
+        <FontAwesomeIcon icon={icon} color={color} fontSize={fontSize} />
+      </a>
     )}
     {!icon && (
       <SocialIcon

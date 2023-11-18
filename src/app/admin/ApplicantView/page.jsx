@@ -1,5 +1,5 @@
 import React from "react";
-import AdminPanel from "../adminPanel/page";
+import AdminPanel from "../adminPanel/AdminPanel";
 import Result from "src/components/result";
 function page() {
   return (

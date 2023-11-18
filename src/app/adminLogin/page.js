@@ -42,7 +42,7 @@ export default function Page() {
       const resp = await res.json();
       if (!resp.error) {
         if (resp.type === "a") {
-          router.push("/admin/adminPanel?id=" + resp.id);
+          router.push("/admin/AddJury?id=" + resp.id);
         } else {
           router.push("/juryHome?id=" + resp.id);
         }

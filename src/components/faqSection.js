@@ -43,7 +43,7 @@ const data = {
     {
       title: "Is there a helpline number for the applicants?",
       content: `Yes, there is a helpline number provided to the applicants on the web portal. You can reach out to us
-      or call us at  `,
+      or call us at +91 7305807017`,
     },
     {
       title:

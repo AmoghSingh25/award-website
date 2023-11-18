@@ -84,7 +84,7 @@ export default function JuryResult() {
   }, []);
 
   return (
-    <Box sx={{ height: 700, width: "90%", pl: 3, pt: 3 }}>
+    <Box sx={{ width: "90%", pl: 3, pt: 3 }}>
       <h3>Result Board</h3>
       <Button
         variant="contained"

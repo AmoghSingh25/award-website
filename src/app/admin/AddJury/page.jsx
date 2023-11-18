@@ -4,7 +4,7 @@ import { Button, Modal, TextField, Container } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./modal.css";
-import AdminPanel from "../adminPanel/page";
+import AdminPanel from "../adminPanel/AdminPanel";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, useController } from "react-hook-form";
 import { useRouter, useSearchParams } from "next/navigation";

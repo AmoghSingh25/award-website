@@ -55,7 +55,7 @@ export default function JuryDashboard() {
   }, []);
 
   return (
-    <Box sx={{ height: 700, width: "90%" }}>
+    <Box sx={{ width: "90%" }}>
       <DataGrid
         rows={rows}
         disableRowSelectionOnClick
