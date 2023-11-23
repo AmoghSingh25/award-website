@@ -39,20 +39,50 @@ const columns = [
 ];
 
 const handleDownload = (rows, columns) => {
+  let questions_sheet = [];
+  let sheet1_rows = [];
+  const sheet2_columns = [
+    "id",
+    "name",
+    "question1",
+    "answer1",
+    "question2",
+    "answer2",
+    "question3",
+    "answer3",
+  ];
+  console.log(questions_sheet);
+
   rows.forEach((row, id) => {
     let key = Object.keys(row);
-    if (row["question"] !== undefined)
-      row["question"] = row["question"].toString();
+    if (row["question"] !== undefined) {
+      let applicant_response = [row["id"], row["name"]];
+      row["question"].forEach((question, index) => {
+        console.log(question);
+        applicant_response.push(question);
+        applicant_response.push(row["answer"][index]);
+      });
+      console.log(applicant_response);
+      questions_sheet.push(applicant_response);
+    }
     if (row["subjects"] !== undefined)
       row["subjects"] = row["subjects"].toString();
-    if (row["answer"] !== undefined) row["answer"] = row["answer"].toString();
+    delete row["question"];
+    delete row["answer"];
   });
+  console.log(questions_sheet);
   const workbook = XLSX.utils.book_new();
   const worksheet = XLSX.utils.json_to_sheet(rows);
+  const worksheet2 = XLSX.utils.aoa_to_sheet([sheet2_columns]);
+  XLSX.utils.sheet_add_aoa(worksheet2, questions_sheet, {
+    header: sheet2_columns,
+    origin: "A2",
+  });
+  // XLSX.utils.sheet_add_aoa(questions_sheet);
   XLSX.utils.book_append_sheet(workbook, worksheet, "Applicants");
+  XLSX.utils.book_append_sheet(workbook, worksheet2, "Questions");
 
   // customize header names
-  // XLSX.utils.sheet_add_aoa(worksheet, columns);
 
   XLSX.writeFile(workbook, "Results.xlsx", { compression: true });
 };
