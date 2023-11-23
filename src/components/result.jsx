@@ -58,11 +58,9 @@ const handleDownload = (rows, columns) => {
     if (row["question"] !== undefined) {
       let applicant_response = [row["id"], row["name"]];
       row["question"].forEach((question, index) => {
-        console.log(question);
         applicant_response.push(question);
         applicant_response.push(row["answer"][index]);
       });
-      console.log(applicant_response);
       questions_sheet.push(applicant_response);
     }
     if (row["subjects"] !== undefined)
@@ -70,7 +68,6 @@ const handleDownload = (rows, columns) => {
     delete row["question"];
     delete row["answer"];
   });
-  console.log(questions_sheet);
   const workbook = XLSX.utils.book_new();
   const worksheet = XLSX.utils.json_to_sheet(rows);
   const worksheet2 = XLSX.utils.aoa_to_sheet([sheet2_columns]);
