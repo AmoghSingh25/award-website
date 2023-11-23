@@ -70,7 +70,7 @@ const schema = yup.object().shape({
     .string()
     .required()
     .min(3, "Must be at least 3 characters")
-    .matches(/^[a-zA-Z]+$/, "Must be only alphabets"),
+    .matches(/^[a-zA-Z ]+$/, "Must be only alphabets"),
   state: yup.mixed().required("State is required"),
   city: yup.string().required("City is required"),
   district: yup.string().required("District is required"),
