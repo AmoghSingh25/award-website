@@ -72,6 +72,7 @@ export default function Page() {
     if (file_data !== null) {
       const fileType = await getFileSignature(file_data);
       const byteArray = new Uint8Array(file_data.data);
+      console.log(file_name);
       const file = new File(
         [byteArray],
         file_name + "." + fileType.split("/")[1],
@@ -91,10 +92,12 @@ export default function Page() {
       header += arr[i].toString(16);
     }
     const file_type = header.toUpperCase();
+    console.log(file_type);
     const file_type_dict = {
       "89504E47": "image/png",
       25504446: "application/pdf",
       FFD8FFDB: "image/jpeg",
+      FFD8FFE0: "image/jpg",
     };
     return file_type_dict[file_type] || null;
   }

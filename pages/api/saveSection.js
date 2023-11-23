@@ -16,6 +16,7 @@ export default async function saveSection_api(req, res) {
       .status(200)
       .json({ message: "Save section called", error: false, id: resp.id });
   } catch (error) {
+    console.log(error);
     res.status(400).json({ message: error, error: true });
   }
 }
