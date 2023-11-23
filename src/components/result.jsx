@@ -41,20 +41,20 @@ const columns = [
 const handleDownload = (rows, columns) => {
   rows.forEach((row, id) => {
     let key = Object.keys(row);
-    console.log(key, id);
-    row["question"] = row["question"].toString();
-    row["subjects"] = row["subjects"].toString();
-    row["answer"] = row["answer"].toString();
+    if (row["question"] !== undefined)
+      row["question"] = row["question"].toString();
+    if (row["subjects"] !== undefined)
+      row["subjects"] = row["subjects"].toString();
+    if (row["answer"] !== undefined) row["answer"] = row["answer"].toString();
   });
-  console.log(rows);
   const workbook = XLSX.utils.book_new();
   const worksheet = XLSX.utils.json_to_sheet(rows);
-  XLSX.utils.book_append_sheet(workbook, worksheet, "Products");
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Applicants");
 
   // customize header names
   // XLSX.utils.sheet_add_aoa(worksheet, columns);
 
-  XLSX.writeFile(workbook, "ReportFor2023.xlsx", { compression: true });
+  XLSX.writeFile(workbook, "Results.xlsx", { compression: true });
 };
 
 const Download = (userID) => {
