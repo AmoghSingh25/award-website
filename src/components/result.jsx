@@ -51,7 +51,6 @@ const handleDownload = (rows, columns) => {
     "question3",
     "answer3",
   ];
-  console.log(questions_sheet);
 
   rows.forEach((row, id) => {
     let key = Object.keys(row);
