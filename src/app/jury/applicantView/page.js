@@ -406,7 +406,14 @@ export default function Page() {
                         }}
                       ></div>
                       <h2>ID Card</h2>
-                      <img src={id.data} style={{ width: "100%" }}></img>
+                      <img
+                        src={id.data}
+                        style={{
+                          width: "100%",
+                          maxHeight: "30vh",
+                          objectFit: "contain",
+                        }}
+                      ></img>
                     </>
                   )}
                 </>
@@ -454,7 +461,14 @@ export default function Page() {
                         }}
                       ></div>
                       <h2>Awards</h2>
-                      <img src={award.data} style={{ width: "100%" }}></img>
+                      <img
+                        src={award.data}
+                        style={{
+                          width: "100%",
+                          maxHeight: "30vh",
+                          objectFit: "contain",
+                        }}
+                      ></img>
                     </>
                   )}
                 </>
@@ -504,7 +518,11 @@ export default function Page() {
                       <h2>Other documents</h2>
                       <img
                         src={achievement.data}
-                        style={{ width: "100%" }}
+                        style={{
+                          width: "100%",
+                          maxHeight: "30vh",
+                          objectFit: "contain",
+                        }}
                       ></img>
                     </>
                   )}
