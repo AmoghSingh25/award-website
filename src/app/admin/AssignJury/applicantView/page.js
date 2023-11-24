@@ -535,7 +535,7 @@ export default function Page() {
               >
                 <Link
                   href={{
-                    pathname: "/jury/juryHome",
+                    pathname: "/admin/AssignJury",
                     query: {
                       id: searchParams.get("id"),
                     },

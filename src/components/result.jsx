@@ -8,36 +8,6 @@ import * as XLSX from "xlsx";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const columns = [
-  { field: "id", headerName: "Applicant ID", width: 120 },
-  { field: "applicantname", headerName: "Applicant Name", width: 200 },
-  { field: "juryname", headerName: "Jury Name", width: 200 },
-  { field: "comment", headerName: "Comments", width: 200 },
-  {
-    field: "review_status",
-    headerName: "Result",
-    width: 180,
-    renderCell: (params) => (
-      <Button
-        variant="contained"
-        color={
-          params.row.review_status === ""
-            ? "warning"
-            : params.row.review_status === "rejected"
-            ? "error"
-            : "success"
-        }
-      >
-        {params.row.review_status === ""
-          ? "Not submitted"
-          : params.row.review_status === "rejected"
-          ? "Rejected"
-          : "Selected"}
-      </Button>
-    ),
-  },
-];
-
 const handleDownload = (rows, columns) => {
   let questions_sheet = [];
   let sheet1_rows = [];
@@ -110,6 +80,36 @@ export default function JuryResult() {
   const router = useRouter();
 
   const searchParams = new useSearchParams(router.query);
+
+  const columns = [
+    { field: "id", headerName: "Applicant ID", width: 120 },
+    { field: "applicantname", headerName: "Applicant Name", width: 200 },
+    { field: "juryname", headerName: "Jury Name", width: 200 },
+    { field: "comment", headerName: "Comments", width: 200 },
+    {
+      field: "review_status",
+      headerName: "Result",
+      width: 180,
+      renderCell: (params) => (
+        <Button
+          variant="contained"
+          color={
+            params.row.review_status === ""
+              ? "warning"
+              : params.row.review_status === "rejected"
+              ? "error"
+              : "success"
+          }
+        >
+          {params.row.review_status === ""
+            ? "Not submitted"
+            : params.row.review_status === "rejected"
+            ? "Rejected"
+            : "Selected"}
+        </Button>
+      ),
+    },
+  ];
 
   useEffect(() => {
     fetch("/api/admin/getApplicantResult", {

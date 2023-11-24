@@ -44,7 +44,7 @@ export default function Page() {
         if (resp.type === "a") {
           router.push("/admin/AddJury?id=" + resp.id);
         } else {
-          router.push("/juryHome?id=" + resp.id);
+          router.push("/jury/juryHome?id=" + resp.id);
         }
       } else {
         setError(resp.message);

@@ -30,6 +30,22 @@ export default function ApplicantDashboard() {
         </Link>
       ),
     },
+    {
+      headerName: "View application",
+      width: 180,
+      renderCell: (params) => (
+        <Button variant="contained" color="primary">
+          <Link
+            href={{
+              pathname: "/admin/AssignJury/applicantView",
+              query: { id: searchParams.get("id"), applicantId: params.row.id },
+            }}
+          >
+            View{" "}
+          </Link>
+        </Button>
+      ),
+    },
   ];
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
