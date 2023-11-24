@@ -5,7 +5,6 @@ export default async function handler(req, res) {
   try {
     const { userID } = req.body;
     const isAdmin = await checkAdmin(userID);
-
     if (!isAdmin) {
       res.status(400).json({ status: "Failed" });
     }

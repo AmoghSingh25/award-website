@@ -21,24 +21,25 @@ const handleDownload = (rows, columns) => {
     "question3",
     "answer3",
   ];
+  const keys = Object.keys(rows);
 
-  rows.forEach((row, id) => {
-    let key = Object.keys(row);
-    if (row["question"] !== undefined) {
-      let applicant_response = [row["id"], row["name"]];
-      row["question"].forEach((question, index) => {
+  keys.forEach((row, id) => {
+    if (rows[row]["question"] !== undefined) {
+      let applicant_response = [rows[row]["id"], rows[row]["name"]];
+      rows[row]["question"].forEach((question, index) => {
         applicant_response.push(question);
-        applicant_response.push(row["answer"][index]);
+        applicant_response.push(rows[row]["answer"][index]);
       });
       questions_sheet.push(applicant_response);
     }
-    if (row["subjects"] !== undefined)
-      row["subjects"] = row["subjects"].toString();
-    delete row["question"];
-    delete row["answer"];
+    if (rows[row]["subjects"])
+      rows[row]["subjects"] = rows[row]["subjects"].toString();
+    delete rows[row]["question"];
+    delete rows[row]["answer"];
+    sheet1_rows.push(rows[row]);
   });
   const workbook = XLSX.utils.book_new();
-  const worksheet = XLSX.utils.json_to_sheet(rows);
+  const worksheet = XLSX.utils.json_to_sheet(sheet1_rows);
   const worksheet2 = XLSX.utils.aoa_to_sheet([sheet2_columns]);
   XLSX.utils.sheet_add_aoa(worksheet2, questions_sheet, {
     header: sheet2_columns,
@@ -64,9 +65,9 @@ const Download = (userID) => {
     }),
   })
     .then((res) => res.json())
-    .then((data) => {
-      const excel_col = Object.keys(data.data[0]);
-      handleDownload(data.data, excel_col);
+    .then((res) => {
+      const excel_col = Object.keys(res.data[Object.keys(res.data)[0]]);
+      handleDownload(res.data, excel_col);
       // downloadCsv(data.data, excel_col, "applicants");
     })
     .catch((err) => {
