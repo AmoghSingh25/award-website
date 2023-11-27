@@ -4,7 +4,7 @@ import JuryDashboard from "src/components/juryDashboard";
 function page() {
   return (
     <div>
-      <AdminPanel />
+      <AdminPanel page_id={3} />
       <JuryDashboard />
     </div>
   );

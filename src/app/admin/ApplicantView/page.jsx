@@ -4,7 +4,7 @@ import Result from "src/components/result";
 function page() {
   return (
     <>
-      <AdminPanel />
+      <AdminPanel page_id={2} />
       <Result />
     </>
   );

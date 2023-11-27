@@ -5,13 +5,30 @@ import { Box, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import XLSX from "xlsx";
 
 const handleDownload = (rows, columns) => {
-  let questions_sheet = [];
   let sheet1_rows = [];
-  const sheet2_columns = [
-    "id",
+  const keys = Object.keys(rows);
+  columns = [
+    "email",
+    "phone",
+    "personalDetailsStatus",
+    "supportingDocumentsStatus",
+    "experienceDetailsStatus",
+    "caseStudyStatus",
+    "awardAchievementsStatus",
+    "overallStatus",
     "name",
+    "institute",
+    "city",
+    "district",
+    "state",
+    "teachingExp",
+    "instituteExp",
+    "subjects",
+    "grade",
+    "professionalMembership",
     "question1",
     "answer1",
     "question2",
@@ -19,35 +36,41 @@ const handleDownload = (rows, columns) => {
     "question3",
     "answer3",
   ];
-  const keys = Object.keys(rows);
 
   keys.forEach((row, id) => {
+    let applicant_response = [];
     if (rows[row]["question"] !== undefined) {
-      let applicant_response = [rows[row]["id"], rows[row]["name"]];
       rows[row]["question"].forEach((question, index) => {
         applicant_response.push(question);
         applicant_response.push(rows[row]["answer"][index]);
       });
-      questions_sheet.push(applicant_response);
     }
     if (rows[row]["subjects"])
       rows[row]["subjects"] = rows[row]["subjects"].toString();
     delete rows[row]["question"];
     delete rows[row]["answer"];
-    sheet1_rows.push(rows[row]);
+    delete rows[row]["id"];
+    for (const [key, value] of Object.entries(rows[row])) {
+      if (key.includes("status")) {
+        if (value === true) {
+          rows[row][key] = "Completed";
+        } else {
+          rows[row][key] = "Not completed";
+        }
+      }
+    }
+    applicant_response = [...Object.values(rows[row]), ...applicant_response];
+    sheet1_rows.push(applicant_response);
   });
   const workbook = XLSX.utils.book_new();
-  const worksheet = XLSX.utils.json_to_sheet(sheet1_rows);
-  const worksheet2 = XLSX.utils.aoa_to_sheet([sheet2_columns]);
-  XLSX.utils.sheet_add_aoa(worksheet2, questions_sheet, {
-    header: sheet2_columns,
+  // const worksheet = XLSX.utils.json_to_sheet(sheet1_rows);
+  const worksheet = XLSX.utils.book_new();
+  XLSX.utils.sheet_add_aoa(worksheet, [columns]);
+  XLSX.utils.sheet_add_json(worksheet, sheet1_rows, {
     origin: "A2",
+    skipHeader: true,
   });
-  // XLSX.utils.sheet_add_aoa(questions_sheet);
   XLSX.utils.book_append_sheet(workbook, worksheet, "Applicants");
-  XLSX.utils.book_append_sheet(workbook, worksheet2, "Questions");
-
-  // customize header names
 
   XLSX.writeFile(workbook, "Results.xlsx", { compression: true });
 };

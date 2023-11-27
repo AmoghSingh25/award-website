@@ -71,15 +71,25 @@ export default function AssignJury({ params }) {
   const [selectedRows, setSelectedRows] = react.useState([]);
 
   return (
-    <Box sx={{ height: "100%", width: "90%", ml: 2, mt: 4 }}>
-      <h1>Applicant {params.id}&apos; Assign Board</h1>
+    <Box sx={{ height: "100%", width: "90%", ml: 2, mt: 4, color: "white" }}>
+      <h1>Applicant {params.name}&apos; Assign Board</h1>
       <Link
         href={{
           pathname: `/admin/AssignJury`,
           query: { id: searchParams.get("id") },
         }}
       >
-        <Button>Back</Button>
+        <Button
+          sx={{
+            ml: 2,
+            backgroundColor: "white",
+            color: "black",
+            fontWeight: "bold",
+            mt: 2,
+          }}
+        >
+          Back
+        </Button>
       </Link>
       <DataGrid
         rows={rows}
@@ -99,6 +109,7 @@ export default function AssignJury({ params }) {
         variant="contained"
         sx={{
           ml: 2,
+          mt: 2,
         }}
         onClick={() => {
           updateJury(selectedRows);

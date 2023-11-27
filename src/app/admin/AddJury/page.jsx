@@ -136,7 +136,7 @@ export default function JuryManagementPage() {
 
   return (
     <>
-      <AdminPanel />
+      <AdminPanel page_id={0} />
       <Container maxWidth="xl">
         <Button
           variant="contained"

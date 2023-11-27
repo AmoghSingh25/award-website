@@ -120,7 +120,7 @@ function AdminPanel({ page_id }) {
                       my: 2,
                       color: page_id === idx ? "black" : "white",
                       display: "block",
-                      backgroundColor: page_id === idx ? "#ffffff" : "",
+                      backgroundColor: page_id === idx ? "#4b5ed7" : "",
                       fontWeight: page_id === idx ? "bold" : "",
                     }}
                   >

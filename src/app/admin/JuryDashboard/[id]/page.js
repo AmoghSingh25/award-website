@@ -57,6 +57,7 @@ export default function JuryResult({ params }) {
 
   return (
     <Box sx={{ height: 700, width: "90%" }}>
+      <h1>Juror {params.name}&apos;s Result Board</h1>
       <Link
         href={{
           pathname: "/admin/JuryDashboard",
@@ -64,12 +65,14 @@ export default function JuryResult({ params }) {
             id: searchParams.get("id"),
           },
         }}
+        style={{
+          marginLeft: "20px",
+        }}
       >
         <Button variant="contained" color="primary">
           Back
         </Button>
       </Link>
-      <h1>Juror {params.id}&apos;s Result Board</h1>
       <DataGrid
         rows={rows}
         disableRowSelectionOnClick

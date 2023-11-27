@@ -68,7 +68,13 @@ export default function JuryResult() {
 
   return (
     <Box sx={{ width: "95%", pl: 3, pt: 3 }}>
-      <h3>Result Board</h3>
+      <h3
+        style={{
+          color: "#ffffff",
+        }}
+      >
+        Result Board
+      </h3>
 
       <DataGrid
         rows={rows}
