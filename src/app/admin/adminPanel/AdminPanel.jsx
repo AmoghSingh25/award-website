@@ -15,7 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
-function AdminPanel() {
+function AdminPanel({ page_id }) {
   const router = useRouter();
   const searchParams = new useSearchParams(router.query);
 
@@ -57,8 +57,13 @@ function AdminPanel() {
   };
 
   return (
-    <>
-      <AppBar position="static">
+    <div>
+      <AppBar
+        position="static"
+        style={{
+          backgroundColor: "#000000",
+        }}
+      >
         <Container maxWidth="xl" fixed style={{ backgroundColor: "#000000" }}>
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -92,7 +97,13 @@ function AdminPanel() {
               >
                 {pages.map((page, id) => (
                   <Link href={page.href + searchParams.get("id")} key={id}>
-                    <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                    <MenuItem
+                      key={page.title}
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        backgroundColor: page_id === id ? "#000000" : "#ffffff",
+                      }}
+                    >
                       <Typography textAlign="center">{page.title}</Typography>
                     </MenuItem>
                   </Link>
@@ -105,7 +116,13 @@ function AdminPanel() {
                   <Button
                     key={page.title}
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: "white", display: "block" }}
+                    sx={{
+                      my: 2,
+                      color: page_id === idx ? "black" : "white",
+                      display: "block",
+                      backgroundColor: page_id === idx ? "#ffffff" : "",
+                      fontWeight: page_id === idx ? "bold" : "",
+                    }}
                   >
                     {page.title}
                   </Button>
@@ -115,7 +132,7 @@ function AdminPanel() {
           </Toolbar>
         </Container>
       </AppBar>
-    </>
+    </div>
   );
 }
 export default AdminPanel;

@@ -4,7 +4,7 @@ import AdminPanel from "../adminPanel/AdminPanel";
 function page() {
   return (
     <div>
-      <AdminPanel />
+      <AdminPanel page_id={1} />
       <ApplicantDashboard />
     </div>
   );

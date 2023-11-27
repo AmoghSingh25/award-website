@@ -13,8 +13,8 @@ export default function JuryDashboard() {
   const adminId = searchParams.get("id");
 
   const columns = [
-    { field: "id", headerName: "Jury ID", width: 300 },
     { field: "name", headerName: "Jury Name", width: 200 },
+    { field: "email", headerName: "Jury Email", width: 200 },
     { field: "count", headerName: "Total Assigned Applicants", width: 200 },
     {
       field: "checkResult",

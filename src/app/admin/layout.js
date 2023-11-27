@@ -58,7 +58,7 @@ function Layout({ children }) {
       ) : (
         <main
           style={{
-            backgroundColor: "#FFEFB6",
+            backgroundColor: "#313d8b",
           }}
         >
           {errorMessage !== "" && (
@@ -67,7 +67,6 @@ function Layout({ children }) {
                 position: "absolute",
                 width: "100%",
                 height: "100%",
-                backgroundColor: "rgba(255,255,255,0.7)",
                 zIndex: "1000",
               }}
             >
@@ -78,7 +77,7 @@ function Layout({ children }) {
                   height: "20vh",
                   top: "30vh",
                   left: "40vw",
-                  backgroundColor: "#ffefb6",
+                  backgroundColor: "#313d8b",
                   zIndex: "1000",
                   textAlign: "center",
                   borderRadius: "20px",
