@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const columns = [
-  { field: "id", headerName: "Applicant ID", width: 120 },
   { field: "name", headerName: "Applicant Name", width: 200 },
+  { field: "email", headerName: "Applicant Email", width: 200 },
+  { field: "phone", headerName: "Applicant Phone", width: 200 },
   { field: "comments", headerName: "Comments", width: 200 },
   {
     field: "status",
@@ -57,7 +58,15 @@ export default function JuryResult({ params }) {
 
   return (
     <Box sx={{ height: 700, width: "90%" }}>
-      <h1>Juror {params.name}&apos;s Result Board</h1>
+      <h1
+        style={{
+          color: "white",
+          marginLeft: "20px",
+          marginTop: "20px",
+        }}
+      >
+        Juror {params.name}&apos;s Result Board
+      </h1>
       <Link
         href={{
           pathname: "/admin/JuryDashboard",

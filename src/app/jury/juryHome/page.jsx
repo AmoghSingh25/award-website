@@ -22,7 +22,7 @@ const style = {
   p: 4,
 };
 export default function JuryHome({ params }) {
-  const columns = [ 
+  const columns = [
     {
       field: "name",
       headerName: "Applicant Name",
@@ -209,7 +209,7 @@ export default function JuryHome({ params }) {
     },
   ];
 
-  const [inputVal,setInputVal]=useState("")
+  const [inputVal, setInputVal] = useState("");
 
   const [rows, setRows] = useState([]);
   const router = useRouter();
@@ -285,7 +285,7 @@ export default function JuryHome({ params }) {
           color: "white",
         }}
       >
-        Jury - {useSearchParam.get("id")}{" "}
+        Jury Dashboard
       </h1>
       <DataGrid
         rows={rows}
