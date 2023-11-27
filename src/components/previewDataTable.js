@@ -31,17 +31,34 @@ export default function DataTable({
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead
             sx={{
-              backgroundColor: "#FFEFB6",
-              color: "#FFFFFF",
+              backgroundColor: "#313d8b",
+              color: "white",
               borderRadius: "40px",
               boxShadow: "none",
               border: "none",
             }}
           >
-            <TableRow>
-              <TableCell>S.No.</TableCell>
+            <TableRow
+              sx={{
+                color: "white",
+              }}
+            >
+              <TableCell
+                sx={{
+                  color: "white",
+                }}
+              >
+                S.No.
+              </TableCell>
               {header.map((head) => (
-                <TableCell key={head.field}>{head.headerName}</TableCell>
+                <TableCell
+                  key={head.field}
+                  sx={{
+                    color: "white",
+                  }}
+                >
+                  {head.headerName}
+                </TableCell>
               ))}
               <TableCell></TableCell>
             </TableRow>

@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { Box, Button } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import downloadCsv from "download-csv";
 import * as XLSX from "xlsx";
 
@@ -79,6 +79,10 @@ export default function JuryResult() {
       <DataGrid
         rows={rows}
         disableRowSelectionOnClick
+        disableVirtualization
+        // disableColumnFilter
+        disableDensitySelector
+        disableColumnSelector
         columns={columns}
         pageSize={5}
         loading={loading}
@@ -86,6 +90,14 @@ export default function JuryResult() {
           mt: 5,
           ml: 5,
           backgroundColor: "white",
+        }}
+        slots={{ toolbar: GridToolbar }}
+        slotProps={{
+          toolbar: {
+            printOptions: { disableToolbarButton: true },
+            csvOptions: { disableToolbarButton: true },
+            showQuickFilter: true,
+          },
         }}
       />
     </Box>

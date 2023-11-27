@@ -180,6 +180,9 @@ export default function Page() {
             error={!!errors.email}
             helperText={errors.email?.message}
             className={styles.inputField}
+            sx={{
+              marginTop: "0",
+            }}
           />
           <TextField
             label="Phone *"
@@ -229,7 +232,7 @@ export default function Page() {
                 href="/terms"
                 style={{
                   textDecoration: "underline",
-                  color: "#F5C005",
+                  color: "#313d8b",
                 }}
               >
                 Terms and Conditions
@@ -245,7 +248,7 @@ export default function Page() {
             variant="contained"
             sx={{
               mt: 3,
-              backgroundColor: "#F5C005",
+              backgroundColor: "#313d8b",
               borderRadius: "20px",
               boxShadow: "none",
               alignSelf: "center",
@@ -253,13 +256,17 @@ export default function Page() {
           >
             Signup
           </Button>
-          <p>
+          <p
+            style={{
+              marginTop: "1rem",
+            }}
+          >
             Click here to{" "}
             <a
               href="/login"
               style={{
                 textDecoration: "underline",
-                color: "#F5C005",
+                color: "#313d8b",
               }}
             >
               Login

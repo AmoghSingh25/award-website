@@ -89,7 +89,7 @@ export default function Page() {
               height: "20vh",
               top: "30vh",
               left: "40vw",
-              backgroundColor: "#ffefb6",
+              backgroundColor: "#313d8b",
               zIndex: "1000",
               textAlign: "center",
               borderRadius: "20px",
@@ -97,6 +97,7 @@ export default function Page() {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              color: "white",
             }}
           >
             {errorMessage}
@@ -107,7 +108,19 @@ export default function Page() {
                 }
                 setError("");
               }}
-              className={styles.okButton}
+              sx={{
+                mt: 3,
+                backgroundColor: "#4b5ed7",
+                borderRadius: "20px",
+                boxShadow: "none",
+                alignSelf: "center",
+                mb: 3,
+                color: "black",
+                "&:hover": {
+                  backgroundColor: "#4b5ed7",
+                  boxShadow: "none",
+                },
+              }}
             >
               Ok
             </Button>
@@ -171,7 +184,7 @@ export default function Page() {
             variant="contained"
             sx={{
               mt: 3,
-              backgroundColor: "#F5C005",
+              backgroundColor: "#313d8b",
               borderRadius: "20px",
               boxShadow: "none",
               alignSelf: "center",
@@ -187,7 +200,7 @@ export default function Page() {
               href="/signup"
               style={{
                 textDecoration: "underline",
-                color: "#F5C005",
+                color: "#313d8b",
               }}
             >
               Signup

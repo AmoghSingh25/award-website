@@ -8,21 +8,6 @@
   color: black;
 }
 
-.okButton {
-  margin-top: 5%;
-  border-radius: 20px;
-  font-size: 16px;
-  background-color: blue;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.okButton:hover {
-  background-color: #1e90ff;
-}
-
 .errorMessage {
   color: red;
   font-size: 12px;

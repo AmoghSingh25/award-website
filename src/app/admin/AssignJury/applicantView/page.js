@@ -300,7 +300,11 @@ export default function Page() {
                           <Typography
                             variant="body1"
                             component="h2"
-                            sx={{ my: "2%", fontWeight: "bold" }}
+                            sx={{
+                              my: "2%",
+                              fontWeight: "bold",
+                              color: "white",
+                            }}
                           >
                             {item}
                           </Typography>
@@ -327,6 +331,7 @@ export default function Page() {
                         sx={{
                           height: "10%",
                           margin: "2%",
+                          color: "white",
                         }}
                       >
                         {item.answer}
