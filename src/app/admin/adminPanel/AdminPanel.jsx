@@ -118,10 +118,17 @@ function AdminPanel({ page_id }) {
                     onClick={handleCloseNavMenu}
                     sx={{
                       my: 2,
-                      color: page_id === idx ? "black" : "white",
+                      color: "white",
                       display: "block",
+                      borderRadius: 20,
+                      mx: 0.5,
+                      px: 2,
                       backgroundColor: page_id === idx ? "#4b5ed7" : "",
                       fontWeight: page_id === idx ? "bold" : "",
+                      "&:hover": {
+                        backgroundColor: page_id === idx ? "#4b5ed7" : "white",
+                        color: page_id === idx ? "white" : "black",
+                      },
                     }}
                   >
                     {page.title}

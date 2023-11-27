@@ -145,6 +145,10 @@ export default function JuryManagementPage() {
           sx={{
             m: 5,
             mb: 0,
+            backgroundColor: "green",
+            "&:hover": {
+              backgroundColor: "green",
+            },
           }}
         >
           Add Jury

@@ -57,7 +57,7 @@ function Layout({ children }) {
       ) : (
         <main
           style={{
-            backgroundColor: "#FFEFB6",
+            backgroundColor: "#313d8b",
           }}
         >
           {errorMessage !== "" && (
