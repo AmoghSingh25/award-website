@@ -1,24 +1,27 @@
 .dataText {
-  background-color: #ffefb6;
+  background-color: #313d8b;
   margin: 2%;
   padding: 2%;
   padding-left: 4%;
   border-radius: 20px;
+  color: "white";
 }
 
 .subjectText {
   border-radius: 20px;
   text-align: center;
+  color: "white";
 }
 
 .subjectsDiv {
-  background-color: #ffefb6;
+  background-color: #313d8b;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-top: 2%;
   border-radius: 20px;
   padding: 2%;
+  color: "white";
 }
 
 .inputLabel {
@@ -27,7 +30,7 @@
 }
 
 .answerBox {
-  background-color: #ffefb6;
+  background-color: #313d8b;
   border-radius: 20px;
   padding: 3%;
 }

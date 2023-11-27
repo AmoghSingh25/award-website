@@ -34,6 +34,7 @@ export default function DataComponent({ data }) {
               component="h2"
               width="100%"
               className={styles.dataText}
+              sx={{ color: "white" }}
             >
               {item.data}
             </Typography>

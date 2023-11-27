@@ -199,8 +199,22 @@ export default function JuryHome({ params }) {
   }, []);
 
   return (
-    <Box sx={{ height: "90vh", width: "100%", mt: 1, ml: 1 }}>
-      <h1>Jury - {useSearchParam.get("id")} </h1>
+    <Box
+      sx={{
+        height: "90vh",
+        width: "100%",
+        mt: 1,
+        ml: 1,
+        backgroundColor: "#313d8b",
+      }}
+    >
+      <h1
+        style={{
+          color: "white",
+        }}
+      >
+        Jury - {useSearchParam.get("id")}{" "}
+      </h1>
       <DataGrid
         rows={rows}
         columns={columns}
