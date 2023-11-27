@@ -7,10 +7,22 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Button from "@mui/material/Button";
-
+import Modal from "@mui/material/Modal";
+import Typography from "@mui/material/Typography";
+import Input from "@mui/material/Input";
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 200,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 export default function JuryHome({ params }) {
-  const columns = [
-    { field: "id", headerName: "Applicant ID", width: 200 },
+  const columns = [ 
     {
       field: "name",
       headerName: "Applicant Name",
@@ -56,8 +68,64 @@ export default function JuryHome({ params }) {
     {
       field: "comment",
       headerName: "Comment",
-      width: 110,
+      width: 250,
       editable: true,
+    },
+    {
+      field: "comment_box",
+      headerName: "Add Comment",
+      width: 110,
+      renderCell: (params) => {
+        return (
+          <>
+            <Button
+              variant="contained"
+              size="small"
+              sx={{
+                backgroundColor: "#373f6e",
+              }}
+              onClick={handleOpen}
+            >
+              Comment
+            </Button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="Add Comment"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Enter Comments
+                </Typography>
+                <Input
+                  value={inputVal}
+                  sx={{ marginBottom: "10px" }}
+                  aria-label="Demo input"
+                  multiline
+                  onChange={(e) => {
+                    rows.find((row) => row.id === params.id).comment =
+                      e.target.value;
+                    params.row.comment = e.target.value;
+                    setInputVal(e.target.value);
+                  }}
+                  placeholder="Type something…"
+                />
+                <Button
+                  variant="contained"
+                  size="small"
+                  sx={{
+                    backgroundColor: "#373f6e",
+                  }}
+                  onClick={handleClose}
+                >
+                  Submit
+                </Button>
+              </Box>
+            </Modal>
+          </>
+        );
+      },
     },
     {
       field: "status",
@@ -141,11 +209,15 @@ export default function JuryHome({ params }) {
     },
   ];
 
+  const [inputVal,setInputVal]=useState("")
+
   const [rows, setRows] = useState([]);
   const router = useRouter();
   const useSearchParam = new useSearchParams(router.query);
   const juryID = useSearchParam.get("id");
-
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const saveData = (row) => {
     fetch("/api/admin/saveResult", {
       method: "POST",
