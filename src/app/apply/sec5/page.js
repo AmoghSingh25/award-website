@@ -138,7 +138,7 @@ export default function Page() {
       flag = true;
     }
     if (idCard !== null) {
-      if (idCard.size > 2000000) {
+      if (idCard.size > 3000000) {
         setErrors(
           (prev) => (prev = { ...prev, idCard: "File size too large" })
         );
@@ -158,7 +158,7 @@ export default function Page() {
     }
 
     if (awards !== null) {
-      if (awards.size > 2000000) {
+      if (awards.size > 3000000) {
         setErrors(
           (prev) => (prev = { ...prev, awards: "File size too large" })
         );
@@ -179,7 +179,7 @@ export default function Page() {
     }
 
     if (otherDocs !== null) {
-      if (otherDocs.size > 2000000) {
+      if (otherDocs.size > 3000000) {
         setErrors(
           (prev) => (prev = { ...prev, collat: "File size too large" })
         );
@@ -321,7 +321,7 @@ export default function Page() {
               Please upload the following documents in PDF/JPG/JPEG/PNG format
               only.
               <br />
-              The file size should not exceed 2 MB.
+              The file size should not exceed 3 MB.
             </p>
           </div>
 
