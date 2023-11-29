@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -15,7 +13,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
-import Divider from "@mui/material/Divider";
+import { CircularProgress } from "@mui/material";
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -72,7 +70,6 @@ export default function Page() {
     if (file_data !== null) {
       const fileType = await getFileSignature(file_data);
       const byteArray = new Uint8Array(file_data.data);
-      console.log(file_name);
       const file = new File(
         [byteArray],
         file_name + "." + fileType.split("/")[1],
@@ -92,7 +89,6 @@ export default function Page() {
       header += arr[i].toString(16);
     }
     const file_type = header.toUpperCase();
-    console.log(file_type);
     const file_type_dict = {
       "89504E47": "image/png",
       25504446: "application/pdf",
@@ -115,7 +111,10 @@ export default function Page() {
     })
       .then((res) => res.json())
       .then((res) => {
-        if (!res.isFilled) return;
+        if (!res.isFilled) {
+          setLoading(false);
+          return;
+        }
         const data = res.data[0];
         setFile("idCard_" + searchParams.get("id"), data.id_card, setIdCard);
         setFile("awards_" + searchParams.get("id"), data.awards, setawards);
@@ -124,6 +123,7 @@ export default function Page() {
           data.other_documents,
           setOtherDocs
         );
+        setLoading(false);
       });
   }, []);
 
@@ -206,6 +206,7 @@ export default function Page() {
     if (flag) {
       return;
     }
+    setLoading(true);
 
     let data = [];
     const id = searchParams.get("id");
@@ -214,39 +215,79 @@ export default function Page() {
       awards !== null ? await convertToHexString(awards) : null;
     const otherDocs_hex =
       otherDocs !== null ? await convertToHexString(otherDocs) : null;
-    data = {
+    data = JSON.stringify({
       id: id,
       id_card: id_hex,
       awards: awards_hex,
       other_documents: otherDocs_hex,
-    };
-    fetch("/api/saveSection", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        tableName: "supporting_documents",
-        data: data,
-      }),
-    })
-      .then((resp) => resp.json())
-      .then((resp) => {
-        if (!resp.error) {
-          router.push("/apply/sec6?id=" + resp.id);
-        } else {
-          setError("Error submitting");
-        }
-      })
-      .catch((err) => {
-        setError("Error submitting");
+      tableName: "supporting_documents",
+    });
+    data;
+    try {
+      const response = fetch("/api/saveSection", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: data,
       });
+      let resp = await response;
+      resp = await resp.json();
+      if (!resp.error) {
+        router.push("/apply/sec6?id=" + resp.id);
+      } else {
+        setError("Error submitting");
+      }
+    } catch (err) {
+      console.log(err);
+      setError("Error submitting");
+    }
   };
 
   const router = useRouter();
   const searchParams = useSearchParams();
   const [errorMessage, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
   return (
     <ThemeProvider theme={theme}>
+      {loading && (
+        <Box
+          sx={{
+            position: "absolute",
+            width: "100vw",
+            height: "120vh",
+            backgroundColor: "rgba(255,255,255,0.7)",
+            zIndex: "1000",
+          }}
+        >
+          <Box
+            sx={{
+              position: "absolute",
+              width: "20vw",
+              height: "20vh",
+              top: "30vh",
+              left: "40vw",
+              backgroundColor: "#ffefb6",
+              zIndex: "1000",
+              textAlign: "center",
+              borderRadius: "20px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <CircularProgress />
+            <Typography
+              variant="h6"
+              component="h2"
+              sx={{ fontWeight: "bold" }}
+              className={styles.inputLabel}
+            >
+              Loading
+            </Typography>
+          </Box>
+        </Box>
+      )}
       {errorMessage !== "" && (
         <Box
           sx={{
