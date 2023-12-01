@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export default function JuryDashboard() {
   const [rows, setRows] = React.useState([]);
+  const [jury, setJury] = React.useState([]);
   const router = useRouter();
   const searchParams = new useSearchParams(router.query);
   const adminId = searchParams.get("id");
@@ -47,6 +48,7 @@ export default function JuryDashboard() {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         setRows(res.juryCount);
       })
       .catch((err) => {
