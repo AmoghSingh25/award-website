@@ -224,7 +224,7 @@ export default function Page() {
     });
     data;
     try {
-      const response = fetch("/api/saveSection", {
+      const response = fetch("/api/saveDocuments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: data,
