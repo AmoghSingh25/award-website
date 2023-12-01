@@ -9,6 +9,7 @@ import XLSX from "xlsx";
 
 const handleDownload = (rows, columns) => {
   let sheet1_rows = [];
+  let sheet2_rows = [];
   const keys = Object.keys(rows);
   columns = [
     "email",
@@ -60,7 +61,9 @@ const handleDownload = (rows, columns) => {
       }
     }
     applicant_response = [...Object.values(rows[row]), ...applicant_response];
-    sheet1_rows.push(applicant_response);
+    if (rows[row]["overall_status"] == "Not completed")
+      sheet1_rows.push(applicant_response);
+    else sheet2_rows.push(applicant_response);
   });
   const workbook = XLSX.utils.book_new();
   // const worksheet = XLSX.utils.json_to_sheet(sheet1_rows);
@@ -70,7 +73,14 @@ const handleDownload = (rows, columns) => {
     origin: "A2",
     skipHeader: true,
   });
-  XLSX.utils.book_append_sheet(workbook, worksheet, "Applicants");
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Incomplete applications");
+  const worksheet2 = XLSX.utils.book_new();
+  XLSX.utils.sheet_add_aoa(worksheet2, [columns]);
+  XLSX.utils.sheet_add_json(worksheet2, sheet2_rows, {
+    origin: "A2",
+    skipHeader: true,
+  });
+  XLSX.utils.book_append_sheet(workbook, worksheet2, "Completed applications");
 
   XLSX.writeFile(workbook, "Results.xlsx", { compression: true });
 };

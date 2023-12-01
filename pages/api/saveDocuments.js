@@ -1,4 +1,3 @@
-import conn from "../../lib/db";
 import saveSection from "../../lib/saveSection";
 import checkUser from "../../lib/checkUser";
 
@@ -29,7 +28,7 @@ export default async function saveSection5(req, res) {
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: "20mb",
+      sizeLimit: "30mb",
     },
     externalResolver: true,
   },
