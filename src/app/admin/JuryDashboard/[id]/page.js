@@ -57,7 +57,7 @@ export default function JuryResult({ params }) {
   }, []);
 
   return (
-    <Box sx={{ height: 700, width: "90%" }}>
+    <Box sx={{ width: "90%" }}>
       <h1
         style={{
           color: "white",

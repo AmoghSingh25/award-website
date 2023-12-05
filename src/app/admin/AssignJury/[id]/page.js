@@ -7,13 +7,13 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const columns = [
-  { field: "id", headerName: "ID", width: 300 },
   {
     field: "name",
     headerName: "Jury Name",
     width: 300,
     editable: false,
   },
+  { field: "email", headerName: "Email ID", width: 300 },
   {
     field: "count",
     headerName: "Total Assigned Applicants",
@@ -72,7 +72,7 @@ export default function AssignJury({ params }) {
 
   return (
     <Box sx={{ height: "100%", width: "90%", ml: 2, mt: 4, color: "white" }}>
-      <h1>Applicant {params.name}&apos; Assign Board</h1>
+      <h1>Applicant Assign Board</h1>
       <Link
         href={{
           pathname: `/admin/AssignJury`,
