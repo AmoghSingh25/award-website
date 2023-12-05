@@ -33,7 +33,6 @@ export default function JuryManagementPage() {
 
   const openModal = () => {
     setIsModalOpen(true);
-    setIsModalOpen(true);
   };
 
   const closeModal = () => {
@@ -41,7 +40,6 @@ export default function JuryManagementPage() {
   };
 
   useEffect(() => {
-    console.log(searchParams.get("id"));
     fetch("/api/admin/getJury", {
       method: "POST",
       headers: {
@@ -53,7 +51,6 @@ export default function JuryManagementPage() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setJurors(data.data);
         setLoading(false);
       });
@@ -74,14 +71,17 @@ export default function JuryManagementPage() {
           alert(resp.error);
           return;
         }
-        closeModal();
         data.id = resp.id;
         data.is_active = true;
         setJurors([...jurors, data]);
         setLoading(false);
+        setIsModalOpen(false);
         window.location.reload();
       })
-      .catch((err) => alert(err));
+      .catch((err) => {
+        alert(err);
+        console.log(err);
+      });
   };
 
   const disableJuror = (id, is_active) => {
@@ -103,7 +103,7 @@ export default function JuryManagementPage() {
   };
 
   const columns = [
-    { field: "email", headerName: "Email", width: 200 },
+    { field: "email", headerName: "Email", width: 400 },
     { field: "username", headerName: "Username", width: 200 },
     { field: "phone", headerName: "Phone Number", width: 200 },
     {

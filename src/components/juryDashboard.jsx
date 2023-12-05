@@ -48,7 +48,6 @@ export default function JuryDashboard() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setRows(res.juryCount);
       })
       .catch((err) => {

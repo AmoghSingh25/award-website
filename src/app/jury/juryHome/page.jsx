@@ -15,8 +15,10 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 200,
+  width: 400,
   bgcolor: "background.paper",
+  display: "flex",
+  flexDirection: "column",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
@@ -74,7 +76,7 @@ export default function JuryHome({ params }) {
     {
       field: "comment_box",
       headerName: "Add Comment",
-      width: 110,
+      width: 200,
       renderCell: (params) => {
         return (
           <>
@@ -86,7 +88,7 @@ export default function JuryHome({ params }) {
               }}
               onClick={handleOpen}
             >
-              Comment
+              Add Comment
             </Button>
             <Modal
               open={open}

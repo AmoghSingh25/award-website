@@ -59,7 +59,6 @@ export default function AssignJury({ params }) {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setRows(res.juryCount);
         setSelectedRows(res.selectedJury);
       })
