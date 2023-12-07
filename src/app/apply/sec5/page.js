@@ -124,7 +124,7 @@ export default function Page() {
     //       data.other_documents,
     //       setOtherDocs
     //     );
-    //     setLoading(false);
+    setLoading(false);
     //   });
   }, []);
 
