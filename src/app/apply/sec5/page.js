@@ -99,32 +99,33 @@ export default function Page() {
   }
 
   useEffect(() => {
-    fetch("/api/getSectionData", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        tableName: "supporting_documents",
-        id: searchParams.get("id"),
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (!res.isFilled) {
-          setLoading(false);
-          return;
-        }
-        const data = res.data[0];
-        setFile("idCard_" + searchParams.get("id"), data.id_card, setIdCard);
-        setFile("awards_" + searchParams.get("id"), data.awards, setawards);
-        setFile(
-          "otherDocs_" + searchParams.get("id"),
-          data.other_documents,
-          setOtherDocs
-        );
-        setLoading(false);
-      });
+    // setLoadingMessage("Loading data");
+    // fetch("/api/getSectionData", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     tableName: "supporting_documents",
+    //     id: searchParams.get("id"),
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     if (!res.isFilled) {
+    //       setLoading(false);
+    //       return;
+    //     }
+    //     const data = res.data[0];
+    //     setFile("idCard_" + searchParams.get("id"), data.id_card, setIdCard);
+    //     setFile("awards_" + searchParams.get("id"), data.awards, setawards);
+    //     setFile(
+    //       "otherDocs_" + searchParams.get("id"),
+    //       data.other_documents,
+    //       setOtherDocs
+    //     );
+    //     setLoading(false);
+    //   });
   }, []);
 
   const checkErrors = () => {
