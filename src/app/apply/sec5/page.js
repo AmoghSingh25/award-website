@@ -208,31 +208,62 @@ export default function Page() {
     }
     setLoading(true);
 
-    let data = [];
+    let data1 = [];
+    let data2 = [];
+    let data3 = [];
     const id = searchParams.get("id");
     const id_hex = await convertToHexString(idCard);
     const awards_hex =
       awards !== null ? await convertToHexString(awards) : null;
     const otherDocs_hex =
       otherDocs !== null ? await convertToHexString(otherDocs) : null;
-    data = JSON.stringify({
+    data1 = JSON.stringify({
       id: id,
       id_card: id_hex,
+      tableName: "supporting_documents",
+      document_id: 1,
+    });
+    data2 = JSON.stringify({
+      id: id,
       awards: awards_hex,
+      tableName: "supporting_documents",
+      document_id: 2,
+    });
+    data3 = JSON.stringify({
+      id: id,
       other_documents: otherDocs_hex,
       tableName: "supporting_documents",
+      document_id: 3,
     });
-    data;
+    setLoadingMessage("Uploading files");
     try {
-      const response = fetch("/api/saveDocuments", {
+      const response1 = fetch("/api/saveDocuments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: data,
+        body: data1,
       });
-      let resp = await response;
+      let resp1 = await response1;
+      resp1 = await resp1.json();
+      setLoadingMessage("Uploading Files \n 1/3 Uploaded");
+      const response2 = fetch("/api/saveDocuments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: data2,
+      });
+      let resp = await response2;
       resp = await resp.json();
+      setLoadingMessage("Uploading Files \n 2/3 Uploaded");
+
+      const response3 = fetch("/api/saveDocuments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: data3,
+      });
+      resp = await response3;
+      resp = await resp.json();
+      setLoadingMessage("Uploading Files \n 3/3 Uploaded");
       if (!resp.error) {
-        router.push("/apply/sec6?id=" + resp.id);
+        router.push("/apply/sec6?id=" + resp1.id);
       } else {
         setError("Error saving documents");
         setLoading(false);
@@ -248,6 +279,7 @@ export default function Page() {
   const searchParams = useSearchParams();
   const [errorMessage, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [loadingMessage, setLoadingMessage] = useState("");
 
   return (
     <ThemeProvider theme={theme}>
@@ -285,7 +317,7 @@ export default function Page() {
               sx={{ fontWeight: "bold" }}
               className={styles.inputLabel}
             >
-              Loading
+              {loadingMessage}
             </Typography>
           </Box>
         </Box>
