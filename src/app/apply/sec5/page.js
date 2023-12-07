@@ -234,11 +234,13 @@ export default function Page() {
       if (!resp.error) {
         router.push("/apply/sec6?id=" + resp.id);
       } else {
-        setError("Error submitting");
+        setError("Error saving documents");
+        setLoading(false);
       }
     } catch (err) {
       console.log(err);
       setError("Error submitting");
+      setLoading(false);
     }
   };
 

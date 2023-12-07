@@ -28,7 +28,7 @@ export default async function saveSection5(req, res) {
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: "30mb",
+      sizeLimit: "50mb",
     },
     externalResolver: true,
   },
