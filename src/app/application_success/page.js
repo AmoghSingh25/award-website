@@ -15,7 +15,7 @@ const ApplicationSuccessPage = () => {
     >
       <Typography
         variant="h4"
-        style={{ marginBottom: "2rem", textAlign: "center" }}
+        style={{ marginBottom: "2rem", textAlign: "center", color: "white" }}
       >
         Your application has been successfully submitted!
       </Typography>

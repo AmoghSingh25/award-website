@@ -58,7 +58,6 @@ export default function Page() {
         resp.case_study;
         data;
         setData(resp);
-        setLoading(false);
       })
       .catch((err) => {
         setError("Error fetching data");
@@ -87,6 +86,7 @@ export default function Page() {
         if (resp.other_documents) {
           setFile("achievement", resp.other_documents.data, setAchievement);
         }
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);

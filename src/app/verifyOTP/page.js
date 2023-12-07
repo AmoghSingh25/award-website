@@ -71,6 +71,8 @@ export default function Page() {
             type="number"
             sx={{
               margin: "10px",
+              borderRadius: "20px",
+              border: 0,
             }}
             InputProps={{
               type: "number",
