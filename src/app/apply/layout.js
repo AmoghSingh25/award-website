@@ -83,7 +83,7 @@ function Layout({ children }) {
       ) : (
         <main
           style={{
-            backgroundColor: "#FFEFB6",
+            backgroundColor: "transparent",
             marginTop: "2%",
             marginRight: "2%",
             marginLeft: "2%",
