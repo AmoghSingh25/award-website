@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from "react";
 import TopBar from "../../../components/topBar";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
+import Select from "react-select";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
@@ -19,18 +20,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
+import { ConnectingAirportsOutlined } from "@mui/icons-material";
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
 const schema = yup.object().shape({
-  teaching_exp: yup
-    .number()
-    .typeError("Years must be a number")
-    .required("Enter a number")
-    .min(0)
-    .max(100)
-    .nonNullable("Enter a number"),
+  teaching_exp: yup.object().shape({
+    value: yup.number().required().nonNullable("Select an option"),
+    label: yup
+      .string()
+      .required("Select an option")
+      .nonNullable("Select an option"),
+  }),
   institute_exp: yup
     .number()
     .typeError("Years must be a number")
@@ -39,17 +41,33 @@ const schema = yup.object().shape({
     .max(100)
     .nonNullable("Enter a number"),
   subjects: yup
-    .array()
-    .of(yup.string().required("Subject is required"))
-    .min(1)
-    .max(5)
-    .nonNullable()
-    .required("Subject is required"),
-  grade: yup
-    .string()
-    .required("Grade level(s) taught is required")
-    .min(1)
-    .nonNullable(),
+    .object()
+    .shape({
+      value: yup.number().required().nonNullable("Select a subject"),
+      label: yup
+        .string()
+        .required("Select an option")
+        .nonNullable("Select a subject"),
+    })
+    .nonNullable("Select a subject"),
+  // subjects: yup
+  //   .array()
+  //   .of(yup.string().required("Subject is required"))
+  //   .min(1)
+  //   .max(5)
+  //   .nonNullable()
+  //   .required("Subject is required"),
+  grade: yup.object().shape({
+    value: yup.number().required().nonNullable("Select an option"),
+    label: yup
+      .string()
+      .required("Select an option")
+      .nonNullable("Select an option"),
+  }),
+  // .string()
+  // .required("Grade level(s) taught is required")
+  // .min(1)
+  // .nonNullable(),
   professional_membership: yup.string().nullable(),
 });
 
@@ -59,12 +77,18 @@ export default function Page() {
     handleSubmit,
     formState: { errors },
     setValue,
+    getValues,
     control,
+    watch,
   } = useForm({
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => {
+    data.teaching_exp = data.teaching_exp.value;
+    data.grade = data.grade.value;
+    data.subjects = [data.subjects.value];
     data.id = searchParams.get("id");
+    console.log(data);
     const res = fetch("/api/saveSection", {
       method: "POST",
       headers: {
@@ -82,6 +106,14 @@ export default function Page() {
         }
       });
   };
+  const selectedValue = watch("grade");
+  const [, updateState] = React.useState();
+
+  useEffect(() => {
+    if (loading) return;
+    setValue("subjects", null);
+    updateState({});
+  }, [selectedValue]);
 
   useEffect(() => {
     fetch("/api/getSectionData", {
@@ -96,25 +128,73 @@ export default function Page() {
     })
       .then((res) => res.json())
       .then((res) => {
-        if (!res.isFilled) return;
+        if (!res.isFilled) {
+          setLoaded(false);
+          return;
+        }
         res = res.data[0];
-        setValue("teaching_exp", res.teaching_exp);
+        setValue("teaching_exp", experienceOptions[res.teaching_exp - 1]);
         setValue("institute_exp", res.institute_exp);
-        setValue("subjects", res.subjects);
-        setValue("grade", res.grade);
+        setValue("grade", grades[res.grade === 10 ? 0 : 1]);
+        setValue(
+          "subjects",
+          res.grade === 10
+            ? subjects10[res.subjects[0] - 1]
+            : subjects12[res.subjects[0] - 1]
+        );
         setValue("professional_membership", res.professional_membership);
-        setSubjects(res.subjects);
+
         if (res.professional_membership) {
           setprofessional_membership(res.professional_membership);
         }
+        setLoading(false);
       });
   }, []);
 
   const [subjects, setSubjects] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [professional_membership, setprofessional_membership] = useState([]);
   const searchParams = useSearchParams();
   const router = useRouter();
   const [errorMessage, setError] = useState("");
+  const experienceOptions = [
+    { value: 1, label: "5-15 years" },
+    { value: 2, label: "15-25 years" },
+    { value: 3, label: "More than 25 years" },
+  ];
+
+  const grades = [
+    { value: 10, label: "Grade 10" },
+    { value: 12, label: "Grade 12" },
+  ];
+
+  const subjects10 = [
+    //English
+    // Regional
+    // Mathematics
+    // Science
+    // Social studies (History, Geography, Civics, and Economics)
+    { value: 1, label: "English" },
+    { value: 2, label: "Regional" },
+    { value: 3, label: "Mathematics" },
+    { value: 4, label: "Science" },
+    {
+      value: 5,
+      label: "Social studies (History, Geography, Civics, and Economics)",
+    },
+  ];
+  const subjects12 = [
+    // Mathematics
+    // Physics
+    // Chemistry
+    // Biology
+    // Computer Science
+    { value: 1, label: "Mathematics" },
+    { value: 2, label: "Physics" },
+    { value: 3, label: "Chemistry" },
+    { value: 4, label: "Biology" },
+    { value: 5, label: "Computer Science" },
+  ];
 
   return (
     <ThemeProvider theme={theme}>
@@ -197,7 +277,7 @@ export default function Page() {
               >
                 Total years of teaching experience *
               </Typography>
-              <TextField
+              {/* <TextField
                 id="outlined-number"
                 type="number"
                 sx={{
@@ -219,18 +299,267 @@ export default function Page() {
                 helperText={errors.teaching_exp?.message}
                 className={styles.inputField}
               />
+              */}
+              <Controller
+                control={control}
+                name="teaching_exp"
+                render={({ field: { onChange, onBlur, value, name, ref } }) => (
+                  <Select
+                    options={experienceOptions}
+                    onChange={onChange}
+                    isMulti={false}
+                    onBlur={onBlur}
+                    value={value}
+                    name={name}
+                    styles={{
+                      control: (base, state) => ({
+                        ...base,
+                        borderRadius: "20px",
+                        border: "0.5px solid #707070",
+                        boxShadow: "none",
+                        width: "70%",
+                        height: "100%",
+                      }),
+                      menu: (base) => ({
+                        ...base,
+                        borderRadius: 0,
+                        marginTop: 0,
+                        width: "70%",
+                        borderRadius: "20px",
+                        padding: "1%",
+                      }),
+                      option: (
+                        styles,
+                        { data, isDisabled, isFocused, isSelected }
+                      ) => {
+                        return {
+                          ...styles,
+                          borderRadius: "20px",
+                          backgroundColor: isDisabled
+                            ? undefined
+                            : isSelected
+                            ? "blue"
+                            : isFocused
+                            ? "#ffefb6"
+                            : undefined,
+                          color: isDisabled
+                            ? "#ccc"
+                            : isSelected
+                            ? "white"
+                              ? "white"
+                              : "black"
+                            : "black",
+
+                          ":active": {
+                            ...styles[":active"],
+                            backgroundColor: !isDisabled
+                              ? isSelected
+                                ? "yellow"
+                                : "blue"
+                              : undefined,
+                            color: isSelected ? "black" : "white",
+                          },
+                        };
+                      },
+                    }}
+                  />
+                )}
+              />
+              {errors.teaching_exp && (
+                <p style={{ color: "red" }}>
+                  {errors.teaching_exp.label.message}
+                </p>
+              )}
             </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              sx={{
-                backgroundColor: "#ffefb6",
-                borderRadius: "20px",
-                marginBottom: "2%",
-              }}
-            >
+            <Grid item xs={12} sm={6}>
               <Typography
+                variant="h6"
+                component="h6"
+                className={styles.inputLabel}
+                sx={{ mb: "1%", fontWeight: "bold" }}
+              >
+                Grade Level(s) taught *
+              </Typography>
+              {/* <TextField
+                variant="outlined"
+                name="grade"
+                sx={{
+                  width: "70%",
+                  mb: "3%",
+                  borderRadius: "20px",
+                  border: "0.5px solid #707070",
+                  "& fieldset": { border: "none" },
+                }}
+                {...register("grade")}
+                error={!!errors.grade}
+                helperText={errors.grade?.message}
+                className={styles.inputField}
+              /> */}
+              <Controller
+                control={control}
+                name="grade"
+                render={({ field: { onChange, onBlur, value, name, ref } }) => (
+                  <Select
+                    options={grades}
+                    onChange={onChange}
+                    isMulti={false}
+                    onBlur={onBlur}
+                    value={value}
+                    name={name}
+                    styles={{
+                      control: (base, state) => ({
+                        ...base,
+                        borderRadius: "20px",
+                        border: "0.5px solid #707070",
+                        boxShadow: "none",
+                        width: "70%",
+                        height: "100%",
+                      }),
+                      menu: (base) => ({
+                        ...base,
+                        borderRadius: 0,
+                        marginTop: 0,
+                        width: "70%",
+                        borderRadius: "20px",
+                        padding: "1%",
+                      }),
+                      option: (
+                        styles,
+                        { data, isDisabled, isFocused, isSelected }
+                      ) => {
+                        return {
+                          ...styles,
+                          borderRadius: "20px",
+                          backgroundColor: isDisabled
+                            ? undefined
+                            : isSelected
+                            ? "blue"
+                            : isFocused
+                            ? "#ffefb6"
+                            : undefined,
+                          color: isDisabled
+                            ? "#ccc"
+                            : isSelected
+                            ? "white"
+                              ? "white"
+                              : "black"
+                            : "black",
+
+                          ":active": {
+                            ...styles[":active"],
+                            backgroundColor: !isDisabled
+                              ? isSelected
+                                ? "yellow"
+                                : "blue"
+                              : undefined,
+                            color: isSelected ? "black" : "white",
+                          },
+                        };
+                      },
+                    }}
+                  />
+                )}
+              />
+              {errors.grade && (
+                <p style={{ color: "red" }}>{errors.grade.label.message}</p>
+              )}
+            </Grid>
+            {getValues("grade") && getValues("grade").value && (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                sx={{
+                  // backgroundColor: "#ffefb6",
+                  borderRadius: "20px",
+                  marginBottom: "2%",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  component="h2"
+                  className={styles.inputLabel}
+                  sx={{ mb: "1%", fontWeight: "bold" }}
+                >
+                  Subject taught
+                </Typography>
+                <Controller
+                  control={control}
+                  name="subjects"
+                  render={({
+                    field: { onChange, onBlur, value, name, ref },
+                  }) => (
+                    <Select
+                      options={
+                        getValues("grade").value === 10
+                          ? subjects10
+                          : subjects12
+                      }
+                      onChange={onChange}
+                      isMulti={false}
+                      onBlur={onBlur}
+                      value={value}
+                      name={name}
+                      styles={{
+                        control: (base, state) => ({
+                          ...base,
+                          borderRadius: "20px",
+                          border: "0.5px solid #707070",
+                          boxShadow: "none",
+                          width: "70%",
+                          height: "100%",
+                        }),
+                        menu: (base) => ({
+                          ...base,
+                          borderRadius: 0,
+                          marginTop: 0,
+                          width: "70%",
+                          borderRadius: "20px",
+                          padding: "1%",
+                        }),
+                        option: (
+                          styles,
+                          { data, isDisabled, isFocused, isSelected }
+                        ) => {
+                          return {
+                            ...styles,
+                            borderRadius: "20px",
+                            backgroundColor: isDisabled
+                              ? undefined
+                              : isSelected
+                              ? "blue"
+                              : isFocused
+                              ? "#ffefb6"
+                              : undefined,
+                            color: isDisabled
+                              ? "#ccc"
+                              : isSelected
+                              ? "white"
+                                ? "white"
+                                : "black"
+                              : "black",
+
+                            ":active": {
+                              ...styles[":active"],
+                              backgroundColor: !isDisabled
+                                ? isSelected
+                                  ? "yellow"
+                                  : "blue"
+                                : undefined,
+                              color: isSelected ? "black" : "white",
+                            },
+                          };
+                        },
+                      }}
+                    />
+                  )}
+                />
+                {errors.subjects && (
+                  <p style={{ color: "red" }}>{errors.subjects.message}</p>
+                )}
+              </Grid>
+            )}
+            {/* <Typography
                 variant="h6"
                 component="h6"
                 className={styles.inputLabel}
@@ -332,8 +661,8 @@ export default function Page() {
               )}
               {subjects.length > 5 && (
                 <p style={{ color: "red" }}>Maximum five subjects allowed</p>
-              )}
-            </Grid>
+              )} */}
+            {/* </Grid> */}
             <Grid item xs={12} sm={6}>
               <Typography
                 variant="h6"
@@ -483,31 +812,6 @@ export default function Page() {
                 />
               </Button>
             </Grid> */}
-            <Grid item xs={12} sm={6}>
-              <Typography
-                variant="h6"
-                component="h6"
-                className={styles.inputLabel}
-                sx={{ mb: "1%", fontWeight: "bold" }}
-              >
-                Grade Level(s) taught *
-              </Typography>
-              <TextField
-                variant="outlined"
-                name="grade"
-                sx={{
-                  width: "70%",
-                  mb: "3%",
-                  borderRadius: "20px",
-                  border: "0.5px solid #707070",
-                  "& fieldset": { border: "none" },
-                }}
-                {...register("grade")}
-                error={!!errors.grade}
-                helperText={errors.grade?.message}
-                className={styles.inputField}
-              />
-            </Grid>
           </Grid>
           <p
             style={{
