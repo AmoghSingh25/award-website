@@ -266,11 +266,25 @@ export default function Page() {
       if (!resp.error) {
         router.push("/apply/sec6?id=" + resp1.id);
       } else {
+        fetch("/api/logger", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            error: resp.message,
+            id: id,
+            location: "sec5",
+          }),
+        });
         setError("Error saving documents");
         setLoading(false);
       }
     } catch (err) {
       console.log(err);
+      fetch("/api/logger", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ error: err.message, id: id, location: "sec5" }),
+      });
       setError("Error submitting");
       setLoading(false);
     }
