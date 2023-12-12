@@ -88,7 +88,6 @@ export default function Page() {
     data.grade = data.grade.value;
     data.subjects = [data.subjects.value];
     data.id = searchParams.get("id");
-    console.log(data);
     const res = fetch("/api/saveSection", {
       method: "POST",
       headers: {
