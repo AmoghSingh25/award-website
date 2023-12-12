@@ -106,11 +106,30 @@ export default function Page() {
         if (!res.error) {
           router.push("/application_success");
         } else {
+          fetch("/api/logger", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              location: "preview",
+              error: res.message,
+            }),
+          }).catch((err) => {
+            console.log(err);
+          });
           setError("Error saving application");
         }
       })
       .catch((err) => {
-        err;
+        fetch("/api/logger", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            location: "preview",
+            error: err.message,
+          }),
+        }).catch((err) => {
+          console.log(err);
+        });
         setError("Error submitting application");
       });
   };

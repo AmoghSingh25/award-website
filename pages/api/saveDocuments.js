@@ -6,7 +6,6 @@ export default async function saveSection5(req, res) {
   if (req.method !== "POST")
     return res.status(404).json({ message: "Not found" });
   try {
-    console.log("Save documents called");
     const { tableName, id, id_card, awards, other_documents, document_id } =
       req.body;
     const auth = await checkUser(id);
