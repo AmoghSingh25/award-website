@@ -87,6 +87,7 @@ function Layout({ children }) {
             marginTop: "2%",
             marginRight: "2%",
             marginLeft: "2%",
+            // height: "80vh",
           }}
         >
           {errorMessage !== "" && (

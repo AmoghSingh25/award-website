@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import StateSelect from "../../../components/stateSelect";
 import styles from "./page.module.css";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import SectionHeader from "../../../components/sectionHeader";
@@ -318,13 +317,39 @@ export default function Page() {
 
                     backgroundColor: "#F7F7F7",
                   }),
-                  option: (base) => ({
-                    ...base,
-                    width: "70%",
-                    color: "black",
-                    zIndex: 100,
-                    backgroundColor: "#F7F7F7",
-                  }),
+                  option: (
+                    styles,
+                    { data, isDisabled, isFocused, isSelected }
+                  ) => {
+                    return {
+                      ...styles,
+                      borderRadius: "20px",
+                      backgroundColor: isDisabled
+                        ? undefined
+                        : isSelected
+                        ? "blue"
+                        : isFocused
+                        ? "#ffefb6"
+                        : undefined,
+                      color: isDisabled
+                        ? "#ccc"
+                        : isSelected
+                        ? "white"
+                          ? "white"
+                          : "black"
+                        : "black",
+
+                      ":active": {
+                        ...styles[":active"],
+                        backgroundColor: !isDisabled
+                          ? isSelected
+                            ? "yellow"
+                            : "blue"
+                          : undefined,
+                        color: isSelected ? "black" : "white",
+                      },
+                    };
+                  },
                 }}
                 {...stateField}
               />

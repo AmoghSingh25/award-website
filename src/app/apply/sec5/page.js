@@ -277,13 +277,30 @@ export default function Page() {
         });
         setError("Error saving documents");
         setLoading(false);
+        fetch("/api/logger", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: id,
+            location: "sec5",
+            error: resp.message,
+          }),
+        }).catch((err) => {
+          console.log(err);
+        });
       }
     } catch (err) {
       console.log(err);
       fetch("/api/logger", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ error: err.message, id: id, location: "sec5" }),
+        body: JSON.stringify({
+          id: id,
+          location: "sec5",
+          error: err.message,
+        }),
+      }).catch((err) => {
+        console.log(err);
       });
       setError("Error submitting");
       setLoading(false);

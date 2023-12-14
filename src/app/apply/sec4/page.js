@@ -50,6 +50,16 @@ export default function Page() {
         if (!res.error) {
           router.push("/apply/sec5?id=" + res.id);
         } else {
+          fetch("/api/logger", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              location: "sec4",
+              error: res.message,
+            }),
+          }).catch((err) => {
+            console.log(err);
+          });
           setError("Error in saving data");
         }
       });

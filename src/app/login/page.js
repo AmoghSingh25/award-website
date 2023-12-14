@@ -50,6 +50,18 @@ export default function Page() {
       data.section = resp.last_saved;
       router.push("/apply/sec" + resp.last_saved + "?id=" + resp.id);
     }
+    if (resp.error) {
+      fetch("/api/logger", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          location: "login",
+          error: resp.message,
+        }),
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
     if (resp.error && resp.status === "Already submitted") {
       setError("Application already submitted");
       return;
@@ -62,6 +74,7 @@ export default function Page() {
         setError("User does not exist, please signup");
         return;
       }
+      logger([resp.error]);
       setError("Error logging in");
       return;
     }

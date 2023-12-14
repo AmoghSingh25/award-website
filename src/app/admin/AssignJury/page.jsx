@@ -1,5 +1,5 @@
 import React from "react";
-import ApplicantDashboard from "src/components/applicantDashboard";
+import ApplicantDashboard from "@/components/applicantDashboard";
 import AdminPanel from "../adminPanel/AdminPanel";
 function page() {
   return (

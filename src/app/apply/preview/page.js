@@ -110,24 +110,18 @@ export default function Page() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              error: res.message,
-              id: id,
               location: "preview",
+              error: res.message,
+              id:id,
             }),
+          }).catch((err) => {
+            console.log(err);
           });
           setError("Error saving application");
         }
       })
       .catch((err) => {
-        fetch("/api/logger", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            error: err.message,
-            id: id,
-            location: "preview",
-          }),
-        });
+        err;
         setError("Error submitting application");
       });
   };

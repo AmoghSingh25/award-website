@@ -65,8 +65,20 @@ export default function Page() {
           data.name
       );
     }
+    if (resp.error) {
+      fetch("/api/logger", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          error: resp.error,
+        }),
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
     if (resp.error && resp.status === "Already submitted") {
       setError("Application already submitted");
+
       return;
     } else if (resp.error) {
       if (resp.status === "User already exists") {
