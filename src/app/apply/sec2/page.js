@@ -27,7 +27,7 @@ theme = responsiveFontSizes(theme);
 
 const schema = yup.object().shape({
   teaching_exp: yup.object().shape({
-    value: yup.number().required().nonNullable("Select an option"),
+    value: yup.string().required().nonNullable("Select an option"),
     label: yup
       .string()
       .required("Select an option")
@@ -43,7 +43,7 @@ const schema = yup.object().shape({
   subjects: yup
     .object()
     .shape({
-      value: yup.number().required().nonNullable("Select a subject"),
+      value: yup.string().required().nonNullable("Select a subject"),
       label: yup
         .string()
         .required("Select an option")
@@ -109,9 +109,20 @@ export default function Page() {
   const [, updateState] = React.useState();
 
   useEffect(() => {
+    if (getValues("subjects") === undefined) return;
+    const subject_temp = getValues("subjects").value;
+    const temp_10 = subjects10.map((subject) => subject.value);
+    const temp_12 = subjects12.map((subject) => subject.value);
     if (loading) return;
-    setValue("subjects", null);
-    updateState({});
+    if (
+      (selectedValue.value === "10" && temp_10.includes(subject_temp)) ||
+      (selectedValue.value === "12" && temp_12.includes(subject_temp))
+    ) {
+      return;
+    } else {
+      setValue("subjects", null);
+      updateState({});
+    }
   }, [selectedValue]);
 
   useEffect(() => {
@@ -128,21 +139,24 @@ export default function Page() {
       .then((res) => res.json())
       .then((res) => {
         if (!res.isFilled) {
-          setLoaded(false);
+          setLoading(false);
           return;
         }
         res = res.data[0];
-        setValue("teaching_exp", experienceOptions[res.teaching_exp - 1]);
+        setValue("teaching_exp", {
+          value: res.teaching_exp,
+          label: res.teaching_exp,
+        });
         setValue("institute_exp", res.institute_exp);
-        setValue("grade", grades[res.grade === 10 ? 0 : 1]);
-        setValue(
-          "subjects",
-          res.grade === 10
-            ? subjects10[res.subjects[0] - 1]
-            : subjects12[res.subjects[0] - 1]
-        );
+        setValue("grade", {
+          value: res.grade,
+          label: "Grade " + res.grade,
+        });
+        setValue("subjects", {
+          value: res.subjects[0],
+          label: res.subjects[0],
+        });
         setValue("professional_membership", res.professional_membership);
-
         if (res.professional_membership) {
           setprofessional_membership(res.professional_membership);
         }
@@ -157,9 +171,9 @@ export default function Page() {
   const router = useRouter();
   const [errorMessage, setError] = useState("");
   const experienceOptions = [
-    { value: 1, label: "5-15 years" },
-    { value: 2, label: "15-25 years" },
-    { value: 3, label: "More than 25 years" },
+    { value: "5-15 Years", label: "5-15 years" },
+    { value: "15-25 Years", label: "15-25 years" },
+    { value: "More than 25 Years", label: "More than 25 years" },
   ];
 
   const grades = [
@@ -173,12 +187,12 @@ export default function Page() {
     // Mathematics
     // Science
     // Social studies (History, Geography, Civics, and Economics)
-    { value: 1, label: "English" },
-    { value: 2, label: "Regional" },
-    { value: 3, label: "Mathematics" },
-    { value: 4, label: "Science" },
+    { value: "English", label: "English" },
+    { value: "Regional", label: "Regional" },
+    { value: "Mathematics", label: "Mathematics" },
+    { value: "Science", label: "Science" },
     {
-      value: 5,
+      value: "Social studies (History, Geography, Civics, and Economics)",
       label: "Social studies (History, Geography, Civics, and Economics)",
     },
   ];
@@ -188,11 +202,11 @@ export default function Page() {
     // Chemistry
     // Biology
     // Computer Science
-    { value: 1, label: "Mathematics" },
-    { value: 2, label: "Physics" },
-    { value: 3, label: "Chemistry" },
-    { value: 4, label: "Biology" },
-    { value: 5, label: "Computer Science" },
+    { value: "Mathematics", label: "Mathematics" },
+    { value: "Physics", label: "Physics" },
+    { value: "Chemistry", label: "Chemistry" },
+    { value: "Biology", label: "Biology" },
+    { value: "Computer Science", label: "Computer Science" },
   ];
 
   return (
@@ -364,200 +378,14 @@ export default function Page() {
                   />
                 )}
               />
-              {errors.teaching_exp && (
-                <p style={{ color: "red" }}>
-                  {errors.teaching_exp.label.message}
-                </p>
-              )}
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Typography
-                variant="h6"
-                component="h6"
-                className={styles.inputLabel}
-                sx={{ mb: "1%", fontWeight: "bold" }}
-              >
-                Grade Level(s) taught *
-              </Typography>
-              {/* <TextField
-                variant="outlined"
-                name="grade"
-                sx={{
-                  width: "70%",
-                  mb: "3%",
-                  borderRadius: "20px",
-                  border: "0.5px solid #707070",
-                  "& fieldset": { border: "none" },
-                }}
-                {...register("grade")}
-                error={!!errors.grade}
-                helperText={errors.grade?.message}
-                className={styles.inputField}
-              /> */}
-              <Controller
-                control={control}
-                name="grade"
-                render={({ field: { onChange, onBlur, value, name, ref } }) => (
-                  <Select
-                    options={grades}
-                    onChange={onChange}
-                    isMulti={false}
-                    onBlur={onBlur}
-                    value={value}
-                    name={name}
-                    styles={{
-                      control: (base, state) => ({
-                        ...base,
-                        borderRadius: "20px",
-                        border: "0.5px solid #707070",
-                        boxShadow: "none",
-                        width: "70%",
-                        height: "100%",
-                      }),
-                      menu: (base) => ({
-                        ...base,
-                        borderRadius: 0,
-                        marginTop: 0,
-                        width: "70%",
-                        borderRadius: "20px",
-                        padding: "1%",
-                      }),
-                      option: (
-                        styles,
-                        { data, isDisabled, isFocused, isSelected }
-                      ) => {
-                        return {
-                          ...styles,
-                          borderRadius: "20px",
-                          backgroundColor: isDisabled
-                            ? undefined
-                            : isSelected
-                            ? "blue"
-                            : isFocused
-                            ? "#ffefb6"
-                            : undefined,
-                          color: isDisabled
-                            ? "#ccc"
-                            : isSelected
-                            ? "white"
-                              ? "white"
-                              : "black"
-                            : "black",
-
-                          ":active": {
-                            ...styles[":active"],
-                            backgroundColor: !isDisabled
-                              ? isSelected
-                                ? "yellow"
-                                : "blue"
-                              : undefined,
-                            color: isSelected ? "black" : "white",
-                          },
-                        };
-                      },
-                    }}
-                  />
+              {errors.teaching_exp &&
+                errors.teaching_exp.label &&
+                errors.teaching_exp.label.message && (
+                  <p style={{ color: "red" }}>
+                    {errors.teaching_exp.label.message}
+                  </p>
                 )}
-              />
-              {errors.grade && (
-                <p style={{ color: "red" }}>{errors.grade.label.message}</p>
-              )}
             </Grid>
-            {getValues("grade") && getValues("grade").value && (
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                sx={{
-                  // backgroundColor: "#ffefb6",
-                  borderRadius: "20px",
-                  marginBottom: "2%",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  component="h2"
-                  className={styles.inputLabel}
-                  sx={{ mb: "1%", fontWeight: "bold" }}
-                >
-                  Subject taught
-                </Typography>
-                <Controller
-                  control={control}
-                  name="subjects"
-                  render={({
-                    field: { onChange, onBlur, value, name, ref },
-                  }) => (
-                    <Select
-                      options={
-                        getValues("grade").value === 10
-                          ? subjects10
-                          : subjects12
-                      }
-                      onChange={onChange}
-                      isMulti={false}
-                      onBlur={onBlur}
-                      value={value}
-                      name={name}
-                      styles={{
-                        control: (base, state) => ({
-                          ...base,
-                          borderRadius: "20px",
-                          border: "0.5px solid #707070",
-                          boxShadow: "none",
-                          width: "70%",
-                          height: "100%",
-                        }),
-                        menu: (base) => ({
-                          ...base,
-                          borderRadius: 0,
-                          marginTop: 0,
-                          width: "70%",
-                          borderRadius: "20px",
-                          padding: "1%",
-                        }),
-                        option: (
-                          styles,
-                          { data, isDisabled, isFocused, isSelected }
-                        ) => {
-                          return {
-                            ...styles,
-                            borderRadius: "20px",
-                            backgroundColor: isDisabled
-                              ? undefined
-                              : isSelected
-                              ? "blue"
-                              : isFocused
-                              ? "#ffefb6"
-                              : undefined,
-                            color: isDisabled
-                              ? "#ccc"
-                              : isSelected
-                              ? "white"
-                                ? "white"
-                                : "black"
-                              : "black",
-
-                            ":active": {
-                              ...styles[":active"],
-                              backgroundColor: !isDisabled
-                                ? isSelected
-                                  ? "yellow"
-                                  : "blue"
-                                : undefined,
-                              color: isSelected ? "black" : "white",
-                            },
-                          };
-                        },
-                      }}
-                    />
-                  )}
-                />
-                {errors.subjects && (
-                  <p style={{ color: "red" }}>{errors.subjects.message}</p>
-                )}
-              </Grid>
-            )}
             {/* <Typography
                 variant="h6"
                 component="h6"
@@ -694,6 +522,99 @@ export default function Page() {
                 className={styles.inputField}
               />
             </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography
+                variant="h6"
+                component="h6"
+                className={styles.inputLabel}
+                sx={{ mb: "1%", fontWeight: "bold" }}
+              >
+                Grade Level(s) taught *
+              </Typography>
+              {/* <TextField
+                variant="outlined"
+                name="grade"
+                sx={{
+                  width: "70%",
+                  mb: "3%",
+                  borderRadius: "20px",
+                  border: "0.5px solid #707070",
+                  "& fieldset": { border: "none" },
+                }}
+                {...register("grade")}
+                error={!!errors.grade}
+                helperText={errors.grade?.message}
+                className={styles.inputField}
+              /> */}
+              <Controller
+                control={control}
+                name="grade"
+                render={({ field: { onChange, onBlur, value, name, ref } }) => (
+                  <Select
+                    options={grades}
+                    onChange={onChange}
+                    isMulti={false}
+                    onBlur={onBlur}
+                    value={value}
+                    name={name}
+                    styles={{
+                      control: (base, state) => ({
+                        ...base,
+                        borderRadius: "20px",
+                        border: "0.5px solid #707070",
+                        boxShadow: "none",
+                        width: "70%",
+                        height: "100%",
+                      }),
+                      menu: (base) => ({
+                        ...base,
+                        borderRadius: 0,
+                        marginTop: 0,
+                        width: "70%",
+                        borderRadius: "20px",
+                        padding: "1%",
+                      }),
+                      option: (
+                        styles,
+                        { data, isDisabled, isFocused, isSelected }
+                      ) => {
+                        return {
+                          ...styles,
+                          borderRadius: "20px",
+                          backgroundColor: isDisabled
+                            ? undefined
+                            : isSelected
+                            ? "blue"
+                            : isFocused
+                            ? "#ffefb6"
+                            : undefined,
+                          color: isDisabled
+                            ? "#ccc"
+                            : isSelected
+                            ? "white"
+                              ? "white"
+                              : "black"
+                            : "black",
+
+                          ":active": {
+                            ...styles[":active"],
+                            backgroundColor: !isDisabled
+                              ? isSelected
+                                ? "yellow"
+                                : "blue"
+                              : undefined,
+                            color: isSelected ? "black" : "white",
+                          },
+                        };
+                      },
+                    }}
+                  />
+                )}
+              />
+              {errors.grade && (
+                <p style={{ color: "red" }}>{errors.grade.label.message}</p>
+              )}
+            </Grid>
 
             <Grid
               item
@@ -811,6 +732,107 @@ export default function Page() {
                 />
               </Button>
             </Grid> */}
+            {getValues("grade") && getValues("grade").value && (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                sx={{
+                  // backgroundColor: "#ffefb6",
+                  borderRadius: "20px",
+                  marginBottom: "2%",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  component="h2"
+                  className={styles.inputLabel}
+                  sx={{ mb: "1%", fontWeight: "bold" }}
+                >
+                  Subject taught *
+                </Typography>
+                <Controller
+                  control={control}
+                  name="subjects"
+                  render={({
+                    field: { onChange, onBlur, value, name, ref },
+                  }) => (
+                    <Select
+                      options={
+                        getValues("grade").value === 10
+                          ? subjects10
+                          : subjects12
+                      }
+                      menuPlacement="top"
+                      onChange={onChange}
+                      isMulti={false}
+                      onBlur={onBlur}
+                      value={value}
+                      name={name}
+                      styles={{
+                        control: (base, state) => ({
+                          ...base,
+                          borderRadius: "20px",
+                          border: "0.5px solid #707070",
+                          boxShadow: "none",
+                          width: "70%",
+                          height: "100%",
+                        }),
+                        menu: (base) => ({
+                          ...base,
+                          borderRadius: 0,
+                          marginTop: 0,
+                          width: "70%",
+                          borderRadius: "20px",
+                          padding: "1%",
+                        }),
+                        option: (
+                          styles,
+                          { data, isDisabled, isFocused, isSelected }
+                        ) => {
+                          return {
+                            ...styles,
+                            borderRadius: "20px",
+                            backgroundColor: isDisabled
+                              ? undefined
+                              : isSelected
+                              ? "blue"
+                              : isFocused
+                              ? "#ffefb6"
+                              : undefined,
+                            color: isDisabled
+                              ? "#ccc"
+                              : isSelected
+                              ? "white"
+                                ? "white"
+                                : "black"
+                              : "black",
+
+                            ":active": {
+                              ...styles[":active"],
+                              backgroundColor: !isDisabled
+                                ? isSelected
+                                  ? "yellow"
+                                  : "blue"
+                                : undefined,
+                              color: isSelected ? "black" : "white",
+                            },
+                          };
+                        },
+                      }}
+                    />
+                  )}
+                />
+                {errors.subjects && errors.subjects.message && (
+                  <p style={{ color: "red" }}>{errors.subjects.message}</p>
+                )}
+                {errors.subjects && errors.subjects.label && (
+                  <p style={{ color: "red" }}>
+                    {errors.subjects.label.message}
+                  </p>
+                )}
+              </Grid>
+            )}
           </Grid>
           <p
             style={{
