@@ -182,7 +182,6 @@ export default function Page() {
             className={styles.inputField}
             sx={{
               width: "100%",
-              marginBottom: "2%",
             }}
           />
           <TextField
