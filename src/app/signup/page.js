@@ -182,6 +182,7 @@ export default function Page() {
             className={styles.inputField}
             sx={{
               width: "100%",
+              marginBottom: "2%",
             }}
           />
           <TextField
@@ -193,7 +194,7 @@ export default function Page() {
             helperText={errors.email?.message}
             className={styles.inputField}
             sx={{
-              marginTop: "0",
+              marginTop: "2%",
             }}
           />
           <TextField
