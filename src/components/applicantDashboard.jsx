@@ -2,7 +2,7 @@
 import * as React from "react";
 import { useEffect, Suspense, useState } from "react";
 import { Box, Button } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import XLSX from "xlsx";
@@ -186,10 +186,21 @@ export default function ApplicantDashboard() {
       <DataGrid
         rows={rows}
         disableRowSelectionOnClick
+        disableVirtualization
+        // disableColumnFilter
+        disableDensitySelector
         columns={columns}
         pageSize={5}
         disableColumnSelector
         loading={loading}
+        slots={{ toolbar: GridToolbar }}
+        slotProps={{
+          toolbar: {
+            printOptions: { disableToolbarButton: true },
+            csvOptions: { disableToolbarButton: true },
+            showQuickFilter: true,
+          },
+        }}
         sx={{
           mt: 5,
           ml: 5,

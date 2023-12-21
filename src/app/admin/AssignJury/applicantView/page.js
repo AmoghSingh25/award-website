@@ -141,6 +141,7 @@ export default function Page() {
       25504446: "application/pdf",
       FFD8FFDB: "image/jpeg",
       FFD8FFE0: "image/jpg",
+      FFD8FFE1: "image/jpg",
     };
     return file_type_dict[file_type] || null;
   }
