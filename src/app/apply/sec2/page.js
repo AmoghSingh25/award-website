@@ -39,7 +39,8 @@ const schema = yup.object().shape({
     .required("Enter a number")
     .min(0)
     .max(100)
-    .nonNullable("Enter a number"),
+    .nonNullable("Enter a number")
+    .integer("Must be a whole number"),
   subjects: yup
     .object()
     .shape({
