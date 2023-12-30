@@ -70,7 +70,8 @@ export default function Page() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          error: resp.error,
+          error: resp.message,
+          location: "signup",
         }),
       }).catch((err) => {
         console.log(err);
