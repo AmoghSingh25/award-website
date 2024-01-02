@@ -190,7 +190,10 @@ export default function Page() {
         otherDocs.type !== "application/pdf" &&
         otherDocs.type !== "image/jpeg" &&
         otherDocs.type !== "image/png" &&
-        otherDocs.type !== "image/jpg"
+        otherDocs.type !== "image/jpg" &&
+        otherDocs.type !== "video/mp4" &&
+        otherDocs.type !== "audio/mp3" &&
+        otherDocs.type !== "audio/mpeg"
       ) {
         setErrors(
           (prev) => (prev = { ...prev, otherDocs: "File type not supported" })
@@ -320,7 +323,7 @@ export default function Page() {
           sx={{
             position: "absolute",
             width: "100vw",
-            height: "120vh",
+            height: "140vh",
             backgroundColor: "rgba(255,255,255,0.7)",
             zIndex: "1000",
           }}
@@ -529,9 +532,9 @@ export default function Page() {
                   Selected {otherDocs.name}
                 </p>
               )}
-              {errors.collat && (
+              {errors.otherDocs && (
                 <p style={{ color: "red", marginBottom: "3%" }}>
-                  {errors.collat}
+                  {errors.otherDocs}
                 </p>
               )}
               <br />

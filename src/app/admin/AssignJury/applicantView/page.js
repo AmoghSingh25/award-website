@@ -117,8 +117,15 @@ export default function Page() {
           ";base64," +
           Buffer.from(byteArray).toString("base64");
         set_file({ data: b64, type: fileType });
-      } else {
+      } else if (fileType === "application/pdf") {
         set_file({ data: byteArray, type: fileType });
+      } else if (fileType === "audio/mp3" || fileType === "video/mp4") {
+        const b64 =
+          "data:" +
+          fileType +
+          ";base64," +
+          Buffer.from(byteArray).toString("base64");
+        set_file({ data: b64, type: fileType });
       }
     }
   };
@@ -143,6 +150,22 @@ export default function Page() {
       FFD8FFE0: "image/jpg",
       FFD8FFE1: "image/jpg",
     };
+    if (file_type_dict[file_type] === undefined) {
+      if (
+        file_type.indexOf("494433") >= 0 ||
+        file_type.indexOf("4944") >= 0 ||
+        file_type.indexOf("FFFB") >= 0 ||
+        file_type.indexOf("FFF3") >= 0 ||
+        file_type.indexOf("FFF2") >= 0
+      ) {
+        return "audio/mp3";
+      } else if (
+        file_type.indexOf("667479") >= 0 ||
+        file_type.indexOf("00020") >= 0
+      ) {
+        return "video/mp4";
+      }
+    }
     return file_type_dict[file_type] || null;
   }
 
@@ -511,7 +534,53 @@ export default function Page() {
                       </Button>
                     </div>
                   )}
-                  {achievement.type !== "application/pdf" && (
+                  {achievement.type === "video/mp4" && (
+                    <div
+                      className={styles.tableDiv}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        width: "50%",
+                      }}
+                    >
+                      <h2>Other Documents</h2>
+                      <video
+                        controls
+                        src={achievement.data}
+                        style={{
+                          width: "100%",
+                          maxHeight: "30vh",
+                          objectFit: "contain",
+                        }}
+                      ></video>
+                    </div>
+                  )}
+                  {achievement.type === "audio/mp3" && (
+                    <div
+                      className={styles.tableDiv}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        width: "50%",
+                      }}
+                    >
+                      <h2>Other Documents</h2>
+                      <audio
+                        controls
+                        src={achievement.data}
+                        style={{
+                          width: "100%",
+                          maxHeight: "30vh",
+                          objectFit: "contain",
+                        }}
+                      ></audio>
+                    </div>
+                  )}
+                  {(achievement.type == "image/png" ||
+                    achievement.type == "image/jpeg" ||
+                    achievement.type == "image/jpg") && (
                     <>
                       <div
                         className={styles.tableDiv}
