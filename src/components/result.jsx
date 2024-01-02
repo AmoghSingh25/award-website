@@ -2,29 +2,40 @@
 import * as React from "react";
 import { Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import downloadCsv from "download-csv";
-import * as XLSX from "xlsx";
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function JuryResult() {
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = React.useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   const searchParams = new useSearchParams(router.query);
 
   const columns = [
-    { field: "applicantname", headerName: "Applicant Name", width: 200 },
-    { field: "email", headerName: "Applicant Email", width: 300 },
-    { field: "phone", headerName: "Applicant Phone", width: 200 },
+    {
+      field: "applicantname",
+      headerName: "Applicant Name",
+      width: 200,
+    },
+    {
+      field: "email",
+      headerName: "Applicant Email",
+      width: 300,
+    },
+    {
+      field: "phone",
+      headerName: "Applicant Phone",
+      width: 200,
+    },
     { field: "juryname", headerName: "Jury Name", width: 200 },
     { field: "comment", headerName: "Comments", width: 200 },
     {
       field: "review_status",
       headerName: "Result",
       width: 180,
+
       renderCell: (params) => (
         <Button
           variant="contained"
@@ -45,6 +56,10 @@ export default function JuryResult() {
       ),
     },
   ];
+
+  useEffect(() => {
+    console.log(rows);
+  }, [rows]);
 
   useEffect(() => {
     fetch("/api/admin/getApplicantResult", {
@@ -84,8 +99,15 @@ export default function JuryResult() {
         disableDensitySelector
         disableColumnSelector
         columns={columns}
-        pageSize={5}
         loading={loading}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 25,
+            },
+          },
+        }}
+        pageSizeOptions={[25, 50, 100, 200, 500]}
         sx={{
           mt: 5,
           ml: 5,

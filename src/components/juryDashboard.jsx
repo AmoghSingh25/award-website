@@ -61,7 +61,7 @@ export default function JuryDashboard() {
         rows={rows}
         disableRowSelectionOnClick
         columns={columns}
-        pageSize={5} // You can adjust the number of rows per page
+        pageSize={5}
         sx={{
           mt: 5,
           ml: 5,
