@@ -446,7 +446,7 @@ export default function Page() {
               className={styles.inputLabel}
             >
               Your ID card from current institution *
-            </Typography>
+            </Typography> 
             <div className={styles.subSection}>
               <Input
                 type="file"
