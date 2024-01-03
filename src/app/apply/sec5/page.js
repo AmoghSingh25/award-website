@@ -431,6 +431,9 @@ export default function Page() {
               Please upload the following documents in PDF/JPG/JPEG/PNG format
               only.
               <br />
+              MP3/MP4 format files can be uploaded in Other Collaterals under
+              Supporting Documents.
+              <br />
               The file size should not exceed 3 MB.
             </p>
           </div>
