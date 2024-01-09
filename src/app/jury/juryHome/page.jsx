@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridEditInputCell } from "@mui/x-data-grid";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -70,65 +70,120 @@ export default function JuryHome({ params }) {
     {
       field: "comment",
       headerName: "Comment",
-      width: 250,
+      width: 500,
       editable: true,
-    },
-    {
-      field: "comment_box",
-      headerName: "Add Comment",
-      width: 200,
       renderCell: (params) => {
         return (
-          <>
-            <Button
-              variant="contained"
-              size="small"
-              sx={{
-                backgroundColor: "#373f6e",
-              }}
-              onClick={handleOpen}
-            >
-              Add Comment
-            </Button>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="Add Comment"
-              aria-describedby="modal-modal-description"
-            >
-              <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                  Enter Comments
-                </Typography>
-                <Input
-                  value={inputVal}
-                  sx={{ marginBottom: "10px" }}
-                  aria-label="Demo input"
-                  multiline
-                  onChange={(e) => {
-                    rows.find((row) => row.id === params.id).comment =
-                      e.target.value;
-                    params.row.comment = e.target.value;
-                    setInputVal(e.target.value);
-                  }}
-                  placeholder="Type something…"
-                />
-                <Button
-                  variant="contained"
-                  size="small"
-                  sx={{
-                    backgroundColor: "#373f6e",
-                  }}
-                  onClick={handleClose}
-                >
-                  Submit
-                </Button>
-              </Box>
-            </Modal>
-          </>
+          <Input
+            value={params.row.comment}
+            sx={{ marginBottom: "10px" }}
+            style={{
+              width: "100%",
+              padding: "5px",
+              borderRadius: "5px",
+            }}
+            aria-label="Demo input"
+            multiline
+            onChange={(e) => {
+              params.row.comment = e.target.value;
+            }}
+            placeholder="Type something…"
+          />
         );
       },
     },
+    {
+      field: "score",
+      headerName: "Score",
+      width: 100,
+      renderCell: (params) => {
+        return (
+          <select
+            id="score"
+            name="score"
+            defaultValue={params.row.score}
+            style={{
+              width: "100%",
+              padding: "5px",
+              borderRadius: "5px",
+            }}
+            onChange={(e) => {
+              // rows.find((row) => row.id === params.id).score = e.target.value;
+              params.row.score = e.target.value;
+            }}
+          >
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        );
+      },
+    },
+    // {
+    //   field: "comment_box",
+    //   headerName: "Add Comment",
+    //   width: 200,
+    //   renderCell: (params) => {
+    //     return (
+    //       <>
+    //         <Button
+    //           variant="contained"
+    //           size="small"
+    //           sx={{
+    //             backgroundColor: "#373f6e",
+    //           }}
+    //           onClick={handleOpen}
+    //         >
+    //           Add Comment
+    //         </Button>
+    //         <Modal
+    //           open={open}
+    //           onClose={handleClose}
+    //           aria-labelledby="Add Comment"
+    //           aria-describedby="modal-modal-description"
+    //         >
+    //           <Box sx={style}>
+    //             <Typography id="modal-modal-title" variant="h6" component="h2">
+    //               Enter Comments
+    //             </Typography>
+    //             <Input
+    //               value={params.row.comment}
+    //               sx={{ marginBottom: "10px" }}
+    //               aria-label="Demo input"
+    //               multiline
+    //               onChange={(e) => {
+    //                 console.log(params.row);
+    //                 // rows.find((row) => row.id === params.id).comment =
+    //                 //   e.target.value;
+    //                 params.row.comment = e.target.value;
+    //                 // setInputVal(e.target.value);
+    //               }}
+    //               placeholder="Type something…"
+    //             />
+    //             <Button
+    //               variant="contained"
+    //               size="small"
+    //               sx={{
+    //                 backgroundColor: "#373f6e",
+    //               }}
+    //               onClick={handleClose}
+    //             >
+    //               Submit
+    //             </Button>
+    //           </Box>
+    //         </Modal>
+    //       </>
+    //     );
+    //   },
+    // },
     {
       field: "status",
       headerName: "Result",
@@ -211,7 +266,7 @@ export default function JuryHome({ params }) {
     },
   ];
 
-  const [inputVal, setInputVal] = useState("");
+  // const [inputVal, setInputVal] = useState("");
 
   const [rows, setRows] = useState([]);
   const router = useRouter();
@@ -232,6 +287,7 @@ export default function JuryHome({ params }) {
         comment: row.comment,
         juryId: juryID,
         userID: useSearchParam.get("id"),
+        score: row.score,
       }),
     })
       .then((res) => {
@@ -241,6 +297,7 @@ export default function JuryHome({ params }) {
         if (data.message == "Success") {
           alert("Saved Successfully");
         } else {
+          console.log(data.message);
           alert("Error Occured");
         }
       })
@@ -265,6 +322,7 @@ export default function JuryHome({ params }) {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         setRows(data);
       })
       .catch((err) => {
@@ -297,6 +355,9 @@ export default function JuryHome({ params }) {
             paginationModel: {
               pageSize: 5,
             },
+          },
+          sorting: {
+            sortModel: [{ field: "name", sort: "asc" }],
           },
         }}
         pageSizeOptions={[5]}

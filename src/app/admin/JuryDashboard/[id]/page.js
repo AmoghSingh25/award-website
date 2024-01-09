@@ -8,9 +8,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 const columns = [
   { field: "name", headerName: "Applicant Name", width: 200 },
-  { field: "email", headerName: "Applicant Email", width: 200 },
+  { field: "email", headerName: "Applicant Email", width: 300 },
   { field: "phone", headerName: "Applicant Phone", width: 200 },
-  { field: "comments", headerName: "Comments", width: 200 },
+  { field: "comment", headerName: "Comments", width: 200 },
+  { field: "score", headerName: "Score", width: 100 },
   {
     field: "status",
     headerName: "Result",
@@ -21,14 +22,14 @@ const columns = [
         color={
           params.row.status === ""
             ? "warning"
-            : params.row.status === "rejected"
+            : params.row.status === "Rejected"
             ? "error"
             : "success"
         }
       >
         {params.row.status === ""
           ? "Not submitted"
-          : params.row.status === "rejected"
+          : params.row.status === "Rejected"
           ? "Rejected"
           : "Selected"}
       </Button>
@@ -51,6 +52,7 @@ export default function JuryResult({ params }) {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setRows(data);
       })
       .catch((err) => console.log(err));

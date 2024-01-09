@@ -31,6 +31,7 @@ export default function JuryResult() {
     },
     { field: "juryname", headerName: "Jury Name", width: 200 },
     { field: "comment", headerName: "Comments", width: 200 },
+    { field: "score", headerName: "Score", width: 100 },
     {
       field: "review_status",
       headerName: "Result",
@@ -42,14 +43,14 @@ export default function JuryResult() {
           color={
             params.row.review_status === ""
               ? "warning"
-              : params.row.review_status === "rejected"
+              : params.row.review_status === "Rejected"
               ? "error"
               : "success"
           }
         >
           {params.row.review_status === ""
             ? "Not submitted"
-            : params.row.review_status === "rejected"
+            : params.row.review_status === "Rejected"
             ? "Rejected"
             : "Selected"}
         </Button>
