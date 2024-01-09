@@ -360,7 +360,7 @@ export default function JuryHome({ params }) {
             sortModel: [{ field: "name", sort: "asc" }],
           },
         }}
-        pageSizeOptions={[5]}
+        pageSizeOptions={[20]}
         disableRowSelectionOnClick
         sx={{
           mt: 5,
