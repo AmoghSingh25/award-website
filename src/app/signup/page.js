@@ -13,6 +13,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
+import { CircularProgress } from "@mui/material";
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -46,12 +47,14 @@ export default function Page() {
       setError("Please check the box");
       return;
     }
+    setLoading(true);
     const res = await fetch("/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     const resp = await res.json();
+    setLoading(false);
     if (!resp.error) {
       // data.id = resp.id;
       // data.section = resp.last_saved;
@@ -96,6 +99,7 @@ export default function Page() {
   const searchParams = new useSearchParams(router.query);
   const [checked, setChecked] = React.useState(false);
   const [errorMessage, setError] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
 
   return (
     <ThemeProvider theme={theme}>
@@ -141,6 +145,37 @@ export default function Page() {
             >
               Ok
             </Button>
+          </Box>
+        </Box>
+      )}
+      {loading && (
+        <Box
+          sx={{
+            position: "absolute",
+            width: "100vw",
+            height: "140vh",
+            backgroundColor: "rgba(255,255,255,0.7)",
+            zIndex: "1000",
+          }}
+        >
+          <Box
+            sx={{
+              position: "absolute",
+              width: "20vw",
+              height: "20vh",
+              top: "30vh",
+              left: "40vw",
+              backgroundColor: "#ffefb6",
+              zIndex: "1000",
+              textAlign: "center",
+              borderRadius: "20px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <CircularProgress />
           </Box>
         </Box>
       )}
