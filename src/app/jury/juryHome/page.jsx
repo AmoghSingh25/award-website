@@ -87,7 +87,7 @@ export default function JuryHome({ params }) {
             onChange={(e) => {
               params.row.comment = e.target.value;
             }}
-            placeholder="Type here...."
+            placeholder="Double click to type...."
           />
         );
       },
