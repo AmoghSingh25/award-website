@@ -96,7 +96,16 @@ export default function Page() {
             Submit
           </Button>
         </form>
-        <Typography variant="body1">{error}</Typography>
+        <Typography
+          variant="body1"
+          style={{
+            color: "red",
+            textAlign: "center",
+            marginTop: "20px",
+          }}
+        >
+          {error}
+        </Typography>
       </div>
     </div>
   );
