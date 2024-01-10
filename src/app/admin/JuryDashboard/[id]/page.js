@@ -12,29 +12,29 @@ const columns = [
   { field: "phone", headerName: "Applicant Phone", width: 200 },
   { field: "comment", headerName: "Comments", width: 200 },
   { field: "score", headerName: "Score", width: 100 },
-  {
-    field: "status",
-    headerName: "Result",
-    width: 180,
-    renderCell: (params) => (
-      <Button
-        variant="contained"
-        color={
-          params.row.status === ""
-            ? "warning"
-            : params.row.status === "Rejected"
-            ? "error"
-            : "success"
-        }
-      >
-        {params.row.status === ""
-          ? "Not submitted"
-          : params.row.status === "Rejected"
-          ? "Rejected"
-          : "Selected"}
-      </Button>
-    ),
-  },
+  // {
+  //   field: "status",
+  //   headerName: "Result",
+  //   width: 180,
+  //   renderCell: (params) => (
+  //     <Button
+  //       variant="contained"
+  //       color={
+  //         params.row.status === ""
+  //           ? "warning"
+  //           : params.row.status === "Rejected"
+  //           ? "error"
+  //           : "success"
+  //       }
+  //     >
+  //       {params.row.status === ""
+  //         ? "Not submitted"
+  //         : params.row.status === "Rejected"
+  //         ? "Rejected"
+  //         : "Selected"}
+  //     </Button>
+  //   ),
+  // },
 ];
 
 export default function JuryResult({ params }) {

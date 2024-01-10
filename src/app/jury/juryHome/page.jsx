@@ -87,7 +87,7 @@ export default function JuryHome({ params }) {
             onChange={(e) => {
               params.row.comment = e.target.value;
             }}
-            placeholder="Type something…"
+            placeholder="Type here...."
           />
         );
       },
@@ -112,7 +112,6 @@ export default function JuryHome({ params }) {
               params.row.score = e.target.value;
             }}
           >
-            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -184,65 +183,65 @@ export default function JuryHome({ params }) {
     //     );
     //   },
     // },
-    {
-      field: "status",
-      headerName: "Result",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <select
-            id="status"
-            name="status"
-            defaultValue={params.row.status}
-            style={{
-              backgroundColor:
-                params.row.status === "Selected"
-                  ? "green"
-                  : params.row.status === "Rejected"
-                  ? "red"
-                  : "",
-              color:
-                params.row.status === "Rejected" ||
-                params.row.status == "Selected"
-                  ? "white"
-                  : "black",
-              width: "100%",
-              padding: "5px",
-              borderRadius: "5px",
-            }}
-            onChange={(e) => {
-              rows.find((row) => row.id === params.id).status = e.target.value;
-              params.row.status = e.target.value;
-            }}
-          >
-            <option
-              value=""
-              style={{
-                backgroundColor: "white",
-              }}
-            ></option>
-            <option
-              value="Selected"
-              style={{
-                backgroundColor: "green",
-                color: "white",
-              }}
-            >
-              Selected
-            </option>
-            <option
-              value="Rejected"
-              style={{
-                backgroundColor: "red",
-                color: "white",
-              }}
-            >
-              Rejected
-            </option>
-          </select>
-        );
-      },
-    },
+    // {
+    //   field: "status",
+    //   headerName: "Result",
+    //   width: 200,
+    //   renderCell: (params) => {
+    //     return (
+    //       <select
+    //         id="status"
+    //         name="status"
+    //         defaultValue={params.row.status}
+    //         style={{
+    //           backgroundColor:
+    //             params.row.status === "Selected"
+    //               ? "green"
+    //               : params.row.status === "Rejected"
+    //               ? "red"
+    //               : "",
+    //           color:
+    //             params.row.status === "Rejected" ||
+    //             params.row.status == "Selected"
+    //               ? "white"
+    //               : "black",
+    //           width: "100%",
+    //           padding: "5px",
+    //           borderRadius: "5px",
+    //         }}
+    //         onChange={(e) => {
+    //           rows.find((row) => row.id === params.id).status = e.target.value;
+    //           params.row.status = e.target.value;
+    //         }}
+    //       >
+    //         <option
+    //           value=""
+    //           style={{
+    //             backgroundColor: "white",
+    //           }}
+    //         ></option>
+    //         <option
+    //           value="Selected"
+    //           style={{
+    //             backgroundColor: "green",
+    //             color: "white",
+    //           }}
+    //         >
+    //           Selected
+    //         </option>
+    //         <option
+    //           value="Rejected"
+    //           style={{
+    //             backgroundColor: "red",
+    //             color: "white",
+    //           }}
+    //         >
+    //           Rejected
+    //         </option>
+    //       </select>
+    //     );
+    //   },
+    // },
     {
       field: "save",
       headerName: "Save",
@@ -283,7 +282,6 @@ export default function JuryHome({ params }) {
       },
       body: JSON.stringify({
         id: row.id,
-        status: row.status,
         comment: row.comment,
         juryId: juryID,
         userID: useSearchParam.get("id"),

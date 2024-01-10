@@ -5,6 +5,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import XLSX from "xlsx";
 
 export default function JuryResult() {
   const [rows, setRows] = React.useState([]);
@@ -32,35 +33,31 @@ export default function JuryResult() {
     { field: "juryname", headerName: "Jury Name", width: 200 },
     { field: "comment", headerName: "Comments", width: 200 },
     { field: "score", headerName: "Score", width: 100 },
-    {
-      field: "review_status",
-      headerName: "Result",
-      width: 180,
+    // {
+    //   field: "review_status",
+    //   headerName: "Result",
+    //   width: 180,
 
-      renderCell: (params) => (
-        <Button
-          variant="contained"
-          color={
-            params.row.review_status === ""
-              ? "warning"
-              : params.row.review_status === "Rejected"
-              ? "error"
-              : "success"
-          }
-        >
-          {params.row.review_status === ""
-            ? "Not submitted"
-            : params.row.review_status === "Rejected"
-            ? "Rejected"
-            : "Selected"}
-        </Button>
-      ),
-    },
+    //   renderCell: (params) => (
+    //     <Button
+    //       variant="contained"
+    //       color={
+    //         params.row.review_status === ""
+    //           ? "warning"
+    //           : params.row.review_status === "Rejected"
+    //           ? "error"
+    //           : "success"
+    //       }
+    //     >
+    //       {params.row.review_status === ""
+    //         ? "Not submitted"
+    //         : params.row.review_status === "Rejected"
+    //         ? "Rejected"
+    //         : "Selected"}
+    //     </Button>
+    //   ),
+    // },
   ];
-
-  useEffect(() => {
-    console.log(rows);
-  }, [rows]);
 
   useEffect(() => {
     fetch("/api/admin/getApplicantResult", {
@@ -82,6 +79,38 @@ export default function JuryResult() {
       });
   }, []);
 
+  const handleDownload = (rows) => {
+    let sheet1_rows = [];
+    const keys = Object.keys(rows);
+    const columns = [
+      "applicantname",
+      "phone",
+      "email",
+      "juryname",
+      "score",
+      "comment",
+    ];
+    keys.forEach((row, id) => {
+      let applicant_response = [];
+      delete rows[row].id;
+      delete rows[row].jury_id;
+      columns.forEach((column) => {
+        applicant_response.push(rows[row][column]);
+      });
+      sheet1_rows.push(applicant_response);
+    });
+    const workbook = XLSX.utils.book_new();
+    // const worksheet = XLSX.utils.json_to_sheet(sheet1_rows);
+    const worksheet = XLSX.utils.book_new();
+    XLSX.utils.sheet_add_aoa(worksheet, [columns]);
+    XLSX.utils.sheet_add_json(worksheet, sheet1_rows, {
+      origin: "A2",
+      skipHeader: true,
+    });
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Jury Results");
+    XLSX.writeFile(workbook, "JuryResults.xlsx", { compression: true });
+  };
+
   return (
     <Box sx={{ width: "95%", pl: 3, pt: 3 }}>
       <h3
@@ -91,6 +120,14 @@ export default function JuryResult() {
       >
         Result Board
       </h3>
+
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => handleDownload(rows, columns)}
+      >
+        Download Data
+      </Button>
 
       <DataGrid
         rows={rows}
