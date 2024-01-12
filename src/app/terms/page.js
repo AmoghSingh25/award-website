@@ -12,6 +12,7 @@ export default function TermsAndConditions() {
           display: "flex",
           flexDirection: "column",
           padding: "5%",
+          paddingTop: "10%",
         }}
       >
         <h1
@@ -81,7 +82,7 @@ export default function TermsAndConditions() {
             </li>
             <li>
               <p>Entries are invited in the categories as mentioned below:</p>
-              <Grid
+              {/* <Grid
                 container
                 spacing={2}
                 sx={{
@@ -144,10 +145,8 @@ export default function TermsAndConditions() {
                         wordWrap: "break-word",
                       }}
                     >
-                      Teacher Experience <br/> 
-                      5-15 Years / 
-                      15-25 Years /
-                      More than 25 Years
+                      Teacher Experience <br />
+                      5-15 Years / 15-25 Years / More than 25 Years
                     </Typography>
                   </Box>
                 </Grid>
@@ -478,6 +477,346 @@ export default function TermsAndConditions() {
                       Computer Science
                     </Typography>
                   </Box>
+                </Grid>
+              </Grid> */}
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  mx: "5%",
+                  mb: "3%",
+                  mt: "2%",
+                  backgroundColor: "white",
+                  borderRadius: "1rem",
+                  width: "90%",
+                }}
+              >
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: "#4b5ed7",
+                    borderRadius: "1rem 0 0 0",
+                    borderRight: "2px solid black",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    component="h1"
+                    align="center"
+                    sx={{
+                      fontWeight: "bold",
+                      wordWrap: "break-word",
+                      color: "white",
+                      justifyContent: "center",
+                    }}
+                  >
+                    Segment
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={10}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: "#4b5ed7",
+                    borderRadius: "0 1rem 0 0",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    component="h1"
+                    sx={{
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      color: "white",
+                      wordWrap: "break-word",
+                    }}
+                  >
+                    Teaching Experience <br /> 5-15 Years / 15-25 Years / More
+                    than 25 Years
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRight: "2px solid black",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    component="h1"
+                    sx={{
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      color: "black",
+                    }}
+                  >
+                    For Grade 10
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="h1"
+                    sx={{
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      color: "black",
+                    }}
+                  >
+                    English
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="h1"
+                    sx={{
+                      textAlign: "center",
+                      fontWeight: "bold",
+
+                      color: "black",
+                    }}
+                  >
+                    Regional
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="h1"
+                    sx={{
+                      textAlign: "center",
+                      color: "black",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Mathematics
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="h1"
+                    sx={{
+                      textAlign: "center",
+                      fontWeight: "bold",
+                      color: "black",
+                    }}
+                  >
+                    Science
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="h1"
+                    sx={{
+                      textAlign: "center",
+                      color: "black",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Social studies (History, Geography, Civics, and Economics)
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    pb: "2rem",
+                    borderRight: "2px solid black",
+                  }}
+                >
+                  <Typography
+                    variant="h5"
+                    component="h1"
+                    sx={{
+                      fontWeight: "bold",
+                      textAlign: "center",
+                      color: "black",
+                    }}
+                  >
+                    For Grade 12
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    pb: "2rem",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="h1"
+                    sx={{
+                      textAlign: "center",
+                      color: "black",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Mathematics
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    pb: "2rem",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="h1"
+                    sx={{
+                      textAlign: "center",
+                      color: "black",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Physics
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    pb: "2rem",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="h1"
+                    color="white"
+                    sx={{
+                      textAlign: "center",
+                      color: "black",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Chemistry
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    pb: "2rem",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="h1"
+                    sx={{
+                      textAlign: "center",
+                      color: "black",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Biology
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={2}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    pb: "2rem",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    component="h1"
+                    sx={{
+                      color: "black",
+                      fontWeight: "bold",
+                      textAlign: "center",
+                    }}
+                  >
+                    Computer Science
+                  </Typography>
                 </Grid>
               </Grid>
             </li>
@@ -844,15 +1183,27 @@ export default function TermsAndConditions() {
           <ol>
             <li>
               <p>
-                The website - ……………………………is only an informational website (the
-                “Website”) for the Awards. BCCL/Organizers shall not be liable
-                or responsible for any action or decision taken by the
-                Participant or anyone acting on behalf of or under employment or
-                under contract with Participant. BCCL/Organizers shall not be
-                under any obligation to Participant and Participant shall have
-                no obligation or rights in relation to the Awards and shall have
-                no claims whatsoever against the BCCL/organizers relating to the
-                selection process or the running of the Awards
+                The website -
+                <a
+                  style={{
+                    textDecoration: "underline",
+                    color: "blue",
+                    display: "inline",
+                  }}
+                  href="https://timeseduexawards.vit.ac.in"
+                >
+                  https://timeseduexawards.vit.ac.in
+                </a>
+                {"  "}
+                is only an informational website (the “Website”) for the Awards.
+                BCCL/Organizers shall not be liable or responsible for any
+                action or decision taken by the Participant or anyone acting on
+                behalf of or under employment or under contract with
+                Participant. BCCL/Organizers shall not be under any obligation
+                to Participant and Participant shall have no obligation or
+                rights in relation to the Awards and shall have no claims
+                whatsoever against the BCCL/organizers relating to the selection
+                process or the running of the Awards
               </p>
             </li>
             <li>
