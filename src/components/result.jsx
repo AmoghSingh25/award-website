@@ -89,7 +89,10 @@ export default function JuryResult() {
       "juryname",
       "score",
       "comment",
+      "grade",
+      "teaching_exp",
     ];
+
     keys.forEach((row, id) => {
       let applicant_response = [];
       delete rows[row].id;
@@ -97,8 +100,10 @@ export default function JuryResult() {
       columns.forEach((column) => {
         applicant_response.push(rows[row][column]);
       });
+      applicant_response.push(rows[row]["subjects"][0]);
       sheet1_rows.push(applicant_response);
     });
+    columns.push("subjects");
     const workbook = XLSX.utils.book_new();
     // const worksheet = XLSX.utils.json_to_sheet(sheet1_rows);
     const worksheet = XLSX.utils.book_new();
