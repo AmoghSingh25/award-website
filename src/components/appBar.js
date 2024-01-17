@@ -25,7 +25,7 @@ const pages = [
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const links = [
-  "/signup",
+  "/application_close",
   "#about",
   "#category",
   "#eligibility",

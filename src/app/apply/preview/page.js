@@ -86,9 +86,7 @@ export default function Page() {
   const [confirmation, setConfirmation] = useState("");
 
   const onSubmit = () => {
-    setConfirmation(
-      "Are you sure you want to submit the application? \n Once submitted, the form cannot be edited"
-    );
+    setConfirmation("The applications have been closed.");
   };
 
   const submitApplication = () => {
@@ -112,7 +110,7 @@ export default function Page() {
             body: JSON.stringify({
               location: "preview",
               error: res.message,
-              id:id,
+              id: id,
             }),
           }).catch((err) => {
             console.log(err);
@@ -237,7 +235,7 @@ export default function Page() {
                 >
                   Go back
                 </Button>
-                <Button
+                {/* <Button
                   onClick={() => {
                     submitApplication();
                   }}
@@ -252,7 +250,7 @@ export default function Page() {
                   }}
                 >
                   Confirm
-                </Button>
+                </Button> */}
               </Box>
             </Box>
           )}

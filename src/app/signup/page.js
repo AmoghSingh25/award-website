@@ -85,10 +85,14 @@ export default function Page() {
 
       return;
     } else if (resp.error) {
+      console.log(resp);
       if (resp.status === "User already exists") {
         setError(
           "An account with this email/phone already exists. \n Please login"
         );
+        return;
+      } else if (resp.message === "Registration is closed") {
+        setError("Registration is closed");
         return;
       }
       setError("Error logging in");

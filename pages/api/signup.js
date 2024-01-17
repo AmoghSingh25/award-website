@@ -20,6 +20,13 @@ export default async function handler(req, res) {
         error: true,
       });
       return;
+    } else if (error.message === "Registration is closed") {
+      res.status(400).json({
+        message: "Registration is closed",
+        status: "Registration is closed",
+        error: true,
+      });
+      return;
     }
     res
       .status(400)
